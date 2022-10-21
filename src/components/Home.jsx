@@ -42,7 +42,13 @@ const Home = () => {
           <li><Link to="/crear/empleados">Crear Empleado</Link></li>
           <li><Link to="/crear/maquinas">Crear Máquinas</Link></li>
           <li><Link to="/crear/transaccion">Crear Transacción</Link></li>
-        </ol>        
+        </ol>
+        <h5 style={{textAlign: "left"}}>Modificación</h5>
+        <ol style={{textAlign: "left"}}>
+          <li><Link to="/modificar/clientes">Modificar Cliente</Link></li>
+          <li><Link to="/modificar/empleados">Modificar Empleado</Link></li>
+          <li><Link to="/modificar/maquinas">Modificar Máquinas</Link></li>
+        </ol>       
         <button onClick={() => {logOut();}}>Salir</button>
     </div>
   )
