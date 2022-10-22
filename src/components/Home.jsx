@@ -53,10 +53,10 @@ const Home = () => {
 
         <h5 style={{textAlign: "left"}}>Consultas</h5>
         <ol style={{textAlign: "left"}}>
-          <li><Link to="/consultar/clientes">Consultar Tarjeta</Link></li>
-          <li><Link to="/consultar/empleados">Consultar Clientes</Link></li>
-          <li><Link to="/consultar/maquinas">Consultar Empleados</Link></li>
-          <li><Link to="/consultar/maquinas">Consultar Máquinas</Link></li>
+          <li><Link to="/consultar/clientes">Consultar Clientes</Link></li>
+          <li><Link to="/consultar/empleados">Consultar Empleados</Link></li>
+          <li><Link to="/consultar/maquinas">Consultar Tarjeta</Link></li>
+          <li><Link to="/consultar/maquinas">Consultar Máquina</Link></li>
         </ol>
 
         <h5 style={{textAlign: "left"}}>Reportes</h5>
