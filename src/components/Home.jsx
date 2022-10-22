@@ -43,12 +43,36 @@ const Home = () => {
           <li><Link to="/crear/maquinas">Crear Máquinas</Link></li>
           <li><Link to="/crear/transaccion">Crear Transacción</Link></li>
         </ol>
+
         <h5 style={{textAlign: "left"}}>Modificación</h5>
         <ol style={{textAlign: "left"}}>
           <li><Link to="/modificar/clientes">Modificar Cliente</Link></li>
           <li><Link to="/modificar/empleados">Modificar Empleado</Link></li>
           <li><Link to="/modificar/maquinas">Modificar Máquinas</Link></li>
-        </ol>       
+        </ol>
+
+        <h5 style={{textAlign: "left"}}>Consultas</h5>
+        <ol style={{textAlign: "left"}}>
+          <li><Link to="/consultar/clientes">Consultar Tarjeta</Link></li>
+          <li><Link to="/consultar/empleados">Consultar Clientes</Link></li>
+          <li><Link to="/consultar/maquinas">Consultar Empleados</Link></li>
+          <li><Link to="/consultar/maquinas">Consultar Máquinas</Link></li>
+        </ol>
+
+        <h5 style={{textAlign: "left"}}>Reportes</h5>
+        <ol style={{textAlign: "left"}}>
+          <li><Link to="/reportes/clientes">Reporte de Clientes</Link></li>
+          <li><Link to="/reportes/empleados">Reporte de Empleados</Link></li>
+          <li><Link to="/reportes/maquinas">Reporte de Máquinas</Link></li>
+        </ol> 
+
+        <h5 style={{textAlign: "left"}}>Otros</h5>
+        <ol style={{textAlign: "left"}}>
+          <li><Link to="/otros/probar_maquina">Probar Máquina</Link></li>
+          <li><Link to="/otros/bdd">Base de Datos</Link></li>
+          <li><Link to="/otros/cambiar_contrasena">Cambiar Contraseña</Link></li>
+        </ol> 
+
         <button onClick={() => {logOut();}}>Salir</button>
     </div>
   )

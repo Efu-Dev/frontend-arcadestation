@@ -15,7 +15,6 @@ const FormularioClientes = () => {
 
     const checkCreacion = async (e) => {
         e.preventDefault();
-        console.log("a");
         let res = undefined;
         await axios.create({
             baseURL: 'http://127.0.0.1:8000/api/registro/transaccion/',

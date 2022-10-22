@@ -15,29 +15,40 @@ const FormularioModClientes = () => {
 
     const checkCreacion = async (e) => {
         e.preventDefault();
-        console.log("a");
         let res = undefined;
         await axios.create({
-            baseURL: 'http://127.0.0.1:8000/api/clientes/',
+            baseURL: `http://127.0.0.1:8000/api/clientes/${cedula}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token')
             }
           }
-        ).post('',
-        {
-            cedula,
-            nombre,
-            direccion,
-            genero
-        }).then((r) => {
-            res = r;
-            alert("Cliente creado exitosamente");
-        }).catch((e) => {
-            alert("Ocurrió un error.");
+        ).get('').then((r) => {
+            res = r;            
         });
+        console.log(res);
+
+        if(res.cedula)
+            await axios.create({
+                baseURL: `http://127.0.0.1:8000/api/personas/${cedula}`,
+                'headers': {
+                'Authorization': localStorage.getItem('access_token')
+                }
+            }
+            ).put('',
+            {
+                cedula,
+                nombre,
+                direccion,
+                genero
+            }).then((r) => {
+                res = r;            
+            });
 
         if(res.data.message === "Success"){
+            alert("Cliente modificado exitosamente");
             navigate('/home');
+        } else{
+            alert("Datos inválidos. Verifique que todos los campos estén llenos.");
         }
 
         console.log(res);
@@ -45,10 +56,9 @@ const FormularioModClientes = () => {
 
     const onChangeCedula = async (e) => {
         setCedula(e.target.value);
-        setSendable(true);
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/personas/${e.target.value}`,
+            baseURL: `http://127.0.0.1:8000/api/clientes/${e.target.value}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token')
             }
@@ -56,38 +66,30 @@ const FormularioModClientes = () => {
         ).get('',
         {}).then((r) => {
             res = r.data.datos;
-        }).catch((e) => {
-            alert("Ocurrió un error.");
         });
 
-        if(res.nombre === undefined && e.target.value !== ''){
+        if(res.cedula === undefined && e.target.value !== ''){
             setNombre('');
             setDireccion('');
             setGenero('');
-            setEditable(false);
+            setEditable(true);
         }
         else{
-            if(e.target.value !== ''){
-                setNombre(res.nombre);
-                setDireccion(res.direccion);
-                setGenero(res.genero);
-                await axios.create({
-                    baseURL: `http://127.0.0.1:8000/api/clientes/${e.target.value}`,
-                    'headers': {
-                      'Authorization': localStorage.getItem('access_token')
-                    }
-                  }
-                ).get('',
-                {}).then((r) => {
-                    res = r.data.datos;
-                });
-                console.log(res);
-                if(Object.keys(res).length > 0){
-                    setSendable(false);
-                    alert("El cliente ya está registrado en el sistema");
+            await axios.create({
+                baseURL: `http://127.0.0.1:8000/api/personas/${e.target.value}`,
+                'headers': {
+                  'Authorization': localStorage.getItem('access_token')
                 }
-            }
-            setEditable(true); 
+              }
+            ).get('',
+            {}).then((r) => {
+                res = r.data.datos;
+            });
+            console.log(res)    
+            setNombre(res.nombre);
+            setDireccion(res.direccion);
+            setGenero(res.genero);
+            setEditable(false); 
         }
     }
 
