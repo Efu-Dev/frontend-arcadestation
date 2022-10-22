@@ -14,7 +14,9 @@ import FormularioModClientes from './components/modificar/FormularioModClientes.
 import FormularioModMaquina from './components/modificar/FormularioModMaquina.jsx';
 import FormularioModEmpleados from './components/modificar/FormularioModEmpleados.jsx';
 
-import ConsultarClientes from './components/consultar/ConsultarClientes.jsx'
+import ConsultarClientes from './components/consultar/ConsultarClientes.jsx';
+import ConsultarEmpleados from './components/consultar/ConsultarEmpleados.jsx';
+import ConsultarTarjeta from './components/consultar/ConsultarTarjeta.jsx';
 
 function App() {
 
@@ -39,9 +41,9 @@ function App() {
 
           {/* Consultar */}
           <Route path='/consultar/clientes' element={<ConsultarClientes />} />
-          <Route path='/consultar/empleados' element={<FormularioModEmpleados />} />
+          <Route path='/consultar/empleados' element={<ConsultarEmpleados />} />
           <Route path='/consultar/maquinas' element={<FormularioModMaquina />} />
-          <Route path='/consultar/tarjeta' element={<FormularioModMaquina />} />
+          <Route path='/consultar/tarjeta' element={<ConsultarTarjeta />} />
         </Routes>
       </BrowserRouter>
     </div>

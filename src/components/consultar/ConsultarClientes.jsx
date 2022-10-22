@@ -69,7 +69,7 @@ const ConsultarClientes = () => {
                         <td style={{border: 'solid 1px black'}}>{cliente.cedula_id}</td>
                         <td style={{border: 'solid 1px black'}}>{cliente.persona.genero === 'H' ? "Hombre" : "Mujer"}</td>
                         <td style={{border: 'solid 1px black'}}>{cliente.persona.direccion}</td>
-                        <td style={{border: 'solid 1px black'}}>{`${new Date(cliente.fecha_registro).getDay()}/${new Date(cliente.fecha_registro).getMonth()}/${new Date(cliente.fecha_registro).getFullYear()} 
+                        <td style={{border: 'solid 1px black'}}>{`${new Date(cliente.fecha_registro).getDate()}/${new Date(cliente.fecha_registro).getMonth()+1}/${new Date(cliente.fecha_registro).getFullYear()} 
                         ${new Date(cliente.fecha_registro).getHours()}:${new Date(cliente.fecha_registro).getMinutes()}`}</td>
                         <td style={{border: 'solid 1px black'}}>{cliente.tarjeta}</td>
                     </tr>)
