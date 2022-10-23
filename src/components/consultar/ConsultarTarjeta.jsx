@@ -7,23 +7,33 @@ const ConsultarTarjeta = () => {
     const [cedula, setCedula] = useState('');
     const [datosActuales, setDatosActuales] = useState([]);
 
-    const mostrarTarjeta = (e) => {
+    const mostrarTarjeta = async (e) => {
         e.preventDefault();
-        const datosEmpleado = datos.filter((i) => {
-            console.log(`${Number(i.cedula_id)} ${Number(cedula)} ${Number(i.cedula_id) === Number(cedula)}`)
-            return Number(i.cedula_id) === Number(cedula);
+        let res = undefined;
+        await axios.create({
+            baseURL: `http://127.0.0.1:8000/api/tarjetas/${cedula}`,
+            'headers': {
+              'Authorization': localStorage.getItem('access_token')
+            }
+          }).get().then((resp) => {
+            res = [resp.data.datos];
+          }).catch((e) => console.log(e));
+        
+        console.log(res);
+        const datosTarjeta = res.filter((i) => {
+            return Number(i.numero) === Number(cedula);
         });
-        console.log(datosEmpleado)
-        if(datosEmpleado.length > 0)
-            setDatosActuales(datosEmpleado);
+        if(datosTarjeta.length > 0)
+            setDatosActuales(datosTarjeta);
         else
-            alert("No hay una tarjeta con ese número.");
-        console.log(datosActuales)
+            alert("No hay una tarjeta con ese número.");     
+            
+        console.log(res[0].registros)
     };
 
     const onChangeNumero = (nuevo) => {
         setCedula(nuevo);
-        setDatosActuales(datos);
+        setDatosActuales([]);
     }   
 
     return (
@@ -35,6 +45,7 @@ const ConsultarTarjeta = () => {
                 <button type="submit">Buscar</button>
             </form>
 
+            <h5>Datos Tarjeta</h5>
             <table>
                 <thead>
                     <tr>
@@ -52,25 +63,76 @@ const ConsultarTarjeta = () => {
                 {datosActuales.map((tarjeta) => {
                     return(<tr key={tarjeta.id}>
                         <td style={{border: 'solid 1px black'}}>{tarjeta.persona.nombre}</td>
-                        <td style={{border: 'solid 1px black'}}>{tarjeta.cedula_id}</td>
-                        <td style={{border: 'solid 1px black'}}>{tarjeta.persona.genero === 'H' ? "Hombre" : "Mujer"}</td>
-                        <td style={{border: 'solid 1px black'}}>{tarjeta.persona.direccion}</td>
-                        <td style={{border: 'solid 1px black'}}>{tarjeta.cargo}</td>
-                        <td style={{border: 'solid 1px black'}}>{`${new Date(tarjeta.fecha_entrada).getDate()}/${new Date(tarjeta.fecha_entrada).getMonth()+1}/${new Date(tarjeta.fecha_entrada).getFullYear()} 
-                        ${new Date(tarjeta.fecha_entrada).getHours()}:${new Date(tarjeta.fecha_entrada).getMinutes()}`}</td>
-                        <td style={{border: 'solid 1px black'}}>{tarjeta.email}</td>
-                        <td style={{border: 'solid 1px black'}}>{tarjeta.telefono}</td>
-                        <td style={{border: 'solid 1px black'}}>{tarjeta.usuario.username}</td>
-                        <td style={{border: 'solid 1px black'}}>{tarjeta.activo === 'S' ? "Sí" : "No"}</td>
-                        <td style={{border: 'solid 1px black'}}>
-                            {tarjeta.usuario.intentos > 3 ? <button>Enviar Correo</button>
-                            : <button disabled>Enviar Correo</button>}
-                        </td>
+                        <td style={{border: 'solid 1px black'}}>{tarjeta.persona.cedula}</td>
+                        <td style={{border: 'solid 1px black'}}>{tarjeta.numero}</td>
+                        <td style={{border: 'solid 1px black'}}>{tarjeta.saldo}</td>
+                        <td style={{border: 'solid 1px black'}}>{`${new Date(tarjeta.fecha_creacion).getDate()}/${new Date(tarjeta.fecha_creacion).getMonth()+1}/${new Date(tarjeta.fecha_creacion).getFullYear()} 
+                        ${new Date(tarjeta.fecha_creacion).getHours()}:${new Date(tarjeta.fecha_creacion).getMinutes()}`}</td>
+                        <td style={{border: 'solid 1px black'}}>{tarjeta.anulada === 'N' ? "No" : "Sí"}</td>
+                        {tarjeta.anulada === 'S' ? (
+                            <td style={{border: 'solid 1px black'}}>{`${new Date(tarjeta.fecha_entrada).getDate()}/${new Date(tarjeta.fecha_entrada).getMonth()+1}/${new Date(tarjeta.fecha_entrada).getFullYear()} 
+                            ${new Date(tarjeta.fecha_entrada).getHours()}:${new Date(tarjeta.fecha_entrada).getMinutes()}`}</td>
+                        ) : (
+                            <td style={{border: 'solid 1px black'}}>-</td>
+                        )}
+                        
                     </tr>)
                 })}
                 </tbody>
-                
             </table>
+
+            {
+                    datosActuales[0] !== undefined ? 
+                    (<>
+                    {
+                        datosActuales[0].registros.length > 0 ?
+                        (
+                        <table>
+                            
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                    <th>Referencia</th>
+                                    <th>Descripción</th>
+                                    <th>Resultado</th>
+                                    <th>Tipo</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {
+                                    datosActuales[0].registros.map((reg) => (
+                                        <tr>
+                                            <td>{`${new Date(reg.fecha).getDate()}/${new Date(reg.fecha).getMonth()+1}/${new Date(reg.fecha).getFullYear()} 
+                                            ${new Date(reg.fecha).getHours()}:${new Date(reg.fecha).getMinutes()}`}</td>
+                                            <td>{reg.monto}</td>
+                                            <td>{reg.referencia}</td>
+                                            <td>{reg.descripcion}</td>
+                                            <td>{reg.resultado === '' ? 'Aprobada' : 'Denegada'}</td>
+                                            <td>
+                                                {
+                                                    reg.tipo_pago_id === 1 ? 'Tarjeta de Débito' :
+                                                    reg.tipo_pago_id === 2 ? 'Pago Móvil' :
+                                                    reg.tipo_pago_id === 3 ? 'Tarjeta de Crédito' :
+                                                    'Transferencia'
+                                                }
+                                            </td>
+                                        </tr>
+                                        
+                                    ))
+                                }
+                            </tbody>
+                            
+                        </table>                            
+                        ) :
+                        (
+                            <h5>Esta tarjeta no ha sido recargada ni utilizada.</h5>
+                        )
+                    }
+                    </>) :
+                    <></>
+                }
         </>
         
     )
