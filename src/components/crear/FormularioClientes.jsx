@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React,{useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import download from 'downloadjs';
 
 const FormularioClientes = () => {
 
@@ -30,7 +31,17 @@ const FormularioClientes = () => {
             genero
         }).then((r) => {
             res = r;
-            alert("Cliente creado exitosamente");
+            console.log(res.data.numero);
+            axios.create({
+                baseURL: `http://127.0.0.1:8000/reportes/generar/tarjeta/${res.data.numero}`,
+                'headers': {
+                'Authorization': localStorage.getItem('access_token')
+                }
+            }).get().then((res) => {
+                const content = res.headers['content-type'];
+                download(res.data, 'TARJETA.pdf', content)
+            }).catch((e) => console.log(e));
+            alert("Cliente creado exitosamente.");
         }).catch((e) => {
             alert("Ocurrió un error.");
         });
