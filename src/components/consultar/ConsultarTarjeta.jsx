@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import download from 'downloadjs';
 
 const ConsultarTarjeta = () => {
 
@@ -34,7 +35,19 @@ const ConsultarTarjeta = () => {
     const onChangeNumero = (nuevo) => {
         setCedula(nuevo);
         setDatosActuales([]);
-    }   
+    };
+
+    const reporteTransacciones = () => {
+        axios.create({
+          baseURL: `http://127.0.0.1:8000/reportes/generar/transacciones/${datosActuales[0].numero}`,
+          'headers': {
+            'Authorization': localStorage.getItem('access_token')
+          }
+        }).get().then((res) => {
+          const content = res.headers['content-type'];
+          download(res.data, 'REPORTE_TRANSACCIONES_ARCADESTATION.pdf', content)
+        }).catch((e) => console.log(e));
+    };
 
     return (
         <>
@@ -87,7 +100,9 @@ const ConsultarTarjeta = () => {
                     {
                         datosActuales[0].registros.length > 0 ?
                         (
-                        <table>
+                        <>
+                            <a href='#' onClick={reporteTransacciones}>Imprimir Reporte de Transacciones</a>
+                            <table>
                             
                             <thead>
                                 <tr>
@@ -122,9 +137,9 @@ const ConsultarTarjeta = () => {
                                         
                                     ))
                                 }
-                            </tbody>
-                            
-                        </table>                            
+                            </tbody>                            
+                        </table> 
+                        </>                   
                         ) :
                         (
                             <h5>Esta tarjeta no ha sido recargada ni utilizada.</h5>

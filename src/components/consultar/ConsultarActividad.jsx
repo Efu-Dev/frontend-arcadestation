@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import download from 'downloadjs';
 
 const ConsultarActividad = () => {
 
@@ -35,6 +36,18 @@ const ConsultarActividad = () => {
           }).catch((e) => console.log(e));
     }, []);
 
+    const reporteActividad = () => {
+        axios.create({
+          baseURL: `http://127.0.0.1:8000/reportes/generar/actividad/${codigo}`,
+          'headers': {
+            'Authorization': localStorage.getItem('access_token')
+          }
+        }).get().then((res) => {
+          const content = res.headers['content-type'];
+          download(res.data, 'REPORTE_ACTIVIDAD_ARCADESTATION.pdf', content);
+        }).catch((e) => console.log(e));
+      };
+
     if(loading1 || loading2)
         return <h1>Cargando...</h1>    
 
@@ -45,6 +58,7 @@ const ConsultarActividad = () => {
                 <li><b>Máquina: </b> {maquina.nombre}</li>
                 <li><b>Código: </b> {maquina.codigo}</li>
                 <li><b>Precio: </b> {maquina.precio}</li>
+                <li><b>Reporte: </b> <a href="#" onClick={reporteActividad}>Imprimir</a></li>
             </ul>
 
             {

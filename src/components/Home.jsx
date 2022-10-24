@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import download from 'downloadjs'
+import download from 'downloadjs';
 
 const Home = () => {
 
@@ -52,6 +52,18 @@ const Home = () => {
     }).catch((e) => console.log(e));
   };
 
+  const reporteMaquinas = () => {
+    axios.create({
+      baseURL: 'http://127.0.0.1:8000/reportes/generar/máquinas',
+      'headers': {
+        'Authorization': localStorage.getItem('access_token')
+      }
+    }).get().then((res) => {
+      const content = res.headers['content-type'];
+      download(res.data, 'REPORTE_MAQUINAS_ARCADESTATION.pdf', content)
+    }).catch((e) => console.log(e));
+  };
+
   if(!localStorage.getItem('access_token'))
     return (<h1>Estimado Usuario, no tiene permiso para acceder a este módulo.</h1>);
 
@@ -88,7 +100,7 @@ const Home = () => {
         <ol style={{textAlign: "left"}}>
           <li><a href='#' onClick={reporteClientes}>Reporte de Clientes</a></li>
           <li><a href='#' onClick={reporteEmpleados}>Reporte de Empleados</a></li>
-          <li><Link to="/reportes/maquinas">Reporte de Máquinas</Link></li>
+          <li><a href='#' onClick={reporteMaquinas}>Reporte de Máquinas</a></li>
         </ol> 
 
         <h5 style={{textAlign: "left"}}>Otros</h5>
