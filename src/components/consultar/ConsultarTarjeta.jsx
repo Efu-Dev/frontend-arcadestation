@@ -14,7 +14,7 @@ const ConsultarTarjeta = () => {
         await axios.create({
             baseURL: `http://127.0.0.1:8000/api/tarjetas/${cedula}`,
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }).get().then((resp) => {
             res = [resp.data.datos];
@@ -41,7 +41,7 @@ const ConsultarTarjeta = () => {
         axios.create({
           baseURL: `http://127.0.0.1:8000/reportes/generar/transacciones/${datosActuales[0].numero}`,
           'headers': {
-            'Authorization': localStorage.getItem('access_token')
+            'Authorization': localStorage.getItem('access_token_as')
           }
         }).get().then((res) => {
           const content = res.headers['content-type'];

@@ -14,7 +14,7 @@ const Home = () => {
     axios.create({
       baseURL: 'http://127.0.0.1:8000/usuarios/get/',
       'headers': {
-        'Authorization': localStorage.getItem('access_token')
+        'Authorization': localStorage.getItem('access_token_as')
       }
     }).get().then((res) => {
       setDatos(res.data);
@@ -23,8 +23,8 @@ const Home = () => {
   }, []);
 
   const logOut = () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('access_token_as');
+    localStorage.removeItem('refresh_token_as');
     navigate('/');
   };
 
@@ -32,7 +32,7 @@ const Home = () => {
     axios.create({
       baseURL: 'http://127.0.0.1:8000/reportes/generar/clientes',
       'headers': {
-        'Authorization': localStorage.getItem('access_token')
+        'Authorization': localStorage.getItem('access_token_as')
       }
     }).get().then((res) => {
       const content = res.headers['content-type'];
@@ -44,7 +44,7 @@ const Home = () => {
     axios.create({
       baseURL: 'http://127.0.0.1:8000/reportes/generar/empleados',
       'headers': {
-        'Authorization': localStorage.getItem('access_token')
+        'Authorization': localStorage.getItem('access_token_as')
       }
     }).get().then((res) => {
       const content = res.headers['content-type'];
@@ -56,7 +56,7 @@ const Home = () => {
     axios.create({
       baseURL: 'http://127.0.0.1:8000/reportes/generar/máquinas',
       'headers': {
-        'Authorization': localStorage.getItem('access_token')
+        'Authorization': localStorage.getItem('access_token_as')
       }
     }).get().then((res) => {
       const content = res.headers['content-type'];
@@ -64,7 +64,7 @@ const Home = () => {
     }).catch((e) => console.log(e));
   };
 
-  if(!localStorage.getItem('access_token'))
+  if(!localStorage.getItem('access_token_as'))
     return (<h1>Estimado Usuario, no tiene permiso para acceder a este módulo.</h1>);
 
   if(loading)

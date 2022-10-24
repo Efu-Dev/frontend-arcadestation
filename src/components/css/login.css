@@ -1,0 +1,112 @@
+.main-container {
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(-175.82388596164deg , rgba(251.82,74.62,148.26,1) 0%, rgba(189.07,158.69,211.44,0.86000001430511) 48%, rgba(69.52,74.27,213.57,0.94999998807907) 87%);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.rows {
+    display: flex;
+    overflow-wrap: inherit;
+}
+
+.rows > .cols-1 {
+    width: 40%;
+}
+
+.rows > .cols-2 {
+    width: 60%;
+}
+
+.rows > .cols-1 > #logo {
+    margin: 40vh 0 0 15%;
+    z-index: -999;
+}
+
+.rows > .cols-1 > .p-absolute {
+    position: absolute;
+    top: 32vh;
+    left: calc(100% - 82vw);
+}
+
+#logo-switch {
+    width: 60%;
+    height: 60%;
+}
+
+.rows > .cols-2 > .login {
+    background-color: #E7E8FF;
+    border-radius: 70px 0 0 70px;
+    margin: 0 0 0 0;
+    height: 100vh;
+ 
+}
+
+.rows > .cols-2 > .login > .Username {
+    position: absolute;
+    top: 30%;
+    left: 55%;
+
+}
+
+.rows > .cols-2 > .login > .Username> .login-form {
+    position: absolute;
+    font-size: 45px;
+    width: 500px;
+    height: 50px;
+    font-family: Tomorrow;
+
+}
+
+
+.rows > .cols-2 > .login > .Password {
+    position: absolute;
+    
+    top: 50%;
+    left: 55%;
+
+}
+
+.rows > .cols-2 > .login > .Password> .login-form {
+    position: absolute;
+    font-size: 45px;
+    width: 500px;
+    height: 50px;
+
+}
+
+
+.rows > .cols-2 > .login > .boton  {
+
+    
+   position: relative;
+
+   top: 70% ;
+   left: 40%;
+}
+
+.tomttxt{
+	background: rgba(230.56,231.54,255,1); 
+	font-family: Tomorrow;
+	font-size: 50px;
+	border-radius: 15px;
+	
+}
+
+.boton{
+ 	background: rgba(48.75,51.25,124.32,1);
+    font-size: 50px;
+	font-family: Tomorrow;
+	border-radius: 15px;
+    color: beige;
+    cursor: pointer;
+}
+
+.boton > a {
+	text-decoration: none;
+	color: beige;
+}

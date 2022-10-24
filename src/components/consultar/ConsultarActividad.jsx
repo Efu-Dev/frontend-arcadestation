@@ -16,7 +16,7 @@ const ConsultarActividad = () => {
         axios.create({
             baseURL: `http://127.0.0.1:8000/api/registro/actividad/${codigo}`,
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }).get().then((res) => {
             console.log(res);
@@ -27,7 +27,7 @@ const ConsultarActividad = () => {
         axios.create({
             baseURL: `http://127.0.0.1:8000/api/maquinas/${String(codigo)}`,
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }).get().then((res) => {
             console.log(res);
@@ -40,7 +40,7 @@ const ConsultarActividad = () => {
         axios.create({
           baseURL: `http://127.0.0.1:8000/reportes/generar/actividad/${codigo}`,
           'headers': {
-            'Authorization': localStorage.getItem('access_token')
+            'Authorization': localStorage.getItem('access_token_as')
           }
         }).get().then((res) => {
           const content = res.headers['content-type'];

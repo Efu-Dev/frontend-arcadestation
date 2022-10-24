@@ -1,15 +1,18 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../axios';
+import './css/login.css';
+import logo from './Img/logo.png';
+import otro from './Img/SwitchControl.png';
 
 const LogIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const LogIn = async (e) => {
-        e.preventDefault();
-        let inicioSesion = false
+    const LogIn = async () => {
+        let inicioSesion = false;
+        console.log(username + " " + password);
 
         const a = await axiosInstance.post('usuarios/jwt/create/', {
           username,
@@ -21,27 +24,42 @@ const LogIn = () => {
               window.location.reload();
               null.x = 0;     
             }
-            localStorage.setItem('access_token', res.data.access);
-            localStorage.setItem('refresh_token', res.data.refresh);
+            localStorage.setItem('access_token_as', res.data.access);
+            localStorage.setItem('refresh_token_as', res.data.refresh);
             inicioSesion = true;
             alert("Ha iniciado sesión exitosamente");
           }
         );
 
         console.log(a);
-        if(localStorage.getItem('access_token') && inicioSesion)
+        if(localStorage.getItem('access_token_as') && inicioSesion)
           navigate('/home');
     };
 
     return (
-      <div>
-        <h1>LOGIN</h1>
-          <form method="post" onSubmit={(e) => LogIn(e)}>
-              <input type="text" name="username" id="username" placeholder='usuario' onChange={(e) => setUsername(e.target.value)} />
-              <input type="password" name="password" id="password" placeholder='contraseña' onChange={(e) => setPassword(e.target.value)} />
-              <input type="submit" value="submit" />
-          </form>
-      </div>
+      <main className="main-container">
+			<div className="rows">
+				<div className="cols-1">
+					<div className="p-absolute">
+						<img src={otro} id='logo-switch' alt="Switch" /><br/>
+					</div>
+					<img src={logo} id="logo"  alt="logo"/>
+				</div>
+				<div className="cols-2">			
+					<div className="login">
+						<div className="Username">
+							<h1>Username</h1>
+							<input type="text" className="login-form" onChange={(e) => setUsername(e.target.value)} /> 
+						</div>
+						<div className="Password">
+							<h1>Password</h1>
+							<input type="password" className="login-form" onChange={(e) => setPassword(e.target.value)} />
+						</div>
+						<button className="boton" onClick={LogIn}>LOG IN</button> 
+					</div>
+				</div>
+			</div>
+		</main>      
     )
 }
 

@@ -19,7 +19,7 @@ const FormularioClientes = () => {
         await axios.create({
             baseURL: 'http://127.0.0.1:8000/api/registro/transaccion/',
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }
         ).post('',
@@ -49,7 +49,7 @@ const FormularioClientes = () => {
         await axios.create({
             baseURL: `http://127.0.0.1:8000/api/tarjetas/${e}`,
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }
         ).get('').then((r) => {

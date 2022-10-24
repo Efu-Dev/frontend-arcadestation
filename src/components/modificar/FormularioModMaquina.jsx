@@ -18,7 +18,7 @@ const FormularioModClientes = () => {
         await axios.create({
             baseURL: `http://127.0.0.1:8000/api/maquinas/${codigo}`,
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }
         ).put('',
@@ -49,7 +49,7 @@ const FormularioModClientes = () => {
         await axios.create({
             baseURL: `http://127.0.0.1:8000/api/maquinas/${e.target.value}`,
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }
         ).get('',

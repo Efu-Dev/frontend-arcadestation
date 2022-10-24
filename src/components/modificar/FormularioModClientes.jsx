@@ -19,7 +19,7 @@ const FormularioModClientes = () => {
         await axios.create({
             baseURL: `http://127.0.0.1:8000/api/clientes/${cedula}`,
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }
         ).get('').then((r) => {
@@ -31,7 +31,7 @@ const FormularioModClientes = () => {
             await axios.create({
                 baseURL: `http://127.0.0.1:8000/api/personas/${cedula}`,
                 'headers': {
-                'Authorization': localStorage.getItem('access_token')
+                'Authorization': localStorage.getItem('access_token_as')
                 }
             }
             ).put('',
@@ -60,7 +60,7 @@ const FormularioModClientes = () => {
         await axios.create({
             baseURL: `http://127.0.0.1:8000/api/clientes/${e.target.value}`,
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }
         ).get('',
@@ -78,7 +78,7 @@ const FormularioModClientes = () => {
             await axios.create({
                 baseURL: `http://127.0.0.1:8000/api/personas/${e.target.value}`,
                 'headers': {
-                  'Authorization': localStorage.getItem('access_token')
+                  'Authorization': localStorage.getItem('access_token_as')
                 }
               }
             ).get('',

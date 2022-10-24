@@ -12,7 +12,7 @@ const ConsultarClientes = () => {
         axios.create({
             baseURL: 'http://127.0.0.1:8000/api/clientes/',
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }).get().then((res) => {
             setDatos(res.data.datos);

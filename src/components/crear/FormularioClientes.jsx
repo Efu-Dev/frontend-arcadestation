@@ -20,7 +20,7 @@ const FormularioClientes = () => {
         await axios.create({
             baseURL: 'http://127.0.0.1:8000/api/clientes/',
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }
         ).post('',
@@ -35,7 +35,7 @@ const FormularioClientes = () => {
             axios.create({
                 baseURL: `http://127.0.0.1:8000/reportes/generar/tarjeta/${res.data.numero}`,
                 'headers': {
-                'Authorization': localStorage.getItem('access_token')
+                'Authorization': localStorage.getItem('access_token_as')
                 }
             }).get().then((res) => {
                 const content = res.headers['content-type'];
@@ -60,7 +60,7 @@ const FormularioClientes = () => {
         await axios.create({
             baseURL: `http://127.0.0.1:8000/api/personas/${e.target.value}`,
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }
         ).get('',
@@ -84,7 +84,7 @@ const FormularioClientes = () => {
                 await axios.create({
                     baseURL: `http://127.0.0.1:8000/api/clientes/${e.target.value}`,
                     'headers': {
-                      'Authorization': localStorage.getItem('access_token')
+                      'Authorization': localStorage.getItem('access_token_as')
                     }
                   }
                 ).get('',

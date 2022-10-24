@@ -23,7 +23,7 @@ const FormularioModEmpleados = () => {
         await axios.create({
             baseURL: `http://127.0.0.1:8000/api/empleados/${cedula}`,
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }
         ).put('',
@@ -56,7 +56,7 @@ const FormularioModEmpleados = () => {
         await axios.create({
             baseURL: `http://127.0.0.1:8000/api/empleados/${e.target.value}`,
             'headers': {
-              'Authorization': localStorage.getItem('access_token')
+              'Authorization': localStorage.getItem('access_token_as')
             }
           }
         ).get('',
@@ -80,7 +80,7 @@ const FormularioModEmpleados = () => {
             await axios.create({
                 baseURL: `http://127.0.0.1:8000/api/personas/${e.target.value}`,
                 'headers': {
-                  'Authorization': localStorage.getItem('access_token')
+                  'Authorization': localStorage.getItem('access_token_as')
                 }
               }
             ).get('',
