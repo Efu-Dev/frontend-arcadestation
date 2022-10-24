@@ -20,6 +20,8 @@ import ConsultarTarjeta from './components/consultar/ConsultarTarjeta.jsx';
 import ConsultarMaquinas from './components/consultar/ConsultarMaquinas.jsx';
 import ConsultarActividad from './components/consultar/ConsultarActividad.jsx';
 
+import CambiarContraseña from './components/control/CambiarContraseña';
+
 function App() {
 
   return (
@@ -29,6 +31,7 @@ function App() {
           {/* Control */}
           <Route path='/' element={<LogIn />} />
           <Route path='/home' element={<Home />} />
+          <Route path='/control/cambiar_contrasena' element={<CambiarContraseña />} />
 
           {/* Creación */}
           <Route path='/crear/clientes' element={<FormularioClientes />} />

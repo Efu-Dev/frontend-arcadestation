@@ -107,7 +107,7 @@ const Home = () => {
         <ol style={{textAlign: "left"}}>
           <li><Link to="/otros/probar_maquina">Probar Máquina</Link></li>
           <li><Link to="/otros/bdd">Base de Datos</Link></li>
-          <li><Link to="/otros/cambiar_contrasena">Cambiar Contraseña</Link></li>
+          <li><Link to="/control/cambiar_contrasena">Cambiar Contraseña</Link></li>
         </ol> 
 
         <button onClick={() => {logOut();}}>Salir</button>

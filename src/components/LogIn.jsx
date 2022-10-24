@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../axios';
 import './css/login.css';
@@ -10,9 +10,13 @@ const LogIn = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    useEffect(() => {
+      if(localStorage.getItem('access_token_as'))
+        navigate('/home');
+    });    
+
     const LogIn = async () => {
         let inicioSesion = false;
-        console.log(username + " " + password);
 
         const a = await axiosInstance.post('usuarios/jwt/create/', {
           username,
