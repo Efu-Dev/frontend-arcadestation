@@ -7,7 +7,13 @@
 body {
     margin: 0;
     padding: 0;
+    
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 
 .rows {
     display: flex;
@@ -47,9 +53,9 @@ body {
 }
 
 .rows > .cols-2 > .login > .Username {
-    position: absolute;
-    top: 30%;
-    left: 55%;
+    position: relative;
+    top: 15%;
+    left: 25%;
 
 }
 
@@ -59,15 +65,15 @@ body {
     width: 500px;
     height: 50px;
     font-family: Tomorrow;
+    border-radius: 15px;
 
 }
 
-
 .rows > .cols-2 > .login > .Password {
-    position: absolute;
+    position: relative;
     
-    top: 50%;
-    left: 55%;
+    top: 25%;
+    left:25%;
 
 }
 
@@ -76,17 +82,74 @@ body {
     font-size: 45px;
     width: 500px;
     height: 50px;
+    border-radius: 15px;
 
 }
-
 
 .rows > .cols-2 > .login > .boton  {
 
     
    position: relative;
 
-   top: 70% ;
+   top: 42% ;
    left: 40%;
+}
+
+.rows > .cols-2 > .login > .logo-control {
+    position: relative;
+    top: -2.5%;
+    left: 10%;
+}
+
+.rows > .cols-2 > .login > .login-titulo {
+    position: absolute;
+    top: 16%;
+    left: 63%;
+    font-size: 27px;
+    font-family: Tomorrow;
+}
+
+.rows > .cols-2 > .login > .forgot-password{
+    position: relative;
+    top: 64%;
+    left: 56%;
+    font-size: 18px;
+    font-family: Tomorrow;
+}
+
+.rows > .cols-2 > .login > .forgot-password > a {
+    color: #251E7A;
+}
+
+@media (max-width: 1000px){
+
+    .rows { 
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .rows > .cols-1 {
+        display: none;
+    }
+    .rows > .cols-2 {
+        width: 100%;
+    }
+    .rows > .cols-2 > .login {
+        border-radius: 0;
+    }
+    .rows > .cols-2 > .login > .forgot-password {
+        top: 71.5%;
+        left: 65.5%;
+
+    }
+
+    .rows > .cols-2 > .login > .login-titulo{
+        left: 43%;
+    }
+
+    .rows > .cols-2 > .login > .boton  {
+        left: 46%;
+    }
 }
 
 .tomttxt{
