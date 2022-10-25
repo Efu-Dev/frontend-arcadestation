@@ -12,7 +12,7 @@ const ConsultarTarjeta = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/tarjetas/${cedula}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/tarjetas/${cedula}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -39,7 +39,7 @@ const ConsultarTarjeta = () => {
 
     const reporteTransacciones = () => {
         axios.create({
-          baseURL: `http://127.0.0.1:8000/reportes/generar/transacciones/${datosActuales[0].numero}`,
+          baseURL: `https://arcadestation.pythonanywhere.com/reportes/generar/transacciones/${datosActuales[0].numero}`,
           'headers': {
             'Authorization': localStorage.getItem('access_token_as')
           }

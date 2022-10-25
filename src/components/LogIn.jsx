@@ -16,7 +16,8 @@ const LogIn = () => {
         navigate('/home');
     });    
 
-    const LogIn = async () => {
+    const logIn = async (e) => {
+        e.preventDefault();
         let inicioSesion = false;
 
         const a = await axiosInstance.post('usuarios/jwt/create/', {
@@ -51,7 +52,7 @@ const LogIn = () => {
             
             <img src={logo} id="logo" alt='Logo' />
           </div>
-          <div className="cols-2">	
+          <form className="cols-2" onSubmit={(e) => logIn(e)}>	
                 
             <div className="login">
               <div className="login-titulo">
@@ -66,19 +67,19 @@ const LogIn = () => {
 
               <div className="Username">
                 <h1>Username</h1>
-                <input type="text" className="login-form" onChange={(e) => setUsername(e.target.value)} /> 
+                <input type="text" className="login-form" onChange={(e) => setUsername(e.target.value)} required /> 
               </div>
               <div className="Password">
                 <h1>Password</h1>
-                <input type="password" className="login-form" onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" className="login-form" onChange={(e) => setPassword(e.target.value)} required />
                 
               </div>
-                <button className='boton' type='submit'><a href="#">LOG IN</a></button>
+                <button className='boton' type='submit'>LOG IN</button>
             </div>
-          </div>
+          </form>
         </div>
 		  </main>   
     )
-}
+};
 
-export default LogIn
+export default LogIn;

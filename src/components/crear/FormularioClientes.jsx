@@ -18,7 +18,7 @@ const FormularioClientes = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: 'http://127.0.0.1:8000/api/clientes/',
+            baseURL: 'https://arcadestation.pythonanywhere.com/api/clientes/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -33,7 +33,7 @@ const FormularioClientes = () => {
             res = r;
             console.log(res.data.numero);
             axios.create({
-                baseURL: `http://127.0.0.1:8000/reportes/generar/tarjeta/${res.data.numero}`,
+                baseURL: `https://arcadestation.pythonanywhere.com/reportes/generar/tarjeta/${res.data.numero}`,
                 'headers': {
                 'Authorization': localStorage.getItem('access_token_as')
                 }
@@ -58,7 +58,7 @@ const FormularioClientes = () => {
         setSendable(true);
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/personas/${e.target.value}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -82,7 +82,7 @@ const FormularioClientes = () => {
                 setDireccion(res.direccion);
                 setGenero(res.genero);
                 await axios.create({
-                    baseURL: `http://127.0.0.1:8000/api/clientes/${e.target.value}`,
+                    baseURL: `https://arcadestation.pythonanywhere.com/api/clientes/${e.target.value}`,
                     'headers': {
                       'Authorization': localStorage.getItem('access_token_as')
                     }

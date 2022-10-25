@@ -17,7 +17,7 @@ const FormularioModClientes = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/clientes/${cedula}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/clientes/${cedula}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -29,7 +29,7 @@ const FormularioModClientes = () => {
 
         if(res.cedula)
             await axios.create({
-                baseURL: `http://127.0.0.1:8000/api/personas/${cedula}`,
+                baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${cedula}`,
                 'headers': {
                 'Authorization': localStorage.getItem('access_token_as')
                 }
@@ -58,7 +58,7 @@ const FormularioModClientes = () => {
         setCedula(e.target.value);
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/clientes/${e.target.value}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/clientes/${e.target.value}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -76,7 +76,7 @@ const FormularioModClientes = () => {
         }
         else{
             await axios.create({
-                baseURL: `http://127.0.0.1:8000/api/personas/${e.target.value}`,
+                baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value}`,
                 'headers': {
                   'Authorization': localStorage.getItem('access_token_as')
                 }
