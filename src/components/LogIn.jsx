@@ -48,9 +48,10 @@ const LogIn = () => {
           <div className="cols-1">
             <div className="p-absolute">
               <img src={otro} id='logo-switch' alt="Switch" /><br/>
+              <img src={logo} id="logo" alt='Logo' />
             </div>
             
-            <img src={logo} id="logo" alt='Logo' />
+            
           </div>
           <form className="cols-2" onSubmit={(e) => logIn(e)}>	
                 
@@ -58,9 +59,7 @@ const LogIn = () => {
               <div className="login-titulo">
                 <h1>LOG IN</h1>
               </div>
-              <div className="forgot-password">
-                <a href="#">Forgot password?</a>
-              </div>
+              
               <div className="logo-control">
                 <img src={control} id='logo-control' alt="control" /><br/>
               </div>
@@ -72,7 +71,9 @@ const LogIn = () => {
               <div className="Password">
                 <h1>Password</h1>
                 <input type="password" className="login-form" onChange={(e) => setPassword(e.target.value)} required />
-                
+                <div className="forgot-password">
+                <a href="#">Forgot password?</a>
+              </div>
               </div>
                 <button className='boton' type='submit'>LOG IN</button>
             </div>
