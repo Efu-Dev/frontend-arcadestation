@@ -2,6 +2,7 @@
 	width: 100vw;
 	height: 100vh;
 	background: linear-gradient(-175.82388596164deg , rgba(251.82,74.62,148.26,1) 0%, rgba(189.07,158.69,211.44,0.86000001430511) 48%, rgba(69.52,74.27,213.57,0.94999998807907) 87%);
+    
 }
 
 body {
@@ -28,20 +29,26 @@ body {
     width: 60%;
 }
 
-.rows > .cols-1 > #logo {
-    margin: 40vh 0 0 15%;
-    z-index: -999;
-}
+
 
 .rows > .cols-1 > .p-absolute {
     position: absolute;
-    top: 32vh;
-    left: calc(100% - 82vw);
+    top: 28vh;
+    left: calc(100% - 97vw);
+   
+}
+
+#logo {
+    width: 75%;
+    height: 60%;
+    
+
 }
 
 #logo-switch {
-    width: 60%;
-    height: 60%;
+    
+    width: 25%;
+    
 }
 
 .rows > .cols-2 > .login {
@@ -54,8 +61,8 @@ body {
 
 .rows > .cols-2 > .login > .Username {
     position: relative;
-    top: 15%;
-    left: 25%;
+    top: 10%;
+    left: -15%;
 
 }
 
@@ -66,14 +73,14 @@ body {
     height: 50px;
     font-family: Tomorrow;
     border-radius: 15px;
-
+    left: 41.5%;
 }
 
 .rows > .cols-2 > .login > .Password {
     position: relative;
     
     top: 25%;
-    left:25%;
+    left:-15%;
 
 }
 
@@ -83,6 +90,7 @@ body {
     width: 500px;
     height: 50px;
     border-radius: 15px;
+    left: 41.5%;
 
 }
 
@@ -92,13 +100,13 @@ body {
    position: relative;
 
    top: 42% ;
-   left: 40%;
+   left: -1%;
 }
 
 .rows > .cols-2 > .login > .logo-control {
     position: relative;
     top: -2.5%;
-    left: 10%;
+    left: -30%;
 }
 
 .rows > .cols-2 > .login > .login-titulo {
@@ -109,15 +117,15 @@ body {
     font-family: Tomorrow;
 }
 
-.rows > .cols-2 > .login > .forgot-password{
-    position: relative;
-    top: 64%;
-    left: 56%;
-    font-size: 18px;
-    font-family: Tomorrow;
+.rows > .cols-2 > .login > .Password > .forgot-password{
+    position: absolute;
+    top: 285%;
+    left: 84%;
+    font-size: 15px;
+    
 }
 
-.rows > .cols-2 > .login > .forgot-password > a {
+.rows > .cols-2 > .login > .Password >.forgot-password > a {
     color: #251E7A;
 }
 
@@ -137,9 +145,9 @@ body {
     .rows > .cols-2 > .login {
         border-radius: 0;
     }
-    .rows > .cols-2 > .login > .forgot-password {
-        top: 71.5%;
-        left: 65.5%;
+    .rows > .cols-2 > .login > .Password> .forgot-password {
+        top: 285%;
+        left: 83%;
 
     }
 
@@ -148,7 +156,7 @@ body {
     }
 
     .rows > .cols-2 > .login > .boton  {
-        left: 46%;
+        left: 6%;
     }
 }
 

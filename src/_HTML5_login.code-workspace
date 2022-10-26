@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../../_HTML5_login"
+		},
+		{
+			"path": "../../_CSS_login"
+		},
+		{
+			"path": "../../ArcadeStation"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "ArcadeStation"
+	}
+}
