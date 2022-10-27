@@ -17,7 +17,7 @@ const FormularioClientes = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: 'https://arcadestation.pythonanywhere.com/api/registro/transaccion/',
+            baseURL: 'http://127.0.0.1:8000/api/registro/transaccion/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -47,7 +47,7 @@ const FormularioClientes = () => {
         setTarjeta(e);
         let res = "";
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/tarjetas/${e}`,
+            baseURL: `http://127.0.0.1:8000/api/tarjetas/${e}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -83,7 +83,7 @@ const FormularioClientes = () => {
                 <input name="referencia" type="text" value={referencia} onChange={(e) => setReferencia(e.target.value)} pattern="\d+" required disabled />
 
                 <label htmlFor="tipoPago">Tipo de Pago:</label>
-                <select name="tipoPago" id="tipoPago" disabled="disabled">
+                <select name="tipoPago" id="tipoPago" disabled="disabled" onSelect={(e) => setTipoPago(e.target.value)}>
                     <option value="1">Tarjeta de Débito</option>
                     <option value="2">Pago Móvil</option>
                     <option value="3">Tarjeta de Crédito</option>
@@ -104,7 +104,7 @@ const FormularioClientes = () => {
                 <input name="referencia" type="text" value={referencia} onChange={(e) => setReferencia(e.target.value)} pattern="\d+" required />
                 
                 <label htmlFor="tipoPago">Tipo de Pago:</label>
-                <select name="tipoPago" id="tipoPago" onSelect={(e) => setTipoPago(e.target.value)}>
+                <select name="tipoPago" id="tipoPago" onChange={(e) => setTipoPago(e.target.value)}>
                     <option value="1">Tarjeta de Débito</option>
                     <option value="2">Pago Móvil</option>
                     <option value="3">Tarjeta de Crédito</option>

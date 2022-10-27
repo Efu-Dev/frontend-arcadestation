@@ -21,7 +21,7 @@ const FormularioEmpleados = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: 'https://arcadestation.pythonanywhere.com/api/empleados/',
+            baseURL: 'http://127.0.0.1:8000/api/empleados/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -54,7 +54,7 @@ const FormularioEmpleados = () => {
         setSendable(true);
         let res = undefined;
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value}`,
+            baseURL: `http://127.0.0.1:8000/api/personas/${e.target.value}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -81,7 +81,7 @@ const FormularioEmpleados = () => {
                 setDireccion(res.direccion);
                 setGenero(res.genero);
                 await axios.create({
-                    baseURL: `https://arcadestation.pythonanywhere.com/api/empleados/${e.target.value}`,
+                    baseURL: `http://127.0.0.1:8000/api/empleados/${e.target.value}`,
                     'headers': {
                       'Authorization': localStorage.getItem('access_token_as')
                     }

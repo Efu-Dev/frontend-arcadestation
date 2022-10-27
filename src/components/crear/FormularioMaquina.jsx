@@ -16,7 +16,7 @@ const FormularioClientes = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: 'https://arcadestation.pythonanywhere.com/api/maquinas/',
+            baseURL: 'http://127.0.0.1:8000/api/maquinas/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -45,7 +45,7 @@ const FormularioClientes = () => {
         setSendable(true);
         let res = undefined;
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/maquinas/${e.target.value}`,
+            baseURL: `http://127.0.0.1:8000/api/maquinas/${e.target.value}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }

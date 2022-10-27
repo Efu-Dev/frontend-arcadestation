@@ -33,7 +33,6 @@ const LogIn = () => {
             localStorage.setItem('access_token_as', res.data.access);
             localStorage.setItem('refresh_token_as', res.data.refresh);
             inicioSesion = true;
-            alert("Ha iniciado sesión exitosamente");
           }
         );
 
