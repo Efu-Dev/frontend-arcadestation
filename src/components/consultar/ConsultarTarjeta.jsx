@@ -54,7 +54,7 @@ const ConsultarTarjeta = () => {
             <h1>Consultar Tarjeta</h1>
             <form onSubmit={(e) => mostrarTarjeta(e)}>
                 <label>Número:</label>
-                <input type="text" pattern='[0-9]+' onChange={(e) => onChangeNumero(e.target.value.trim())} required />
+                <input type="text" pattern='[0-9]+' onChange={(e) => onChangeNumero(e.target.value.replace(/^\s+/, "").replace(/^\s+/, ""))} required />
                 <button type="submit">Buscar</button>
             </form>
 

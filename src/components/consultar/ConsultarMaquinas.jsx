@@ -53,7 +53,7 @@ const ConsultarClientes = () => {
             <h1>Consultar Máquinas</h1>
             <form onSubmit={(e) => mostrarMaquina(e)}>
                 <label htmlFor="codigo">Código:</label>
-                <input type="text" pattern='[0-9]+' onChange={(e) => onChangeCodigo(e.target.value.trim())} required />
+                <input type="text" pattern='[0-9]+' onChange={(e) => onChangeCodigo(e.target.value.replace(/^\s+/, "").replace(/^\s+/, ""))} required />
                 <button type="submit">Buscar</button>
             </form>
 

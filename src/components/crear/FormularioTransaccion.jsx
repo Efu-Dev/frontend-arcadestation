@@ -31,7 +31,7 @@ const FormularioClientes = () => {
             tipo_pago: tipoPago
         }).then((r) => {
             res = r;
-            alert("Cliente creado exitosamente");
+            alert("Transacción registrada exitosamente");
         }).catch((e) => {
             alert("Ocurrió un error.");
         });
@@ -71,19 +71,19 @@ const FormularioClientes = () => {
             <form onSubmit={(e) => checkCreacion(e)}>
                 {editable ? (<>
                 <label htmlFor="tarjeta">Tarjeta:</label>
-                <input name="tarjeta" type="text" maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value)} required />
+                <input name="tarjeta" type="text" maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
                 
                 <label htmlFor="monto">Monto:</label>
-                <input name="monto" type="number" step={0.01} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value)} required disabled />
+                <input name="monto" type="number" step={0.01} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required disabled />
 
                 <label htmlFor="descripcion">Descripción:</label>
-                <input name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required disabled />
+                <input name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value.replace(/^\s+/, ""))} required disabled />
 
                 <label htmlFor="referencia">Referencia:</label>
-                <input name="referencia" type="text" value={referencia} onChange={(e) => setReferencia(e.target.value)} pattern="\d+" required disabled />
+                <input name="referencia" type="text" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required disabled />
 
                 <label htmlFor="tipoPago">Tipo de Pago:</label>
-                <select name="tipoPago" id="tipoPago" disabled="disabled">
+                <select name="tipoPago" id="tipoPago" disabled="disabled" onSelect={(e) => setTipoPago(e.target.value.replace(/^\s+/, ""))}>
                     <option value="1">Tarjeta de Débito</option>
                     <option value="2">Pago Móvil</option>
                     <option value="3">Tarjeta de Crédito</option>
@@ -92,19 +92,19 @@ const FormularioClientes = () => {
                 </>) :
                 (<>
                 <label htmlFor="tarjeta">Tarjeta:</label>
-                <input name="tarjeta" type="text" maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value)} pattern="\d+" required />
+                <input name="tarjeta" type="text" maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required />
                 
                 <label htmlFor="monto">Monto:</label>
-                <input name="monto" type="number" step={0.01} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value)} required />
+                <input name="monto" type="number" step={0.01} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required />
 
                 <label htmlFor="descripcion">Descripción:</label>
-                <input name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required />
+                <input name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value.replace(/^\s+/, ""))} required />
 
                 <label htmlFor="referencia">Referencia:</label>
-                <input name="referencia" type="text" value={referencia} onChange={(e) => setReferencia(e.target.value)} pattern="\d+" required />
+                <input name="referencia" type="text" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required />
                 
                 <label htmlFor="tipoPago">Tipo de Pago:</label>
-                <select name="tipoPago" id="tipoPago" onSelect={(e) => setTipoPago(e.target.value)}>
+                <select name="tipoPago" id="tipoPago" onChange={(e) => setTipoPago(e.target.value.replace(/^\s+/, ""))}>
                     <option value="1">Tarjeta de Débito</option>
                     <option value="2">Pago Móvil</option>
                     <option value="3">Tarjeta de Crédito</option>

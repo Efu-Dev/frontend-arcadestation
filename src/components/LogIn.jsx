@@ -20,6 +20,8 @@ const LogIn = () => {
         e.preventDefault();
         let inicioSesion = false;
 
+        setUsername((p) => p.trimEnd());
+
         const a = await axiosInstance.post('usuarios/jwt/create/', {
           username,
           password
@@ -33,7 +35,6 @@ const LogIn = () => {
             localStorage.setItem('access_token_as', res.data.access);
             localStorage.setItem('refresh_token_as', res.data.refresh);
             inicioSesion = true;
-            alert("Ha iniciado sesión exitosamente");
           }
         );
 
@@ -66,13 +67,13 @@ const LogIn = () => {
 
               <div className="Username">
                 <h1>Username</h1>
-                <input type="text" className="login-form" onChange={(e) => setUsername(e.target.value)} required /> 
+                <input type="text" className="login-form" onChange={(e) => setUsername(e.target.value.replace(/^\s+/, ""))} required /> 
               </div>
               <div className="Password">
                 <h1>Password</h1>
-                <input type="password" className="login-form" onChange={(e) => setPassword(e.target.value)} required />
+                <input type="password" className="login-form" onChange={(e) => setPassword(e.target.value.replace(/^\s+/, ""))} required />
                 <div className="forgot-password">
-                <a href="#">Forgot password?</a>
+                <a href="/control/recuperacion_contrasena">Forgot password?</a>
               </div>
               </div>
                 <button className='boton' type='submit'>LOG IN</button>
