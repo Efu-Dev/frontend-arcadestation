@@ -10,11 +10,11 @@ const CambiarContraseña = () => {
 
     const cambiarContraseña = (e) => {
         e.preventDefault();
-        setContrasena((contrasena) => contrasena.trim());
-        setContrasenaRepetir((contrasena) => contrasena.trim());
+        setContrasena((contrasena) => contrasena.replace(/^\s+/, ""));
+        setContrasenaRepetir((contrasena) => contrasena.replace(/^\s+/, ""));
         if(contrasena !== '' && contrasena === contrasenaRepetir){
             axios.create({
-                baseURL: 'http://127.0.0.1:8000/usuarios/cambiar/',
+                baseURL: 'https://arcadestation.pythonanywhere.com/usuarios/cambiar/',
                 'headers': {
                   'Authorization': localStorage.getItem('access_token_as')
                 }
@@ -36,10 +36,10 @@ const CambiarContraseña = () => {
             <h1>Cambiar Contraseña</h1>
             <form onSubmit={(e) => cambiarContraseña(e)}>
                 <label>Nueva Contraseña:</label>
-                <input type="password" required onChange={(e) => setContrasena(e.target.value)} />
+                <input type="password" required onChange={(e) => setContrasena(e.target.value.replace(/^\s+/, ""))} />
 
                 <label>Repetir Nueva Contraseña:</label>
-                <input type="password" required onChange={(e) => setContrasenaRepetir(e.target.value)} />
+                <input type="password" required onChange={(e) => setContrasenaRepetir(e.target.value.replace(/^\s+/, ""))} />
 
                 <button type="submit">Cambiar</button>
             </form>

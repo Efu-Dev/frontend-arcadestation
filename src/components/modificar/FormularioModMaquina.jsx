@@ -16,7 +16,7 @@ const FormularioModClientes = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/maquinas/${codigo}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/maquinas/${codigo}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -44,10 +44,10 @@ const FormularioModClientes = () => {
     };
 
     const onChangeCodigo = async(e) => {
-        setCodigo(e.target.value);
+        setCodigo(e.target.value.replace(/^\s+/, ""));
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/maquinas/${e.target.value}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/maquinas/${e.target.value.replace(/^\s+/, "")}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -57,12 +57,12 @@ const FormularioModClientes = () => {
             res = r.data.datos;
         });
 
-        if(res.codigo === undefined && e.target.value !== ''){ // Máquina no existe
+        if(res.codigo === undefined && e.target.value.replace(/^\s+/, "") !== ''){ // Máquina no existe
             setEditable(true);  
             setNombre('');
             setPrecio('');          
         }
-        else if(e.target.value === ''){
+        else if(e.target.value.replace(/^\s+/, "") === ''){
             setEditable(true);
             setNombre('');
             setPrecio('');
@@ -83,11 +83,11 @@ const FormularioModClientes = () => {
                 {editable ? (<><label htmlFor="codigo">Código:</label>
                 <input name="codigo" type="text" maxLength={8} value={codigo} onChange={(e) => onChangeCodigo(e)} pattern="[0-9]+" required />
 
-                <label htmlFor="nombre">Nombre:</label>
-                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value)} required disabled />
+                <label htmlFor="nombre">Nombre y Apellido:</label>
+                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
 
                 <label htmlFor="precio">Precio:</label>
-                <input name="precio" type="number" min={0.01} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value)} required disabled />
+                <input name="precio" type="number" min={0.01} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required disabled />
 
                 <label htmlFor="activo">Activo:</label>
                 <input type="checkbox" name="activa" id="activa" onChange={(e) => setActivo(e.target.checked ? 'S' : 'N')} disabled />
@@ -95,11 +95,11 @@ const FormularioModClientes = () => {
                 (<><label htmlFor="codigo">Código:</label>
                 <input name="codigo" type="text" maxLength={8} value={codigo} onChange={(e) => onChangeCodigo(e)} pattern="[0-9]+" required />
 
-                <label htmlFor="nombre">Nombre:</label>
-                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+                <label htmlFor="nombre">Nombre y Apellido:</label>
+                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
 
                 <label htmlFor="precio">Precio:</label>
-                <input name="precio" type="number" min={0.01} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value)} required />
+                <input name="precio" type="number" min={0.01} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required />
                 
                 <label htmlFor="activo">Activo:</label>
                 <input type="checkbox" checked={activo} name="activa" id="activa" onClick={(e) => {setActivo(!activo)}} />

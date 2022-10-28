@@ -16,7 +16,7 @@ const FormularioClientes = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: 'http://127.0.0.1:8000/api/maquinas/',
+            baseURL: 'https://arcadestation.pythonanywhere.com/api/maquinas/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -28,9 +28,7 @@ const FormularioClientes = () => {
             precio
         }).then((r) => {
             res = r;
-            alert("Cliente creado exitosamente");
-        }).catch((e) => {
-            alert("Ocurrió un error.");
+            alert("Máquina creada exitosamente");
         });
 
         if(res.data.message === "Success"){
@@ -41,11 +39,11 @@ const FormularioClientes = () => {
     };
 
     const onChangeCodigo = async(e) => {
-        setCodigo(e.target.value);
+        setCodigo(e.target.value.replace(/^\s+/, ""));
         setSendable(true);
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/maquinas/${e.target.value}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/maquinas/${e.target.value.replace(/^\s+/, "")}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -53,14 +51,12 @@ const FormularioClientes = () => {
         ).get('',
         {}).then((r) => {
             res = r.data.datos;
-        }).catch((e) => {
-            alert("Ocurrió un error.");
         });
 
-        if(res.codigo === undefined && e.target.value !== ''){ // Máquina no existe
+        if(res.codigo === undefined && e.target.value.replace(/^\s+/, "") !== ''){ // Máquina no existe
             setEditable(false);            
         }
-        else if(e.target.value === ''){
+        else if(e.target.value.replace(/^\s+/, "") === ''){
             setEditable(true);
             setNombre('');
             setPrecio('');
@@ -82,20 +78,20 @@ const FormularioClientes = () => {
                 <input name="codigo" type="text" maxLength={8} value={codigo} onChange={(e) => onChangeCodigo(e)} pattern="[0-9]+" required />
 
                 <label htmlFor="nombre">Nombre:</label>
-                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value)} required disabled />
+                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
 
                 <label htmlFor="precio">Precio:</label>
-                <input name="precio" type="number" min={0.01} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value)} required disabled />
+                <input name="precio" type="number" min={0.01} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required disabled />
 
                  </>) :
                 (<><label htmlFor="codigo">Código:</label>
                 <input name="codigo" type="text" maxLength={8} value={codigo} onChange={(e) => onChangeCodigo(e)} pattern="[0-9]+" required />
 
                 <label htmlFor="nombre">Nombre:</label>
-                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
 
                 <label htmlFor="precio">Precio:</label>
-                <input name="precio" type="number" min={0.01} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value)} required />
+                <input name="precio" type="number" min={0.01} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required />
                 </>)
                 }
                 {sendable ? (<button type='submit'>Enviar Formulario</button>) : <button type='submit' disabled>Enviar Formulario</button>}

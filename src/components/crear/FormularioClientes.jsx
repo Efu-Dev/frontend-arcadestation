@@ -16,9 +16,18 @@ const FormularioClientes = () => {
 
     const checkCreacion = async (e) => {
         e.preventDefault();
+
+        setNombre((n) => n.trimEnd());
+        setDireccion((dir) => dir.trimEnd())
+
+        if(nombre.split(" ").length !== 2){
+            alert("El nombre debe seguir el siguiente formato: Nombre Apellido");
+            return;
+        }
+
         let res = undefined;
         await axios.create({
-            baseURL: 'http://127.0.0.1:8000/api/clientes/',
+            baseURL: 'https://arcadestation.pythonanywhere.com/api/clientes/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -33,7 +42,7 @@ const FormularioClientes = () => {
             res = r;
             console.log(res.data.numero);
             axios.create({
-                baseURL: `http://127.0.0.1:8000/reportes/generar/tarjeta/${res.data.numero}`,
+                baseURL: `https://arcadestation.pythonanywhere.com/reportes/generar/tarjeta/${res.data.numero}`,
                 'headers': {
                 'Authorization': localStorage.getItem('access_token_as')
                 }
@@ -42,8 +51,6 @@ const FormularioClientes = () => {
                 download(res.data, 'TARJETA.pdf', content)
             }).catch((e) => console.log(e));
             alert("Cliente creado exitosamente.");
-        }).catch((e) => {
-            alert("Ocurrió un error.");
         });
 
         if(res.data.message === "Success"){
@@ -54,11 +61,11 @@ const FormularioClientes = () => {
     };
 
     const onChangeCedula = async (e) => {
-        setCedula(e.target.value);
+        setCedula(e.target.value.replace(/^\s+/, ""));
         setSendable(true);
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/personas/${e.target.value}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value.replace(/^\s+/, "")}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -66,23 +73,21 @@ const FormularioClientes = () => {
         ).get('',
         {}).then((r) => {
             res = r.data.datos;
-        }).catch((e) => {
-            alert("Ocurrió un error.");
         });
 
-        if(res.nombre === undefined && e.target.value !== ''){
+        if(res.nombre === undefined && e.target.value.replace(/^\s+/, "") !== ''){
             setNombre('');
             setDireccion('');
             setGenero('');
             setEditable(false);
         }
         else{
-            if(e.target.value !== ''){
+            if(e.target.value.replace(/^\s+/, "") !== ''){
                 setNombre(res.nombre);
                 setDireccion(res.direccion);
                 setGenero(res.genero);
                 await axios.create({
-                    baseURL: `http://127.0.0.1:8000/api/clientes/${e.target.value}`,
+                    baseURL: `https://arcadestation.pythonanywhere.com/api/clientes/${e.target.value.replace(/^\s+/, "")}`,
                     'headers': {
                       'Authorization': localStorage.getItem('access_token_as')
                     }
@@ -108,26 +113,26 @@ const FormularioClientes = () => {
                 {editable ? (<><label htmlFor="cedula">Cédula:</label>
                 <input name="cedula" type="text" maxLength={8} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" />
 
-                <label htmlFor="nombre">Nombre:</label>
-                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value)} required disabled />
+                <label htmlFor="nombre">Nombre y Apellido:</label>
+                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
 
                 <label htmlFor="direccion">Dirección:</label>
-                <input name="direccion" type="text" maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value)} disabled />
+                <input name="direccion" type="text" required maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))} disabled />
 
                 <label htmlFor="genero">Género (H/M):</label>
-                <input name="genero" type="text" maxLength={1} value={genero} onChange={(e) => setGenero(e.target.value)} pattern="[h|m|H|M]" required disabled />
+                <input name="genero" type="text" maxLength={1} value={genero} onChange={(e) => setGenero(e.target.value.replace(/^\s+/, ""))} pattern="[h|m|H|M]" required disabled />
                 </>) :
                 (<><label htmlFor="cedula">Cédula:</label>
                 <input name="cedula" type="text" maxLength={8} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" />
 
-                <label htmlFor="nombre">Nombre:</label>
-                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+                <label htmlFor="nombre">Nombre y Apellido:</label>
+                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
 
                 <label htmlFor="direccion">Dirección:</label>
-                <input name="direccion" type="text" maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value)} />
+                <input name="direccion" type="text" required maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))} />
 
                 <label htmlFor="genero">Género (H/M):</label>
-                <input name="genero" type="text" maxLength={1} value={genero} onChange={(e) => setGenero(e.target.value)} pattern="[h|m|H|M]" required />
+                <input name="genero" type="text" maxLength={1} value={genero} onChange={(e) => setGenero(e.target.value.replace(/^\s+/, ""))} pattern="[h|m|H|M]" required />
                 </>)
                 }
                 {sendable ? (<button type='submit'>Enviar Formulario</button>) : <button type='submit' disabled>Enviar Formulario</button>}

@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     axios.create({
-      baseURL: 'http://127.0.0.1:8000/usuarios/get/',
+      baseURL: 'https://arcadestation.pythonanywhere.com/usuarios/get/',
       'headers': {
         'Authorization': localStorage.getItem('access_token_as')
       }
@@ -30,7 +30,7 @@ const Home = () => {
 
   const reporteClientes = () => {
     axios.create({
-      baseURL: 'http://127.0.0.1:8000/reportes/generar/clientes',
+      baseURL: 'https://arcadestation.pythonanywhere.com/reportes/generar/clientes',
       'headers': {
         'Authorization': localStorage.getItem('access_token_as')
       }
@@ -42,7 +42,7 @@ const Home = () => {
 
   const reporteEmpleados = () => {
     axios.create({
-      baseURL: 'http://127.0.0.1:8000/reportes/generar/empleados',
+      baseURL: 'https://arcadestation.pythonanywhere.com/reportes/generar/empleados',
       'headers': {
         'Authorization': localStorage.getItem('access_token_as')
       }
@@ -54,7 +54,7 @@ const Home = () => {
 
   const reporteMaquinas = () => {
     axios.create({
-      baseURL: 'http://127.0.0.1:8000/reportes/generar/máquinas',
+      baseURL: 'https://arcadestation.pythonanywhere.com/reportes/generar/máquinas',
       'headers': {
         'Authorization': localStorage.getItem('access_token_as')
       }

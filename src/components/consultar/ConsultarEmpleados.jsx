@@ -10,7 +10,7 @@ const ConsultarClientes = () => {
 
     useEffect(() => {
         axios.create({
-            baseURL: 'http://127.0.0.1:8000/api/empleados/',
+            baseURL: 'https://arcadestation.pythonanywhere.com/api/empleados/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -48,7 +48,7 @@ const ConsultarClientes = () => {
             <h1>Consultar Empleados</h1>
             <form onSubmit={(e) => mostrarEmpleado(e)}>
                 <label htmlFor="cedula">Cédula:</label>
-                <input type="text" pattern='[0-9]+' onChange={(e) => onChangeCedula(e.target.value.trim())} required />
+                <input type="text" pattern='[0-9]+' onChange={(e) => onChangeCedula(e.target.value.replace(/^\s+/, "").replace(/^\s+/, ""))} required />
                 <button type="submit">Buscar</button>
             </form>
 
