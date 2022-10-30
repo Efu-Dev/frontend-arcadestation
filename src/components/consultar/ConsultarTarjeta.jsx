@@ -12,7 +12,7 @@ const ConsultarTarjeta = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/tarjetas/${cedula}`,
+            baseURL: `http://127.0.0.1:8000/api/tarjetas/${cedula}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -39,7 +39,7 @@ const ConsultarTarjeta = () => {
 
     const reporteTransacciones = () => {
         axios.create({
-          baseURL: `https://arcadestation.pythonanywhere.com/reportes/generar/transacciones/${datosActuales[0].numero}`,
+          baseURL: `http://127.0.0.1:8000/reportes/generar/transacciones/${datosActuales[0].numero}`,
           'headers': {
             'Authorization': localStorage.getItem('access_token_as')
           }
@@ -101,7 +101,7 @@ const ConsultarTarjeta = () => {
                         datosActuales[0].registros.length > 0 ?
                         (
                         <>
-                            <a href='#' onClick={reporteTransacciones}>Imprimir Reporte de Transacciones</a>
+                            <a href='#1' onClick={reporteTransacciones}>Imprimir Reporte de Transacciones</a>
                             <table>
                             
                             <thead>
@@ -122,15 +122,16 @@ const ConsultarTarjeta = () => {
                                             <td>{`${new Date(reg.fecha).getDate()}/${new Date(reg.fecha).getMonth()+1}/${new Date(reg.fecha).getFullYear()} 
                                             ${new Date(reg.fecha).getHours()}:${new Date(reg.fecha).getMinutes()}`}</td>
                                             <td>{reg.monto}</td>
-                                            <td>{reg.referencia}</td>
+                                            <td>{reg.referencia ? reg.referencia : 'No Aplica'}</td>
                                             <td>{reg.descripcion}</td>
-                                            <td>{reg.resultado === '' ? 'Aprobada' : 'Denegada'}</td>
+                                            <td>{reg.resultado === '' || reg.resultado === 'A' ? 'Aprobada' : 'Denegada'}</td>
                                             <td>
                                                 {
                                                     reg.tipo_pago_id === 1 ? 'Tarjeta de Débito' :
                                                     reg.tipo_pago_id === 2 ? 'Pago Móvil' :
                                                     reg.tipo_pago_id === 3 ? 'Tarjeta de Crédito' :
-                                                    'Transferencia'
+                                                    reg.tipo_pago_id === 4 ? 'Transferencia' :
+                                                    'Uso Tarjeta'
                                                 }
                                             </td>
                                         </tr>

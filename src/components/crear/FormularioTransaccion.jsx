@@ -17,7 +17,7 @@ const FormularioClientes = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: 'https://arcadestation.pythonanywhere.com/api/registro/transaccion/',
+            baseURL: 'http://127.0.0.1:8000/api/registro/transaccion/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -47,7 +47,7 @@ const FormularioClientes = () => {
         setTarjeta(e);
         let res = "";
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/tarjetas/${e}`,
+            baseURL: `http://127.0.0.1:8000/api/tarjetas/${e}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }

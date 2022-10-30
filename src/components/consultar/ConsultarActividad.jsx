@@ -14,7 +14,7 @@ const ConsultarActividad = () => {
     useEffect(() => {
         console.log(codigo);
         axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/registro/actividad/${codigo}`,
+            baseURL: `http://127.0.0.1:8000/api/registro/actividad/${codigo}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -25,7 +25,7 @@ const ConsultarActividad = () => {
           }).catch((e) => console.log(e));
 
         axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/maquinas/${String(codigo)}`,
+            baseURL: `http://127.0.0.1:8000/api/maquinas/${String(codigo)}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -38,7 +38,7 @@ const ConsultarActividad = () => {
 
     const reporteActividad = () => {
         axios.create({
-          baseURL: `https://arcadestation.pythonanywhere.com/reportes/generar/actividad/${codigo}`,
+          baseURL: `http://127.0.0.1:8000/reportes/generar/actividad/${codigo}`,
           'headers': {
             'Authorization': localStorage.getItem('access_token_as')
           }

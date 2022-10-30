@@ -9,6 +9,7 @@ import FormularioClientes from './components/crear/FormularioClientes.jsx';
 import FormularioEmpleados from './components/crear/FormularioEmpleados.jsx';
 import FormularioMaquina from './components/crear/FormularioMaquina.jsx';
 import FormularioTransaccion from './components/crear/FormularioTransaccion.jsx';
+import ProbarMaquina from './components/crear/ProbarMaquina.jsx';
 
 import FormularioModClientes from './components/modificar/FormularioModClientes.jsx';
 import FormularioModMaquina from './components/modificar/FormularioModMaquina.jsx';
@@ -34,6 +35,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/control/recuperacion_contrasena' element={<RecuperarContrasena />} />
           <Route path='/control/cambiar_contrasena' element={<CambiarContraseña />} />
+          <Route path='/control/probar_maquina' element={<ProbarMaquina />} />
 
           {/* Creación */}
           <Route path='/crear/clientes' element={<FormularioClientes />} />
