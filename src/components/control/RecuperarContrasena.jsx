@@ -9,6 +9,18 @@ const RecuperarContrasena = () => {
 
   const enviarPeticion = async (e) => {
     e.preventDefault();
+    let salir = false;
+
+    await axiosInstance.get(`api/empleados/${cedula}`, {}).then((res) => {
+      console.log(res)
+      if(res.data.message !== 'Success'){
+        alert("No hay empleados registrados con esta cédula.");
+        salir = true;
+      }
+    });
+
+    if(salir)
+      return;
 
     await axiosInstance.post('usuarios/recuperar/', {
         cedula

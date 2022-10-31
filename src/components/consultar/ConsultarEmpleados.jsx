@@ -15,6 +15,7 @@ const ConsultarClientes = () => {
               'Authorization': localStorage.getItem('access_token_as')
             }
           }).get().then((res) => {
+            console.log(res);
             setDatos(res.data.datos);
             setDatosActuales(res.data.datos);
             setLoading(false);
@@ -63,9 +64,8 @@ const ConsultarClientes = () => {
                         <th>Fecha Entrada</th>
                         <th>Correo</th>
                         <th>Teléfono</th>
-                        <th>Usuario</th>
-                        <th>Activo</th>
-                        <th>Recuperación</th>                     
+                        <th>Activo</th>  
+                        <th>Usuario</th>                                      
                     </tr>
                 </thead>
                 
@@ -81,12 +81,8 @@ const ConsultarClientes = () => {
                         ${new Date(empleado.fecha_entrada).getHours()}:${new Date(empleado.fecha_entrada).getMinutes()}`}</td>
                         <td style={{border: 'solid 1px black'}}>{empleado.email}</td>
                         <td style={{border: 'solid 1px black'}}>{empleado.telefono}</td>
-                        <td style={{border: 'solid 1px black'}}>{empleado.usuario.username}</td>
                         <td style={{border: 'solid 1px black'}}>{empleado.activo === 'S' ? "Sí" : "No"}</td>
-                        <td style={{border: 'solid 1px black'}}>
-                            {empleado.usuario.intentos > 3 ? <button>Enviar Correo</button>
-                            : <button disabled>Enviar Correo</button>}
-                        </td>
+                        <td style={{border: 'solid 1px black'}}>{empleado.usuario}</td>                        
                     </tr>)
                 })}
                 </tbody>

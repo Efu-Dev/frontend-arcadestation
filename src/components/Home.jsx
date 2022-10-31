@@ -64,6 +64,34 @@ const Home = () => {
     }).catch((e) => console.log(e));
   };
 
+  const crearBackup = () => {
+    axios.create({
+      baseURL: 'https://arcadestation.pythonanywhere.com/backupdb/',
+      'headers': {
+        'Authorization': localStorage.getItem('access_token_as')
+      }
+    }).get().then((res) => {
+      if(res.data.message === 'Success')
+        alert('El respaldo ha sido generado y enviado a la nube MEGA de la empresa.');
+      else
+        alert('No se pudo crear el respaldo.');
+    }).catch((e) => console.log(e));
+  };
+
+  const restaurarBackup = () => {
+    axios.create({
+      baseURL: 'https://arcadestation.pythonanywhere.com/backupdb/',
+      'headers': {
+        'Authorization': localStorage.getItem('access_token_as')
+      }
+    }).post().then((res) => {
+      if(res.data.message === 'Success')
+        alert('El último respaldo guardado en la nube de la empresa ha sido restaurado exitosamente.');
+      else
+        alert('El último respaldo guardado en la nube de la empresa NO pudo ser restaurado.');
+    }).catch((e) => console.log(e));
+  };
+
   if(!localStorage.getItem('access_token_as'))
     return (<h1>Estimado Usuario, no tiene permiso para acceder a este módulo.</h1>);
 
@@ -98,15 +126,16 @@ const Home = () => {
 
         <h5 style={{textAlign: "left"}}>Reportes</h5>
         <ol style={{textAlign: "left"}}>
-          <li><a href='#' onClick={reporteClientes}>Reporte de Clientes</a></li>
-          <li><a href='#' onClick={reporteEmpleados}>Reporte de Empleados</a></li>
-          <li><a href='#' onClick={reporteMaquinas}>Reporte de Máquinas</a></li>
+          <li><a href='#1' onClick={reporteClientes}>Reporte de Clientes</a></li>
+          <li><a href='#2' onClick={reporteEmpleados}>Reporte de Empleados</a></li>
+          <li><a href='#3' onClick={reporteMaquinas}>Reporte de Máquinas</a></li>
         </ol> 
 
         <h5 style={{textAlign: "left"}}>Otros</h5>
         <ol style={{textAlign: "left"}}>
-          <li><Link to="/otros/probar_maquina">Probar Máquina</Link></li>
-          <li><Link to="/otros/bdd">Base de Datos</Link></li>
+          <li><Link to="/control/probar_maquina">Probar Máquina</Link></li>
+          <li><a href='#4' onClick={crearBackup}>Hacer Respaldo de Base de Datos</a></li>
+          <li><a href='#5' onClick={restaurarBackup}>Restaurar Último Respaldo de la Base de Datos</a></li>
           <li><Link to="/control/cambiar_contrasena">Cambiar Contraseña</Link></li>
         </ol> 
 

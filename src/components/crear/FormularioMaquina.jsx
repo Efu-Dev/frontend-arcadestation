@@ -53,8 +53,10 @@ const FormularioClientes = () => {
             res = r.data.datos;
         });
 
-        if(res.codigo === undefined && e.target.value.replace(/^\s+/, "") !== ''){ // Máquina no existe
-            setEditable(false);            
+        if((res === undefined || res.codigo === undefined) && e.target.value.replace(/^\s+/, "") !== ''){ // Máquina no existe
+            setEditable(false);
+            setNombre('');
+            setPrecio('');        
         }
         else if(e.target.value.replace(/^\s+/, "") === ''){
             setEditable(true);
