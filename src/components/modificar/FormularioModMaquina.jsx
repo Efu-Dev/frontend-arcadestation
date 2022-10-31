@@ -16,7 +16,7 @@ const FormularioModClientes = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/maquinas/${codigo}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/maquinas/${codigo}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -47,7 +47,7 @@ const FormularioModClientes = () => {
         setCodigo(e.target.value.replace(/^\s+/, ""));
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/maquinas/${e.target.value.replace(/^\s+/, "")}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/maquinas/${e.target.value.replace(/^\s+/, "")}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }

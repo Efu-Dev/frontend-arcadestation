@@ -14,7 +14,7 @@ const CambiarContraseña = () => {
         setContrasenaRepetir((contrasena) => contrasena.replace(/^\s+/, ""));
         if(contrasena !== '' && contrasena === contrasenaRepetir){
             axios.create({
-                baseURL: 'http://127.0.0.1:8000/usuarios/cambiar/',
+                baseURL: 'https://arcadestation.pythonanywhere.com/usuarios/cambiar/',
                 'headers': {
                   'Authorization': localStorage.getItem('access_token_as')
                 }
