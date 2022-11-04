@@ -29,8 +29,7 @@ const LogIn = () => {
           (res) => {
             if(res.data.error){
               alert(res.data.error);
-              window.location.reload();
-              null.x = 0;     
+              return;   
             }
             localStorage.setItem('access_token_as', res.data.access);
             localStorage.setItem('refresh_token_as', res.data.refresh);
