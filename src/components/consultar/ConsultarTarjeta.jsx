@@ -12,7 +12,7 @@ const ConsultarTarjeta = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/tarjetas/${cedula}`,
+            baseURL: `http://127.0.0.1:8000/api/tarjetas/${cedula}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -39,7 +39,7 @@ const ConsultarTarjeta = () => {
 
     const reporteTransacciones = () => {
         axios.create({
-          baseURL: `https://arcadestation.pythonanywhere.com/reportes/generar/transacciones/${datosActuales[0].numero}`,
+          baseURL: `http://127.0.0.1:8000/reportes/generar/transacciones/${datosActuales[0].numero}`,
           'headers': {
             'Authorization': localStorage.getItem('access_token_as')
           }
@@ -83,8 +83,8 @@ const ConsultarTarjeta = () => {
                         ${new Date(tarjeta.fecha_creacion).getHours()}:${new Date(tarjeta.fecha_creacion).getMinutes()}`}</td>
                         <td style={{border: 'solid 1px black'}}>{tarjeta.anulada === 'N' ? "No" : "Sí"}</td>
                         {tarjeta.anulada === 'S' ? (
-                            <td style={{border: 'solid 1px black'}}>{`${new Date(tarjeta.fecha_entrada).getDate()}/${new Date(tarjeta.fecha_entrada).getMonth()+1}/${new Date(tarjeta.fecha_entrada).getFullYear()} 
-                            ${new Date(tarjeta.fecha_entrada).getHours()}:${new Date(tarjeta.fecha_entrada).getMinutes()}`}</td>
+                            <td style={{border: 'solid 1px black'}}>{`${new Date(tarjeta.fecha_anulacion).getDate()+1}/${new Date(tarjeta.fecha_anulacion).getMonth()+1}/${new Date(tarjeta.fecha_anulacion).getFullYear()} 
+                            ${new Date(tarjeta.fecha_anulacion).getHours()}:${new Date(tarjeta.fecha_anulacion).getMinutes()}`}</td>
                         ) : (
                             <td style={{border: 'solid 1px black'}}>-</td>
                         )}

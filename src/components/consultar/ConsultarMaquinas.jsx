@@ -13,7 +13,7 @@ const ConsultarClientes = () => {
 
     useEffect(() => {
         axios.create({
-            baseURL: 'https://arcadestation.pythonanywhere.com/api/maquinas/',
+            baseURL: 'http://127.0.0.1:8000/api/maquinas/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }

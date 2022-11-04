@@ -8,6 +8,7 @@ const FormularioModClientes = () => {
     const [cedula, setCedula] = useState("");
     const [direccion, setDireccion] = useState("");
     const [genero, setGenero] = useState('');
+    const [tarjetaAnulada, setTarjetaAnulada] = useState(false);
     const [editable, setEditable] = useState(true);
     const [sendable, setSendable] = useState(true);
 
@@ -25,7 +26,7 @@ const FormularioModClientes = () => {
 
         let res = undefined;
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/clientes/${cedula}`,
+            baseURL: `http://127.0.0.1:8000/api/clientes/${cedula}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -37,7 +38,7 @@ const FormularioModClientes = () => {
 
         if(res.data.datos.cedula)
             await axios.create({
-                baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${cedula}`,
+                baseURL: `http://127.0.0.1:8000/api/personas/${cedula}`,
                 'headers': {
                 'Authorization': localStorage.getItem('access_token_as')
                 }
@@ -47,7 +48,8 @@ const FormularioModClientes = () => {
                 cedula,
                 nombre,
                 direccion,
-                genero
+                genero,
+                tarjetaAnulada: tarjetaAnulada ? "S" : "N"
             }).then((r) => {
                 res = r;            
             });
@@ -66,7 +68,7 @@ const FormularioModClientes = () => {
         setCedula(e.target.value.replace(/^\s+/, ""));
         let res = undefined;
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/clientes/${e.target.value.replace(/^\s+/, "")}`,
+            baseURL: `http://127.0.0.1:8000/api/clientes/${e.target.value.replace(/^\s+/, "")}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -76,6 +78,9 @@ const FormularioModClientes = () => {
             res = r.data.datos;
         });
 
+        console.log(res);
+        setTarjetaAnulada(res.tarjeta_activa === 'S')
+
         if(res.cedula === undefined && e.target.value.replace(/^\s+/, "") !== ''){
             setNombre('');
             setDireccion('');
@@ -84,7 +89,7 @@ const FormularioModClientes = () => {
         }
         else{
             await axios.create({
-                baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value.replace(/^\s+/, "")}`,
+                baseURL: `http://127.0.0.1:8000/api/personas/${e.target.value.replace(/^\s+/, "")}`,
                 'headers': {
                   'Authorization': localStorage.getItem('access_token_as')
                 }
@@ -97,6 +102,7 @@ const FormularioModClientes = () => {
             setNombre(res.nombre);
             setDireccion(res.direccion);
             setGenero(res.genero);
+            console.log(tarjetaAnulada);
             setEditable(false); 
         }
     }
@@ -116,6 +122,9 @@ const FormularioModClientes = () => {
 
                 <label htmlFor="genero">Género (H/M):</label>
                 <input name="genero" type="text" maxLength={1} value={genero} onChange={(e) => setGenero(e.target.value.replace(/^\s+/, ""))} pattern="[h|m|H|M]" required disabled />
+                
+                <label htmlFor="tarjeta_anulada">Tarjeta Anulada:</label>
+                <input type="checkbox" name="tarjeta_anulada" id="tarjeta_anulada" disabled />
                 </>) :
                 (<><label htmlFor="cedula">Cédula:</label>
                 <input name="cedula" type="text" maxLength={8} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" />
@@ -128,6 +137,9 @@ const FormularioModClientes = () => {
 
                 <label htmlFor="genero">Género (H/M):</label>
                 <input name="genero" type="text" maxLength={1} value={genero} onChange={(e) => setGenero(e.target.value.replace(/^\s+/, ""))} pattern="[h|m|H|M]" required />
+                
+                <label htmlFor="tarjeta_anulada">Tarjeta Anulada:</label>
+                <input type="checkbox" name="tarjeta_anulada" id="tarjeta_anulada" onChange={(e) => {setTarjetaAnulada(e.target.checked)}} checked={tarjetaAnulada} />
                 </>)
                 }
                 {sendable ? (<button type='submit'>Enviar Formulario</button>) : <button type='submit' disabled>Enviar Formulario</button>}

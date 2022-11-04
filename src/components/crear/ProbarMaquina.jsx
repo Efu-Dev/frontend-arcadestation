@@ -13,7 +13,7 @@ const ProbarMaquina = () => {
 
     useEffect(() => {
         axios.create({
-            baseURL: 'https://arcadestation.pythonanywhere.com/api/maquinas/',
+            baseURL: 'http://127.0.0.1:8000/api/maquinas/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -29,18 +29,17 @@ const ProbarMaquina = () => {
 
     const probarMaquina = async (e) => {
         e.preventDefault();
-        alert("EMPEZANDO...")
         let continuar = false;
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/tarjetas/${tarjeta}`,
+            baseURL: `http://127.0.0.1:8000/api/tarjetas/${tarjeta}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
           }).get().then((res) => {
-            if(res.data.message === 'Success')
+            if(res.data.message === 'Success' && res.data.datos.activa === 'S')
                 continuar = true;
             else
-                alert(res.data.message);
+                alert(res.data.message === 'Success' ? 'La tarjeta no se encuentra activa' : res.data.message);
             
             console.log("A");
         }).catch((e) => {return;});
@@ -51,7 +50,7 @@ const ProbarMaquina = () => {
         console.log(continuar);
 
         await axios.create({
-            'baseURL': `https://arcadestation.pythonanywhere.com/api/registro/actividad/${maquina.codigo}`,
+            'baseURL': `http://127.0.0.1:8000/api/registro/actividad/${maquina.codigo}`,
             'headers': {
                 'Authorization': localStorage.getItem('access_token_as')
             }
@@ -72,7 +71,7 @@ const ProbarMaquina = () => {
         let res = undefined;
         console.log(e);
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/maquinas/${e}`,
+            baseURL: `http://127.0.0.1:8000/api/maquinas/${e}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }

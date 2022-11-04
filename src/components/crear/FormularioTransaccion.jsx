@@ -16,8 +16,9 @@ const FormularioClientes = () => {
     const checkCreacion = async (e) => {
         e.preventDefault();
         let res = undefined;
+
         await axios.create({
-            baseURL: 'https://arcadestation.pythonanywhere.com/api/registro/transaccion/',
+            baseURL: 'http://127.0.0.1:8000/api/registro/transaccion/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -31,7 +32,10 @@ const FormularioClientes = () => {
             tipo_pago: tipoPago
         }).then((r) => {
             res = r;
-            alert("Transacción registrada exitosamente");
+            if(res.data.message === 'Success')
+                alert("Transacción registrada exitosamente");
+            else
+                alert(res.data.message);
         }).catch((e) => {
             alert("Ocurrió un error.");
         });
@@ -47,7 +51,7 @@ const FormularioClientes = () => {
         setTarjeta(e);
         let res = "";
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/tarjetas/${e}`,
+            baseURL: `http://127.0.0.1:8000/api/tarjetas/${e}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -57,10 +61,22 @@ const FormularioClientes = () => {
         });
 
         console.log(res.data);
-        if(res.data.message !== '404' && e !== ''){
+        if(res.data.message !== '404' && e !== '' && res.data.datos.anulada !== 'S'){
             setEditable(false);
         }
+        else if (res.data.datos.anulada === 'S'){
+            setEditable(true);
+            setMonto('');
+            setDescripcion('');
+            setReferencia('');
+            setTipoPago(1);
+            alert("La tarjeta se encuentra anulada. Un gerente debe de reactivarla.")
+        }
         else{
+            setMonto('');
+            setDescripcion('');
+            setReferencia('');
+            setTipoPago(1);
             setEditable(true);
         }
     }
@@ -71,7 +87,7 @@ const FormularioClientes = () => {
             <form onSubmit={(e) => checkCreacion(e)}>
                 {editable ? (<>
                 <label htmlFor="tarjeta">Tarjeta:</label>
-                <input name="tarjeta" type="text" maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
+                <input name="tarjeta" type="text" maxLength={13} pattern='/d+' value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
                 
                 <label htmlFor="monto">Monto:</label>
                 <input name="monto" type="number" step={0.01} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required disabled />
@@ -92,7 +108,7 @@ const FormularioClientes = () => {
                 </>) :
                 (<>
                 <label htmlFor="tarjeta">Tarjeta:</label>
-                <input name="tarjeta" type="text" maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required />
+                <input name="tarjeta" type="text" pattern='/d+' maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required />
                 
                 <label htmlFor="monto">Monto:</label>
                 <input name="monto" type="number" step={0.01} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required />

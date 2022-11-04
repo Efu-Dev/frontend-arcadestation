@@ -16,7 +16,7 @@ const FormularioClientes = () => {
         e.preventDefault();
         let res = undefined;
         await axios.create({
-            baseURL: 'https://arcadestation.pythonanywhere.com/api/maquinas/',
+            baseURL: 'http://127.0.0.1:8000/api/maquinas/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -43,7 +43,7 @@ const FormularioClientes = () => {
         setSendable(true);
         let res = undefined;
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/maquinas/${e.target.value.replace(/^\s+/, "")}`,
+            baseURL: `http://127.0.0.1:8000/api/maquinas/${e.target.value.replace(/^\s+/, "")}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -83,7 +83,7 @@ const FormularioClientes = () => {
                 <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
 
                 <label htmlFor="precio">Precio:</label>
-                <input name="precio" type="number" min={0.01} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required disabled />
+                <input name="precio" type="number" min={0.01} max={99.99} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required disabled />
 
                  </>) :
                 (<><label htmlFor="codigo">Código:</label>
@@ -93,7 +93,7 @@ const FormularioClientes = () => {
                 <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
 
                 <label htmlFor="precio">Precio:</label>
-                <input name="precio" type="number" min={0.01} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required />
+                <input name="precio" type="number" min={0.01} max={99.99} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required />
                 </>)
                 }
                 {sendable ? (<button type='submit'>Enviar Formulario</button>) : <button type='submit' disabled>Enviar Formulario</button>}
