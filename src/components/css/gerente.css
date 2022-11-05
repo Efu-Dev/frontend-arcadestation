@@ -7,7 +7,248 @@ img {
 }
 
 /* Only edit this if you know what you are doing! */
-div {
+::-webkit-scrollbar {
+	display: none;
+}
+
+
+.main-container {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(-175.82388596164deg, rgba(251.82, 74.62, 148.26, 1) 0%, rgba(189.07, 158.69, 211.44, 0.86000001430511) 48%, rgba(69.52, 74.27, 213.57, 0.94999998807907) 87%);
+
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.main-container>.img-1 {
+	height: 100vh;
+	width: 60vw;
+}
+
+.main-container>.img-2 {
+
+	left: 20.5%;
+	height: 100vh;
+	width: 79vw;
+}
+
+.main-container>.img-3 {
+	top: 29%;
+	left: 0%;
+	width: 27vw;
+	height: 40vh;
+}
+
+.main-container>.barra_de_navegacion {
+
+	width: 100vw;
+	height: 12vh;
+	background: rgba(230.56, 231.54, 255, 1);
+}
+
+.main-container>.barra_de_navegacion>.reportes {
+
+	top: 25%;
+	left: 30%;
+
+}
+
+.main-container>.barra_de_navegacion>.reportes>#reportes {
+
+	font-family: Tomorrow;
+	font-size: 22px;
+
+}
+
+.main-container>.barra_de_navegacion>.agregar {
+
+	top: 25%;
+	left: 65%;
+}
+
+.main-container>.barra_de_navegacion>.agregar>#agregar {
+
+	font-family: Tomorrow;
+	font-size: 22px;
+
+}
+
+.main-container>.barra_de_navegacion>.consultar {
+	top: 25%;
+	left: 80%;
+
+}
+
+.main-container>.barra_de_navegacion>.consultar>#consultar {
+
+	font-family: Tomorrow;
+	font-size: 22px;
+
+}
+
+.main-container>.barra_de_navegacion>.modificar {
+	top: 25%;
+	left: 15%;
+
+}
+
+.main-container>.barra_de_navegacion>.modificar #modificar {
+
+	font-family: Tomorrow;
+	font-size: 22px;
+
+}
+
+.main-container>.barra_de_navegacion>.reportes :hover {
+background-color: #decef2;
+
+}
+
+.main-container>.barra_de_navegacion>.agregar :hover{
+	background-color: #decef2;
+
+}
+.main-container>.barra_de_navegacion>.modificar :hover{
+	background-color: #decef2;
+
+}
+.main-container>.barra_de_navegacion>.consultar :hover {
+	background-color: #decef2;
+	
+}
+
+.main-container>.barra_de_navegacion>.reportes:hover>.dropdown-menu {
+	display: block;
+	background-color: white;
+}
+
+.main-container>.barra_de_navegacion>.agregar:hover>.dropdown-menu {
+	display: block;
+	background-color: white;
+}
+
+.main-container>.barra_de_navegacion>.modificar:hover>.dropdown-menu {
+	display: block;
+	background-color: white;
+}
+
+.main-container>.barra_de_navegacion>.consultar:hover>.dropdown-menu {
+	display: block;
+	background-color: white;
+}
+
+.main-container>.barra_de_navegacion>.logo {
+	top: 30%;
+	left: 40%;
+	width: 20vw;
+	height: 7vh;
+}
+
+.menu {
+	margin-top: 12vh;
+	height: 88vh;
+	width: 364px;
+	position: absolute;
+	background: #2A2052;
+	z-index: 1;
+	transition: 0.5s ease;
+	transform: translatex(-364px);
+
+}
+
+.menu .head {
+	color: white;
+	font-size: 30px;
+	font-weight: bold;
+
+	/* padding: 10px;
+	padding-left: 252px;
+	padding-top: 40px; .input
+	left: -120px;
+	top: 0px;
+	background : black 
+	*/
+
+	text-transform: uppercase;
+	text-align: center;
+	margin-left: 120px;
+	letter-spacing: 3px;
+
+
+}
+
+ol {
+	width: 100%;
+	list-style: none;
+}
+
+li {
+	display: block;
+	width: 100%;
+}
+
+li a {
+
+	color: white;
+	padding: 15px 10px;
+	text-decoration: none;
+	display: block;
+	font-size: 15px;
+	letter-spacing: 1px;
+	position: relative;
+	transition: 0.3s;
+	overflow: hidden;
+	text-transform: capitalize;
+}
+
+li a i {
+	width: 70px;
+	font-size: 25px;
+	text-align: center;
+	padding-left: 30px;
+
+}
+
+li:hover a {
+	background: #5E496F;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+
+.input-gerente {
+	-webkit-appearance: none;
+	visibility: hidden;
+	display: none;
+}
+
+.span-gerente {
+	position: absolute;
+	right: -40px;
+	top: 30px;
+	font-size: 25px;
+	border-radius: 3px;
+	color: #fff;
+	padding: 3px 8px;
+	cursor: pointer;
+}
+
+img {
+	position: absolute;
+	display: block;
+	margin: 0px;
+	border: none;
+	padding: 0px;
+}
+
+/* Only edit this if you know what you are doing! */
+.div-gerente {
 	position: absolute;
 }
 
@@ -153,8 +394,6 @@ background-color: #decef2;
 	height: 7vh;
 }
 
-
-
 .menu {
 	margin-top: 12vh;
 	height: 88vh;
@@ -228,14 +467,13 @@ li:hover a {
 }
 
 
-input {
+.input-gerente {
 	-webkit-appearance: none;
 	visibility: hidden;
 	display: none;
-
 }
 
-span {
+.span-gerente {
 	position: absolute;
 	right: -40px;
 	top: 30px;
@@ -244,8 +482,6 @@ span {
 	color: #fff;
 	padding: 3px 8px;
 	cursor: pointer;
-
-
 }
 
 #bars {
