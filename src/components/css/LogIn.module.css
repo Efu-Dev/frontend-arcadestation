@@ -178,12 +178,18 @@ input[type="submit"]
 .check{
    font-weight: 400;
    margin-left: -295px;
-   margin-top: -25px;
+   margin-top: -30px;
    font-size: 11pt;
+   z-index: 1;
 }
 
 .passw{
     margin-left: 34px;
     margin-top: -15px;
     font-size: 0.90em;
+}
+
+p{
+    margin-left:-160px;
+    margin-top: -19px; 
 }
