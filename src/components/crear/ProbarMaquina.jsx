@@ -13,7 +13,7 @@ const ProbarMaquina = () => {
 
     useEffect(() => {
         axios.create({
-            baseURL: 'http://127.0.0.1:8000/api/maquinas/',
+            baseURL: 'https://arcadestation.pythonanywhere.com/api/maquinas/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -31,7 +31,7 @@ const ProbarMaquina = () => {
         e.preventDefault();
         let continuar = false;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/tarjetas/${tarjeta}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/tarjetas/${tarjeta}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -50,7 +50,7 @@ const ProbarMaquina = () => {
         console.log(continuar);
 
         await axios.create({
-            'baseURL': `http://127.0.0.1:8000/api/registro/actividad/${maquina.codigo}`,
+            'baseURL': `https://arcadestation.pythonanywhere.com/api/registro/actividad/${maquina.codigo}`,
             'headers': {
                 'Authorization': localStorage.getItem('access_token_as')
             }
@@ -71,7 +71,7 @@ const ProbarMaquina = () => {
         let res = undefined;
         console.log(e);
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/maquinas/${e}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/maquinas/${e}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
