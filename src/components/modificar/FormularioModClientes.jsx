@@ -26,7 +26,7 @@ const FormularioModClientes = () => {
 
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/clientes/${cedula}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/clientes/${cedula}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -38,7 +38,7 @@ const FormularioModClientes = () => {
 
         if(res.data.datos.cedula)
             await axios.create({
-                baseURL: `http://127.0.0.1:8000/api/personas/${cedula}`,
+                baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${cedula}`,
                 'headers': {
                 'Authorization': localStorage.getItem('access_token_as')
                 }
@@ -68,7 +68,7 @@ const FormularioModClientes = () => {
         setCedula(e.target.value.replace(/^\s+/, ""));
         let res = undefined;
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/clientes/${e.target.value.replace(/^\s+/, "")}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/clientes/${e.target.value.replace(/^\s+/, "")}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -89,7 +89,7 @@ const FormularioModClientes = () => {
         }
         else{
             await axios.create({
-                baseURL: `http://127.0.0.1:8000/api/personas/${e.target.value.replace(/^\s+/, "")}`,
+                baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value.replace(/^\s+/, "")}`,
                 'headers': {
                   'Authorization': localStorage.getItem('access_token_as')
                 }

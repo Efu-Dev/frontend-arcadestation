@@ -18,7 +18,7 @@ const FormularioClientes = () => {
         let res = undefined;
 
         await axios.create({
-            baseURL: 'http://127.0.0.1:8000/api/registro/transaccion/',
+            baseURL: 'https://arcadestation.pythonanywhere.com/api/registro/transaccion/',
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -51,7 +51,7 @@ const FormularioClientes = () => {
         setTarjeta(e);
         let res = "";
         await axios.create({
-            baseURL: `http://127.0.0.1:8000/api/tarjetas/${e}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/tarjetas/${e}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -108,7 +108,7 @@ const FormularioClientes = () => {
                 </>) :
                 (<>
                 <label htmlFor="tarjeta">Tarjeta:</label>
-                <input name="tarjeta" type="text" pattern='/d+' maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required />
+                <input name="tarjeta" type="text" pattern='/d+' maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
                 
                 <label htmlFor="monto">Monto:</label>
                 <input name="monto" type="number" step={0.01} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required />

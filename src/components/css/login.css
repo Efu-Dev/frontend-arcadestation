@@ -1,183 +1,190 @@
-.main-container {
-	width: 100vw;
-	height: 100vh;
-	background: linear-gradient(-175.82388596164deg , rgba(251.82,74.62,148.26,1) 0%, rgba(189.07,158.69,211.44,0.86000001430511) 48%, rgba(69.52,74.27,213.57,0.94999998807907) 87%);
-    
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans MT';
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    
+.imagen{
+    width:auto;
+    height: 65px;
+    justify-content: left;
+    align-items: left;
+    position:fixed;
+    min-width: 240px;
+    flex-wrap: wrap;
+    left: 40.5%;
+    top:9%;
 }
 
-::-webkit-scrollbar {
-    display: none;
-}
-
-
-.rows {
+.container{
     display: flex;
-    overflow-wrap: inherit;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: fit-content;
+    flex-wrap: wrap;
+    background: linear-gradient(90deg, rgba(253,104,226,1) 0%, rgba(199,154,255,1) 45%, rgba(37,108,223,1) 100%);;
 }
 
-.rows > .cols-1 {
-    width: 40%;
-}
-
-.rows > .cols-2 {
-    width: 60%;
-}
-
-
-
-.rows > .cols-1 > .p-absolute {
-    position: absolute;
-    top: 28vh;
-    left: calc(100% - 97vw);
-   
-}
-
-#logo {
-    width: 75%;
-    height: 60%;
-    
-
-}
-
-#logo-switch {
-    
-    width: 25%;
-    
-}
-
-.rows > .cols-2 > .login {
-    background-color: #E7E8FF;
-    border-radius: 70px 0 0 70px;
-    margin: 0 0 0 0;
-    height: 100vh;
- 
-}
-
-.rows > .cols-2 > .login > .Username {
+.box{
     position: relative;
-    top: 10%;
-    left: -15%;
-
+    width: 420px;
+    height: 500px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 70px;
 }
 
-.rows > .cols-2 > .login > .Username> .login-form {
+.box::before{
+    content: '';
     position: absolute;
-    font-size: 45px;
-    width: 500px;
-    height: 50px;
-    font-family: Tomorrow;
-    border-radius: 15px;
-    left: 41.5%;
+    top:-50%;
+    left:-50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, #7979d2, #7979d2);
+    transform-origin: bottom right;
+    animation: animate 5s linear infinite;
 }
 
-.rows > .cols-2 > .login > .Password {
+.box::after{
+    content: '';
+    position: absolute;
+    top:-50%;
+    left:-50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, #7979d2, #7979d2);
+    transform-origin: bottom right;
+    animation: animate 5s linear infinite;
+    animation-delay: -3s;
+}
+
+@keyframes animate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.form{
+    position: absolute;
+    inset: 2px;
+    border-radius: 8px;
+    background: whitesmoke;
+    z-index: 1;
+    padding: 80px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form h2{
+    color: #000066;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: 26pt;
+}
+
+.inputBox{
     position: relative;
-    
-    top: 25%;
-    left:-15%;
-
+    width: 300px;
+    margin-top: 35px;
 }
 
-.rows > .cols-2 > .login > .Password> .login-form {
-    position: absolute;
-    font-size: 45px;
-    width: 500px;
-    height: 50px;
-    border-radius: 15px;
-    left: 41.5%;
-
-}
-
-.rows > .cols-2 > .login > .boton  {
-
-    
-   position: relative;
-
-   top: 42% ;
-   left: -1%;
-}
-
-.rows > .cols-2 > .login > .logo-control {
+.inputBox input{
     position: relative;
-    top: -2.5%;
-    left: -30%;
+    width: 100%;
+    padding: 20px 20px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: black;
+    font-size: 12pt;
+    letter-spacing: 0.05em;
+    z-index: 10;
 }
 
-.rows > .cols-2 > .login > .login-titulo {
+.inputBox span{
+    position:absolute;
+    left: 5%;
+    padding: 20px 0px 10px;
+    font-size: 13pt;
+    color: #000066;
+    pointer-events: none;
+    letter-spacing: 0.07em;
+    transition: 0.5s;
+    font-weight: 570;
+    opacity: 0.8;
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+    color: #400080;
+    transform: translateX(0px) translateY(-34px);
+    font-size: 0.90em;
+    font-weight: 500;
+}
+
+.inputBox i{
     position: absolute;
-    top: 16%;
-    left: 63%;
-    font-size: 27px;
-    font-family: Tomorrow;
+    left: 5%;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #d1b3ff;
+    border-radius: 4px;
+    transition: 0.5s;
+    pointer-events: none;
 }
 
-.rows > .cols-2 > .login > .Password > .forgot-password{
-    position: absolute;
-    top: 285%;
-    left: 84%;
-    font-size: 15px;
-    
+.inputBox input:valid ~ i,
+.inputBox input:focus ~ i{
+
+    height: 40px;
+
 }
 
-.rows > .cols-2 > .login > .Password >.forgot-password > a {
-    color: #251E7A;
+.links{
+    display: flex;
+    justify-content: space-between;
 }
 
-@media (max-width: 1000px){
-
-    .rows { 
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .rows > .cols-1 {
-        display: none;
-    }
-    .rows > .cols-2 {
-        width: 100%;
-    }
-    .rows > .cols-2 > .login {
-        border-radius: 0;
-    }
-    .rows > .cols-2 > .login > .Password> .forgot-password {
-        top: 285%;
-        left: 83%;
-
-    }
-
-    .rows > .cols-2 > .login > .login-titulo{
-        left: 43%;
-    }
-
-    .rows > .cols-2 > .login > .boton  {
-        left: 6%;
-    }
+.links a{
+    margin: 15px 0;
+    font-size: 0.85em;
+    color: black;
+    margin-left: 218px;
 }
 
-.tomttxt{
-	background: rgba(230.56,231.54,255,1); 
-	font-family: Tomorrow;
-	font-size: 50px;
-	border-radius: 15px;
-	
-}
-
-.boton{
- 	background: rgba(48.75,51.25,124.32,1);
-    font-size: 50px;
-	font-family: Tomorrow;
-	border-radius: 15px;
-    color: beige;
+input[type="submit"]
+{
+    border: none;
+    outline: none;
+    background: #d29ef5;
+    padding: 11px 25px;
+    width: 100px;
+    margin-top: 55px;
+    border-radius: 4px;
+    font-weight: 600;
     cursor: pointer;
+    text-align: center;
+    margin-left: 115px;
 }
 
-.boton > a {
-	text-decoration: none;
-	color: beige;
+.check{
+   font-weight: 400;
+   margin-left: -295px;
+   margin-top: -25px;
+   font-size: 11pt;
+}
+
+.passw{
+    margin-left: 34px;
+    margin-top: -15px;
+    font-size: 0.90em;
 }
