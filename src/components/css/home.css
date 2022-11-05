@@ -149,95 +149,6 @@ background-color: #decef2;
 	height: 7vh;
 }
 
-.menu {
-	margin-top: 12vh;
-	height: 88vh;
-	width: 364px;
-	position: absolute;
-	background: #2A2052;
-	z-index: 1;
-	transition: 0.5s ease;
-	transform: translatex(-364px);
-
-}
-
-.menu .head {
-	color: white;
-	font-size: 30px;
-	font-weight: bold;
-
-	/* padding: 10px;
-	padding-left: 252px;
-	padding-top: 40px; .input
-	left: -120px;
-	top: 0px;
-	background : black 
-	*/
-
-	text-transform: uppercase;
-	text-align: center;
-	margin-left: 120px;
-	letter-spacing: 3px;
-
-
-}
-
-ol {
-	width: 100%;
-	list-style: none;
-}
-
-li {
-	display: block;
-	width: 100%;
-}
-
-li a {
-
-	color: white;
-	padding: 15px 10px;
-	text-decoration: none;
-	display: block;
-	font-size: 15px;
-	letter-spacing: 1px;
-	position: relative;
-	transition: 0.3s;
-	overflow: hidden;
-	text-transform: capitalize;
-}
-
-li a i {
-	width: 70px;
-	font-size: 25px;
-	text-align: center;
-	padding-left: 30px;
-
-}
-
-li:hover a {
-	background: #5E496F;
-	color: white;
-	font-weight: bold;
-	text-decoration: none;
-}
-
-
-.input-gerente {
-	-webkit-appearance: none;
-	visibility: hidden;
-	display: none;
-}
-
-.span-gerente {
-	position: absolute;
-	right: -40px;
-	top: 30px;
-	font-size: 25px;
-	border-radius: 3px;
-	color: #fff;
-	padding: 3px 8px;
-	cursor: pointer;
-}
 
 img {
 	position: absolute;
@@ -410,7 +321,7 @@ background-color: #decef2;
 	color: white;
 	font-size: 30px;
 	font-weight: bold;
-
+	
 	/* padding: 10px;
 	padding-left: 252px;
 	padding-top: 40px;
@@ -425,11 +336,6 @@ background-color: #decef2;
 	letter-spacing: 3px;
 
 
-}
-
-ol {
-	width: 100%;
-	list-style: none;
 }
 
 li {
@@ -660,6 +566,24 @@ li:hover a {
 	height: 12vh;
 }
 
+.main-container > .barra_de_navegacion > .Consultar {
+	top: 30%;
+	left: 30%;
+
+}
+.main-container>.barra_de_navegacion>.Consultar>.dropdown-menu {
+
+	font-family: Tomorrow;
+	font-size: 20px;
+
+}
+.main-container>.barra_de_navegacion>.Consultar>#Consultar {
+
+	font-family: Tomorrow;
+	font-size: 22px;
+
+}
+
 .main-container > .barra_de_navegacion > .Crear {
 	top: 30%;
 	left: 62%;
@@ -683,4 +607,19 @@ li:hover a {
 .main-container>.barra_de_navegacion> .Crear :hover {
 	background-color: #decef2;
 
+}
+
+.main-container>.barra_de_navegacion> .Consultar :hover {
+	background-color: #decef2;
+
+}
+
+.main-container>.barra_de_navegacion>.Consultar:hover>.dropdown-menu {
+	display: block;
+	background-color: white;
+}
+
+.main-container>.barra_de_navegacion>.Crear:hover>.dropdown-menu {
+	display: block;
+	background-color: white;
 }

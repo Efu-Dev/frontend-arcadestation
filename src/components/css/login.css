@@ -183,8 +183,10 @@ input[type="submit"]
    font-size: 11pt;
 }
 
-.passw{
+ .passw{
     margin-left: 34px;
     margin-top: -15px;
     font-size: 0.90em;
+  
 }
+
