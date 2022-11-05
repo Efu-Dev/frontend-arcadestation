@@ -659,3 +659,28 @@ li:hover a {
 	width: 20vh;
 	height: 12vh;
 }
+
+.main-container > .barra_de_navegacion > .Crear {
+	top: 30%;
+	left: 62%;
+	
+}
+
+.main-container>.barra_de_navegacion>.Crear>#Crear {
+
+	font-family: Tomorrow;
+	font-size: 22px;
+
+}
+
+.main-container>.barra_de_navegacion>.Crear>.dropdown-menu {
+
+	font-family: Tomorrow;
+	font-size: 20px;
+
+}
+
+.main-container>.barra_de_navegacion> .Crear :hover {
+	background-color: #decef2;
+
+}
