@@ -87,7 +87,7 @@ const FormularioClientes = () => {
             <form onSubmit={(e) => checkCreacion(e)}>
                 {editable ? (<>
                 <label htmlFor="tarjeta">Tarjeta:</label>
-                <input name="tarjeta" type="text" maxLength={13} pattern='/d+' value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
+                <input name="tarjeta" type="text" maxLength={13} pattern='\d+' value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
                 
                 <label htmlFor="monto">Monto:</label>
                 <input name="monto" type="number" step={0.01} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required disabled />
@@ -108,7 +108,7 @@ const FormularioClientes = () => {
                 </>) :
                 (<>
                 <label htmlFor="tarjeta">Tarjeta:</label>
-                <input name="tarjeta" type="text" pattern='/d+' maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
+                <input name="tarjeta" type="text" pattern='\d+' maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
                 
                 <label htmlFor="monto">Monto:</label>
                 <input name="monto" type="number" step={0.01} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required />

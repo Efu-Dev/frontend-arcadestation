@@ -144,7 +144,7 @@ const Home = () => {
               <li><a href="#reporte_cliente" onClick={reporteClientes} class="dropdown-item">Reporte de Clientes</a></li>
               <li><a href="#reporte_maquina" onClick={reporteMaquinas} class="dropdown-item">Reporte de Máquinas</a></li>
             </div>
-
+        </div>
 
         <div class="div-gerente agregar">
           <button type="button" class="btn btn-white dropdownd-toggle" id="agregar" data-toggle="dropdown"
