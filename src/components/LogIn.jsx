@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { axiosInstance } from '../axios';
 import styles from './css/LogIn.module.css';
 import logo from './Img/logo.png';
@@ -70,7 +70,7 @@ const LogIn = () => {
             </div>
         
             <div className={styles.links}>
-                <a href="/control/recuperacion_contrasena">Forgot password?</a>
+                <Link to="/control/recuperacion_contrasena">Forgot password?</Link>
             </div>
 
             <input type="checkbox" onClick={myFunction} className={styles.check} /> <p className="passw">show password</p> 

@@ -118,14 +118,14 @@ const Home = () => {
           <span class="span-gerente fas fa-times" id="times"></span>
           <span class="span-gerente fas fa-circle-user" id="bars"></span>
         </label>
-        <div class="div-gerente head" style={{marginBottom: '50px'}}> menu </div>
+        <div class="div-gerente head" style={{marginBottom: '50px'}}> menu </div> <br /><br /><br /><br />
 
         
           <li><a href="#"><i class="fas fa-users"></i> Manual de usuario</a></li>
           <li><a href="#" onClick={crearBackup}><i class="fas fa-cloud"></i> Crear Respaldo de base de datos</a></li>
           <li><a href="#" onClick={restaurarBackup}><i class="fas fa-cloud"></i> Restaurar base de datos</a></li>
-          <li><a href="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</a></li>
-          <li><a href="/control/probar_maquina"><i class="fas fa-gamepad"></i> Probar máquina</a></li>
+          <li><Link to="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
+          <li><Link to="/control/probar_maquina"><i class="fas fa-gamepad"></i> Probar máquina</Link></li>
 
 
       </div>
@@ -153,10 +153,10 @@ const Home = () => {
             Agregar
           </button>
           <div class="div-gerente dropdown-menu">
-            <li><a href="/crear/clientes" class="dropdown-item">Agregar Cliente</a></li>
-            <li><a href="/crear/empleados" class="dropdown-item">Agregar Empleado</a></li>
-            <li><a href="/crear/maquinas" class="dropdown-item">Agregar Máquina</a></li>
-            <li><a href="/crear/transaccion" class="dropdown-item">Agregar Recarga</a></li>
+            <li><Link to="/crear/clientes" class="dropdown-item">Agregar Cliente</Link></li>
+            <li><Link to="/crear/empleados" class="dropdown-item">Agregar Empleado</Link></li>
+            <li><Link to="/crear/maquinas" class="dropdown-item">Agregar Máquina</Link></li>
+            <li><Link to="/crear/transaccion" class="dropdown-item">Agregar Recarga</Link></li>
           </div>
         </div>
         <div class="div-gerente consultar">
@@ -165,10 +165,10 @@ const Home = () => {
             Consultar
           </button>
           <div class="div-gerente dropdown-menu">
-            <li><a href="/consultar/clientes" class="dropdown-item">Consultar Cliente</a></li>
-            <li><a href="/consultar/empleados" class="dropdown-item">Consultar Empleado</a></li>
-            <li><a href="/consultar/tarjeta" class="dropdown-item">Consultar Tarjeta</a></li>
-            <li><a href="/consultar/maquinas" class="dropdown-item">Consultar Maquina</a></li>
+            <li><Link to="/consultar/clientes" class="dropdown-item">Consultar Cliente</Link></li>
+            <li><Link to="/consultar/empleados" class="dropdown-item">Consultar Empleado</Link></li>
+            <li><Link to="/consultar/tarjeta" class="dropdown-item">Consultar Tarjeta</Link></li>
+            <li><Link to="/consultar/maquinas" class="dropdown-item">Consultar Maquina</Link></li>
           </div>
         </div>
         <div class="div-gerente modificar">
@@ -177,9 +177,9 @@ const Home = () => {
             Modificar
           </button>
           <div class="div-gerente dropdown-menu">
-            <li><a href="/modificar/clientes" class="dropdown-item">Modificar Cliente</a></li>
-            <li><a href="/modificar/empleados" class="dropdown-item">Modificar Empleado</a></li>
-            <li><a href="/modificar/maquinas" class="dropdown-item">Modificar Maquina</a></li>
+            <li><Link to="/modificar/clientes" class="dropdown-item">Modificar Cliente</Link></li>
+            <li><Link to="/modificar/empleados" class="dropdown-item">Modificar Empleado</Link></li>
+            <li><Link to="/modificar/maquinas" class="dropdown-item">Modificar Maquina</Link></li>
 
           </div>
         </div>
@@ -227,8 +227,8 @@ const Home = () => {
           </label>
         <div class="div-gerente head"> menu </div> <br /> <br /> <br /> <br />
           <li><a href="#"><i class="fas fa-users"></i> Manual de ayuda de usuario</a></li>
-          <li><a href="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</a></li>
-          <li><a href="/control/probar_maquina"><i class="fas fa-info"></i> Probar Máquina</a></li>
+          <li><Link to="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
+          <li><Link to="/control/probar_maquina"><i class="fas fa-info"></i> Probar Máquina</Link></li>
         </div>
 
         <img src={img6} class="img-1" />
@@ -242,8 +242,8 @@ const Home = () => {
               Crear
             </button>
             <div class="div-gerente dropdown-menu">
-              <li><a href="/crear/clientes" class="dropdown-item">Crear Cliente</a></li>
-              <li><a href="/crear/transaccion" class="dropdown-item">Crear Recarga</a></li>
+              <li><Link to="/crear/clientes" class="dropdown-item">Crear Cliente</Link></li>
+              <li><Link to="/crear/transaccion" class="dropdown-item">Crear Recarga</Link></li>
             </div>
           </div>
 
@@ -253,8 +253,7 @@ const Home = () => {
               Consultar
             </button>
             <div class="div-gerente dropdown-menu">
-              <li><a href="/consultar/tarjeta" class="dropdown-item">Consultar tarjeta</a></li>
-              
+              <li><Link to="/consultar/tarjeta" class="dropdown-item">Consultar tarjeta</Link></li>
             </div>
           </div>
 
