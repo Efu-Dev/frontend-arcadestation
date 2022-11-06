@@ -39,7 +39,7 @@ const ProbarMaquina = () => {
             if(res.data.message === 'Success' && res.data.datos.activa === 'S')
                 continuar = true;
             else
-                alert(res.data.message === 'Success' ? 'La tarjeta no se encuentra activa' : res.data.message);
+                alert(res.data.message === 'Success' ?  res.data.message : 'La tarjeta no se encuentra activa o no existe. Verifique en caja.');
             
             console.log("A");
         }).catch((e) => {return;});

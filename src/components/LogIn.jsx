@@ -70,7 +70,7 @@ const LogIn = () => {
             </div>
         
             <div className={styles.links}>
-                <Link to="/control/recuperacion_contrasena">Forgot password?</Link>
+                <Link to="/control/recuperacion_contrasena" style={{zIndex: 2}}>Forgot password?</Link>
             </div>
 
             <input type="checkbox" onClick={myFunction} className={styles.check} /> <p className="passw">show password</p> 
