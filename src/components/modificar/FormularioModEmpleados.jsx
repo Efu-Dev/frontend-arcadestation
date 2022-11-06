@@ -73,8 +73,6 @@ const FormularioModEmpleados = () => {
         ).get('',
         {}).then((r) => {
             res = r.data.datos;
-        }).catch((e) => {
-            alert("Ocurrió un error.");
         });
 
         if(res.cedula === undefined && e.target.value.replace(/^\s+/, "") !== ''){
