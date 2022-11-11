@@ -1,8 +1,3 @@
-::-webkit-scrollbar {
-	display: none;
-}
-
-
 .main-container {
 	display: flex;
 	width: 100vw;
@@ -42,7 +37,7 @@ body {
 	background: rgba(230.56, 231.54, 255, 1);
 }
 
-	.main-container>.barra_de_navegacion>.reportes {
+.main-container>.barra_de_navegacion>.reportes {
 
 	top: 25%;
 	left: 30%;
@@ -60,14 +55,14 @@ body {
 
 	top: 25%;
 	left: 65%;
-	
+
 }
 
 .main-container>.barra_de_navegacion>.agregar>#agregar {
 
 	font-family: Tomorrow;
-	font-size: 22px;	
-	text-decoration: underline;
+	font-size: 22px;
+
 
 }
 
@@ -94,25 +89,28 @@ body {
 
 	font-family: Tomorrow;
 	font-size: 22px;
+	text-decoration: underline;
 
 }
 
 .main-container>.barra_de_navegacion>.reportes :hover {
-background-color: #decef2;
-
-}
-
-.main-container>.barra_de_navegacion>.agregar :hover{
 	background-color: #decef2;
 
 }
-.main-container>.barra_de_navegacion>.modificar :hover{
+
+.main-container>.barra_de_navegacion>.agregar :hover {
 	background-color: #decef2;
 
 }
+
+.main-container>.barra_de_navegacion>.modificar :hover {
+	background-color: #decef2;
+
+}
+
 .main-container>.barra_de_navegacion>.consultar :hover {
 	background-color: #decef2;
-	
+
 }
 
 .main-container>.barra_de_navegacion>.reportes:hover>.dropdown-menu {
@@ -211,7 +209,7 @@ li:hover a {
 }
 
 
-#check{
+#check {
 	visibility: hidden;
 	display: none;
 
@@ -255,31 +253,41 @@ span {
 
 #check:checked~.menu #times {
 	display: block;
-} 
+}
 
 .rectangulo {
 	top: 140%;
 	left: 3%;
-	width: 94vw;           
+	width: 94vw;
 	height: 80vh;
-	border-radius: 30px;          
-	background: #FBD8FC;        
-	border: 1px solid #000; 
+	border-radius: 30px;
+	background: #FBD8FC;
+	border: 1px solid #000;
 }
 
 .cuadrado {
-	top: 74%;
-	left: 45%;
-	width: 12vw;           
+	top: 75%;
+	left: 35%;
+	width: 12vw;
 	height: 13vh;
-	border-radius: 20px;          
-	background: #FBD8FC;        
-	border: 2px solid #000; 
+	border-radius: 20px;
+	background: #FBD8FC;
+	border: 2px solid #000;
 }
 
-#nombre_ek1 {
-	top: 20%;
-	left: 20%;
+.cuadrado2 {
+	top: 78%;
+	left: 50%;
+	width: 17vw;
+	height: 8vh;
+	border-radius: 20px;
+	background: #FBD8FC;
+	border: 2px solid #000;
+}
+
+#nombre_ek1_mcliente {
+	top: 30%;
+	left: 35%;
 	width: 39vh;
 	height: 4vh;
 	font-family: Sintony;
@@ -287,48 +295,68 @@ span {
 	font-weight: bold;
 	text-align: left;
 	letter-spacing: 3.9px;
-	color:#000000;
+	color: #000000;
 }
 
-.nombre{
+.nombre {
 	margin-top: 5%;
 	width: 50vh;
 	height: 5vh;
-	
+
 }
 
 #genero {
-	
+
 	left: 20%;
-	
+
 	font-family: Sintony;
 	font-size: 3vh;
 	font-weight: bold;
 	text-align: center;
 	letter-spacing: 3.9px;
-	color:#000000;
+	color: #000000;
 }
 
+#Anulada {
+	top: 25%;
+	left: 4%;
 
+	font-family: Sintony;
+	font-size: 2.5vh;
+	font-weight: bold;
+	text-align: center;
+	letter-spacing: 0.20vw;
+	color: #000000;
+}
 
 #sexo {
 	margin-top: 6vh;
 	margin-left: 2vh;
-	
+
 	font-family: Sintony;
 	font-size: 3vh;
 	font-weight: bold;
 	text-align: center;
 	letter-spacing: 3vh;
-	color:#000000;
-	
+	color: #000000;
+}
+
+#anulada {
+	margin-top: 1.4vh;
+	margin-left: 27vh;
+
+	font-family: Sintony;
+	font-size: 3vh;
+	font-weight: bold;
+	text-align: center;
+	letter-spacing: 3vh;
+	color: #000000;
 }
 
 
-
-#direccion_ek1 {
-	top: 40%;
-	left: 20%;
+#direccion_ek1mcliente {
+	top: 50%;
+	left: 35%;
 	width: 39vh;
 	height: 4vh;
 
@@ -337,97 +365,68 @@ span {
 	font-weight: bold;
 	text-align: left;
 	letter-spacing: 3.9px;
-	color:#000000;
+	color: #000000;
 }
 
-.direccion{
+.direccion {
 	margin-top: 5%;
 	width: 50vh;
 	height: 10vh;
 	font-size: 2vh;
 }
 
-#ingrese_cedula__ek1 {
-	top: 3%;
-	left: 40%;
-	width: 39vh;
-	height: 4vh;
-	font-family: Sintony;
-	font-size: 3vh;
-	font-weight: bold;
-	text-align: center;
-	letter-spacing: 3.9px;
-	color:#000000;
-}
-
-.cedula{
-	margin-top: 5%;
-	width: 30vh;
-	height: 5vh;
-}
-
-#email {
-	top: 20%;
-	left: 55%;
-	width: 39vh;
+#ingrese_cedula__ek1_mcliente {
+	top: 10%;
+	left: 35%;
+	width: 70vh;
 	height: 4vh;
 	font-family: Sintony;
 	font-size: 3vh;
 	font-weight: bold;
 	text-align: left;
 	letter-spacing: 3.9px;
-	color:#000000;
+	color: #000000;
 }
 
-.Email{
+.buscar {
+	font-size: 2vh;
+	width: 9vh;
+	height: 5vh;
+	border-radius: 20px;
+	background: #A9B5EF;
+}
+
+.cedula {
 	margin-top: 5%;
 	width: 50vh;
 	height: 5vh;
-	
 }
 
-#tele {
-	top: 36%;
-	left: 55%;
-	width: 39vh;
-	height: 4vh;
-	font-family: Sintony;
-	font-size: 3vh;
-	font-weight: bold;
-	text-align: left;
-	letter-spacing: 3.9px;
-	color:#000000;
+.modificar2 {
+
+	margin-top: 70vh;
+	margin-left: 80vw;
+
+
 }
 
-.telefono{
-	margin-top: 5%;
-	width: 50vh;
-	height: 5vh;
-	
-}
-
-#Cargo {
-	top: 53%;
-	left: 55%;
-	width: 39vh;
-	height: 4vh;
-	font-family: Sintony;
-	font-size: 3vh;
-	font-weight: bold;
-	text-align: left;
-	letter-spacing: 3.9px;
-	color:#000000;
-}
-
-.crear {
-
-    margin-top: 37%;
-	margin-left: 85%;
-	width: 15vh;	
+.modificarb {
+	width: 15vh;
 	height: 6vh;
-	border-radius: 30px;          
-	background: #A9B5EF; 
-    font-weight: bold; 
-	font-family: Tomorrow; 
-	
+	border-radius: 20px;
+	background: #A9B5EF;
+}
+
+#luigi {
+	width: 15vw;
+	height: 30vh;
+	top: 50%;
+	left: 5%;
+}
+
+#mario {
+	width: 15vw;
+	height: 30vh;
+	top: 5%;
+	left: 80%;
 }

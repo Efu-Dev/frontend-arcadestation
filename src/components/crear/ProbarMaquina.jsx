@@ -20,7 +20,7 @@ const ProbarMaquina = () => {
           }).get().then((res) => {
             if(res.data.message === 'Success'){
                 setMaquinas(res.data.datos);
-                setMaquina(res.data.datos[0])
+                setMaquina(res.data.datos.filter(x => x.activa === 'S')[0])
             }
             else
               alert(res.data.message);
@@ -36,10 +36,11 @@ const ProbarMaquina = () => {
               'Authorization': localStorage.getItem('access_token_as')
             }
           }).get().then((res) => {
-            if(res.data.message === 'Success' && res.data.datos.activa === 'S')
+            console.log(res);
+            if(res.data.message === 'Success' && res.data.datos.anulada === 'N')
                 continuar = true;
             else
-                alert(res.data.message === 'Success' ?  res.data.message : 'La tarjeta no se encuentra activa o no existe. Verifique en caja.');
+                alert('La tarjeta no se encuentra activa o no existe. Verifique en caja.');
             
             console.log("A");
         }).catch((e) => {return;});

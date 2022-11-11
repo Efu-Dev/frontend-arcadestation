@@ -1,8 +1,3 @@
-::-webkit-scrollbar {
-	display: none;
-}
-
-
 .main-container {
 	display: flex;
 	width: 100vw;
@@ -67,7 +62,7 @@ body {
 
 	font-family: Tomorrow;
 	font-size: 22px;	
-	text-decoration: underline;
+	
 
 }
 
@@ -94,6 +89,7 @@ body {
 
 	font-family: Tomorrow;
 	font-size: 22px;
+	text-decoration: underline;
 
 }
 
@@ -268,8 +264,8 @@ span {
 }
 
 .cuadrado {
-	top: 74%;
-	left: 45%;
+	top: 75%;
+	left: 35%;
 	width: 12vw;           
 	height: 13vh;
 	border-radius: 20px;          
@@ -277,9 +273,19 @@ span {
 	border: 2px solid #000; 
 }
 
-#nombre_ek1 {
-	top: 20%;
-	left: 20%;
+.cuadrado2-mod-maquina {
+	top: 75%;
+	left: 42%;
+	width: 12vw;           
+	height: 8vh;
+	border-radius: 20px;          
+	background: #FBD8FC;        
+	border: 2px solid #000; 
+}
+
+#nombre_ek1_maquina_mod {
+	top: 30%;
+	left: 35%;
 	width: 39vh;
 	height: 4vh;
 	font-family: Sintony;
@@ -293,141 +299,95 @@ span {
 .nombre{
 	margin-top: 5%;
 	width: 50vh;
-	height: 5vh;
-	
-}
-
-#genero {
-	
-	left: 20%;
-	
-	font-family: Sintony;
-	font-size: 3vh;
-	font-weight: bold;
-	text-align: center;
-	letter-spacing: 3.9px;
-	color:#000000;
-}
-
-
-
-#sexo {
-	margin-top: 6vh;
-	margin-left: 2vh;
-	
-	font-family: Sintony;
-	font-size: 3vh;
-	font-weight: bold;
-	text-align: center;
-	letter-spacing: 3vh;
-	color:#000000;
-	
-}
-
-
-
-#direccion_ek1 {
-	top: 40%;
-	left: 20%;
-	width: 39vh;
-	height: 4vh;
-
-	font-family: Sintony;
-	font-size: 3vh;
-	font-weight: bold;
-	text-align: left;
-	letter-spacing: 3.9px;
-	color:#000000;
-}
-
-.direccion{
-	margin-top: 5%;
-	width: 50vh;
-	height: 10vh;
-	font-size: 2vh;
-}
-
-#ingrese_cedula__ek1 {
-	top: 3%;
-	left: 40%;
-	width: 39vh;
-	height: 4vh;
-	font-family: Sintony;
-	font-size: 3vh;
-	font-weight: bold;
-	text-align: center;
-	letter-spacing: 3.9px;
-	color:#000000;
-}
-
-.cedula{
-	margin-top: 5%;
-	width: 30vh;
-	height: 5vh;
-}
-
-#email {
-	top: 20%;
-	left: 55%;
-	width: 39vh;
-	height: 4vh;
-	font-family: Sintony;
-	font-size: 3vh;
-	font-weight: bold;
-	text-align: left;
-	letter-spacing: 3.9px;
-	color:#000000;
-}
-
-.Email{
-	margin-top: 5%;
-	width: 50vh;
-	height: 5vh;
-	
-}
-
-#tele {
-	top: 36%;
-	left: 55%;
-	width: 39vh;
-	height: 4vh;
-	font-family: Sintony;
-	font-size: 3vh;
-	font-weight: bold;
-	text-align: left;
-	letter-spacing: 3.9px;
-	color:#000000;
-}
-
-.telefono{
-	margin-top: 5%;
-	width: 50vh;
-	height: 5vh;
-	
-}
-
-#Cargo {
-	top: 53%;
-	left: 55%;
-	width: 39vh;
-	height: 4vh;
-	font-family: Sintony;
-	font-size: 3vh;
-	font-weight: bold;
-	text-align: left;
-	letter-spacing: 3.9px;
-	color:#000000;
-}
-
-.crear {
-
-    margin-top: 37%;
-	margin-left: 85%;
-	width: 15vh;	
 	height: 6vh;
-	border-radius: 30px;          
-	background: #A9B5EF; 
-    font-weight: bold; 
-	font-family: Tomorrow; 
+}
+
+#activa {
+	top: 25%;
+	left: 12%;
 	
+	font-family: Sintony;
+	font-size: 2.5vh;
+	font-weight: bold;
+	text-align: center;
+	letter-spacing: 0.39vh;
+	color:#000000;
+}
+
+
+
+#activa {
+	margin-top: 1.4vh;
+	margin-left: 16vh;
+	
+	font-family: Sintony;
+	font-size: 3vh;
+	font-weight: bold;
+	text-align: center;
+	
+	color:#000000;
+	
+}
+
+
+#Precio {
+	top: 50%;
+	left: 35%;
+	width: 39vh;
+	height: 4vh;
+
+	font-family: Sintony;
+	font-size: 3vh;
+	font-weight: bold;
+	text-align: left;
+	letter-spacing: 3.9px;
+	color:#000000;
+}
+
+.precio{
+	margin-top: 5%;
+	width: 50vh;
+	height: 6vh;
+	
+}
+
+#Codigo-mod {
+	top: 10%;
+	left: 35%;
+	width: 80vh;
+	height: 4vh;
+	font-family: Sintony;
+	font-size: 3vh;
+	font-weight: bold;
+	text-align: left;
+	letter-spacing: 3.9px;
+	color:#000000;
+}
+
+.codigo-mod{
+	margin-top: 2.5%;
+	width: 50vh;
+	height: 6vh;
+}
+.modificar2 {
+
+	margin-top: 70vh;
+	margin-left: 80vw;
+
+
+}
+
+.modificarb {
+	width: 15vh;
+	height: 6vh;
+	border-radius: 20px;
+	background: #A9B5EF;
+}
+
+.buscar {
+	font-size: 2vh;
+	width: 9vh;
+	height: 5vh;
+	border-radius: 20px;
+	background: #A9B5EF;
 }
