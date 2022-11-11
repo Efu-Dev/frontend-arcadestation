@@ -222,7 +222,7 @@ const Home = () => {
             <span class="span-gerente far fa-circle-user" id="bars"></span>
           </label>
           <div class="div-gerente head">menú</div> <br /> <br /> <br /> <br />
-          <li><a href="#"><i class="fas fa-users"></i> Manual de ayuda de usuario</a></li>
+          <li><a href="#"><i class="fas fa-users"></i> Manual de Ayuda de Usuario</a></li>
           <li><Link to="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
           <li><Link to="/control/probar_maquina"><i class="fas fa-info"></i> Probar Máquina</Link></li>
         </div>
@@ -238,8 +238,8 @@ const Home = () => {
               Crear
             </button>
             <div class="div-gerente dropdown-menu">
-              <li><Link to="/crear/clientes" class="dropdown-item">Crear Cliente</Link></li>
-              <li><Link to="/crear/transaccion" class="dropdown-item">Crear Recarga</Link></li>
+              <li><Link to="/cajero/clientes" class="dropdown-item">Crear Cliente</Link></li>
+              <li><Link to="/cajero/transaccion" class="dropdown-item">Crear Recarga</Link></li>
             </div>
           </div>
 
@@ -250,7 +250,7 @@ const Home = () => {
             </button>
             <div class="div-gerente dropdown-menu">
 
-              <li><Link to="/consultar/tarjeta" class="dropdown-item">Consultar tarjeta</Link></li>
+              <li><Link to="/cajero/tarjeta" class="dropdown-item">Consultar tarjeta</Link></li>
             </div>
           </div>
 

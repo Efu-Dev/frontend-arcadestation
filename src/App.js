@@ -24,6 +24,8 @@ import ConsultarActividad from './components/consultar/ConsultarActividad.jsx';
 import CambiarContraseña from './components/control/CambiarContraseña.jsx';
 import RecuperarContrasena from './components/control/RecuperarContrasena.jsx';
 
+import FormularioClientesCajero from './components/crear/FormularioClientesCajero';
+
 function App() {
 
   return (
@@ -55,6 +57,8 @@ function App() {
           <Route path='/consultar/tarjeta' element={<ConsultarTarjeta />} />
           <Route path='/consultar/maquinas/:codigo' element={<ConsultarActividad />} />
 
+          {/* Cajero */}
+          <Route path='/cajero/clientes' element={<FormularioClientesCajero />} />
           
         </Routes>
       </BrowserRouter>
