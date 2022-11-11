@@ -36,10 +36,11 @@ const ProbarMaquina = () => {
               'Authorization': localStorage.getItem('access_token_as')
             }
           }).get().then((res) => {
-            if(res.data.message === 'Success' && res.data.datos.activa === 'S')
+            console.log(res);
+            if(res.data.message === 'Success' && res.data.datos.anulada === 'N')
                 continuar = true;
             else
-                alert(res.data.message === 'Success' ?  res.data.message : 'La tarjeta no se encuentra activa o no existe. Verifique en caja.');
+                alert('La tarjeta no se encuentra activa o no existe. Verifique en caja.');
             
             console.log("A");
         }).catch((e) => {return;});
