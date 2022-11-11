@@ -20,7 +20,7 @@ const ProbarMaquina = () => {
           }).get().then((res) => {
             if(res.data.message === 'Success'){
                 setMaquinas(res.data.datos);
-                setMaquina(res.data.datos[0])
+                setMaquina(res.data.datos.filter(x => x.activa === 'S')[0])
             }
             else
               alert(res.data.message);
