@@ -1,15 +1,3 @@
-img {
-	position: absolute;
-	display: block;
-	margin: 0px;
-	border: none;
-	padding: 0px;
-}
-
-div {
-	position: absolute;
-}
-
 ::-webkit-scrollbar {
 	display: none;
 }

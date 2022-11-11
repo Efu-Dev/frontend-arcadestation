@@ -137,8 +137,6 @@ background-color: #decef2;
 	height: 7vh;
 }
 
-
-
 .menu {
 	margin-top: 12vh;
 	height: 88vh;
@@ -209,19 +207,6 @@ li:hover a {
 #check{
 	visibility: hidden;
 	display: none;
-
-}
-
-span {
-	position: absolute;
-	right: -40px;
-	top: 30px;
-	font-size: 25px;
-	border-radius: 3px;
-	color: #fff;
-	padding: 3px 8px;
-	cursor: pointer;
-
 
 }
 
