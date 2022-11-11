@@ -119,7 +119,7 @@ const FormularioClientes = () => {
                     <span class="fas fa-times" id="times"></span>
                     <span class="far fa-circle-user" id="bars"></span>
                 </label>
-                <div class="div-gerente head"> menu </div><br /> <br /> <br /> <br />
+                <div class="div-gerente head">menú</div><br /> <br /> <br /> <br />
     
                 <li><a href="#"><i class="fas fa-users"></i> Manual de usuario</a></li>
                 <li><a href="#" onClick={crearBackup}><i class="fas fa-cloud"></i> Crear Respaldo de base de datos</a></li>

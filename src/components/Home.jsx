@@ -119,7 +119,7 @@ const Home = () => {
           <span class="span-gerente fas fa-times" id="times"></span>
           <span class="span-gerente fas fa-circle-user" id="bars"></span>
         </label>
-        <div class="div-gerente head" style={{marginBottom: '50px'}}> menu </div> <br /><br /><br /><br />
+        <div class="div-gerente head" style={{marginBottom: '50px'}}>menú</div> <br /><br /><br /><br />
         
           <li><a href="#"><i class="fas fa-users"></i> Manual de usuario</a></li>
           <li><a href="#" onClick={crearBackup}><i class="fas fa-cloud"></i> Crear Respaldo de base de datos</a></li>
@@ -221,7 +221,7 @@ const Home = () => {
             <span class="span-gerente fas fa-times" id="times"></span>
             <span class="span-gerente far fa-circle-user" id="bars"></span>
           </label>
-          <div class="div-gerente head"> menu </div> <br /> <br /> <br /> <br />
+          <div class="div-gerente head">menú</div> <br /> <br /> <br /> <br />
           <li><a href="#"><i class="fas fa-users"></i> Manual de ayuda de usuario</a></li>
           <li><Link to="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
           <li><Link to="/control/probar_maquina"><i class="fas fa-info"></i> Probar Máquina</Link></li>

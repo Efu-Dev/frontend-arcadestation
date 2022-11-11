@@ -79,7 +79,7 @@ const Navbar = ({usuario}) => {
 				<span class="span-gerente fas fa-times" id="times"></span>
 				<span class="span-gerente fas fa-circle-user" id="bars"></span>
 			</label>
-			<div class="div-gerente head" style={{marginBottom: '50px'}}> menu </div>
+			<div class="div-gerente head" style={{marginBottom: '50px'}}>menú</div>
 
       
         <li><a href="#"><i class="fas fa-users"></i> Manual de usuario</a></li>
