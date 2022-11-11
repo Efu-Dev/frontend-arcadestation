@@ -522,7 +522,7 @@ li:hover a {
 #__0000 {
 	top: 80%;
 	left: 9%;
-	width: 8vw;
+	width: 10vw;
 	font-weight: bold;
 	overflow: hidden;
 	font-family: Montserrat;
@@ -532,10 +532,10 @@ li:hover a {
 }
 
 #bienvenido {
-	top: 32%;
+	top: 30%;
 	left: 46%;
 	width: 51vw;
-	height: 20vh;
+	height: 30vh;
 	overflow: hidden;
 	font-family: Tomorrow;
 	font-size: 7vh;
@@ -546,7 +546,7 @@ li:hover a {
 
 #saludo {
 
-	top: 56%;
+	top: 62%;
 	left: 43%;
 	width: 55vw;
 	height: 30vh;
@@ -560,7 +560,7 @@ li:hover a {
 
 #mask_group_ek2 {
 	position: absolute;
-	top: 21%;
+	top: 18%;
 	left: 66%;
 	width: 20vh;
 	height: 12vh;
