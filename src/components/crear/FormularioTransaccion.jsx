@@ -111,7 +111,7 @@ const FormularioClientes = () => {
                 <input name="tarjeta" type="text" pattern='\d+' maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
                 
                 <label htmlFor="monto">Monto:</label>
-                <input name="monto" type="number" step={0.01} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required />
+                <input name="monto" type="number" step={0.01} max={99999999.99} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required />
 
                 <label htmlFor="descripcion">Descripción:</label>
                 <input name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value.replace(/^\s+/, ""))} required />

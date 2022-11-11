@@ -15,6 +15,70 @@ import img5 from './Img/mask_group_ek2.png';
 import img6 from './Img/dde6daf4675eec6dc7e0c73a83e37bd2_1_ek2.png';
 import img7 from './Img/_238738_1.png';
 
+export const reporteEmpleados = () => {
+  axios.create({
+    baseURL: 'https://arcadestation.pythonanywhere.com/reportes/generar/empleados',
+    'headers': {
+      'Authorization': localStorage.getItem('access_token_as')
+    }
+  }).get().then((res) => {
+    const content = res.headers['content-type'];
+    download(res.data, 'REPORTE_EMPLEADOS_ARCADESTATION.pdf', content)
+  }).catch((e) => console.log(e));
+};
+
+export const reporteMaquinas = () => {
+  axios.create({
+    baseURL: 'https://arcadestation.pythonanywhere.com/reportes/generar/máquinas',
+    'headers': {
+      'Authorization': localStorage.getItem('access_token_as')
+    }
+  }).get().then((res) => {
+    const content = res.headers['content-type'];
+    download(res.data, 'REPORTE_MAQUINAS_ARCADESTATION.pdf', content)
+  }).catch((e) => console.log(e));
+};
+
+export const crearBackup = () => {
+  axios.create({
+    baseURL: 'https://arcadestation.pythonanywhere.com/backupdb/',
+    'headers': {
+      'Authorization': localStorage.getItem('access_token_as')
+    }
+  }).get().then((res) => {
+    if (res.data.message === 'Success')
+      alert('El respaldo ha sido generado y enviado a la nube MEGA de la empresa.');
+    else
+      alert('No se pudo crear el respaldo.');
+  }).catch((e) => console.log(e));
+};
+
+export const reporteClientes = () => {
+  axios.create({
+    baseURL: 'https://arcadestation.pythonanywhere.com/reportes/generar/clientes',
+    'headers': {
+      'Authorization': localStorage.getItem('access_token_as')
+    }
+  }).get().then((res) => {
+    const content = res.headers['content-type'];
+    download(res.data, 'REPORTE_CLIENTES_ARCADESTATION.pdf', content)
+  }).catch((e) => console.log(e));
+};
+
+export const restaurarBackup = () => {
+  axios.create({
+    baseURL: 'https://arcadestation.pythonanywhere.com/backupdb/',
+    'headers': {
+      'Authorization': localStorage.getItem('access_token_as')
+    }
+  }).post().then((res) => {
+    if (res.data.message === 'Success')
+      alert('El último respaldo guardado en la nube de la empresa ha sido restaurado exitosamente.');
+    else
+      alert('El último respaldo guardado en la nube de la empresa NO pudo ser restaurado.');
+  }).catch((e) => console.log(e));
+};
+
 const Home = () => {
 
   const [datos, setDatos] = useState({});
@@ -37,70 +101,6 @@ const Home = () => {
     localStorage.removeItem('access_token_as');
     localStorage.removeItem('refresh_token_as');
     navigate('/');
-  };
-
-  const reporteClientes = () => {
-    axios.create({
-      baseURL: 'https://arcadestation.pythonanywhere.com/reportes/generar/clientes',
-      'headers': {
-        'Authorization': localStorage.getItem('access_token_as')
-      }
-    }).get().then((res) => {
-      const content = res.headers['content-type'];
-      download(res.data, 'REPORTE_CLIENTES_ARCADESTATION.pdf', content)
-    }).catch((e) => console.log(e));
-  };
-
-  const reporteEmpleados = () => {
-    axios.create({
-      baseURL: 'https://arcadestation.pythonanywhere.com/reportes/generar/empleados',
-      'headers': {
-        'Authorization': localStorage.getItem('access_token_as')
-      }
-    }).get().then((res) => {
-      const content = res.headers['content-type'];
-      download(res.data, 'REPORTE_EMPLEADOS_ARCADESTATION.pdf', content)
-    }).catch((e) => console.log(e));
-  };
-
-  const reporteMaquinas = () => {
-    axios.create({
-      baseURL: 'https://arcadestation.pythonanywhere.com/reportes/generar/máquinas',
-      'headers': {
-        'Authorization': localStorage.getItem('access_token_as')
-      }
-    }).get().then((res) => {
-      const content = res.headers['content-type'];
-      download(res.data, 'REPORTE_MAQUINAS_ARCADESTATION.pdf', content)
-    }).catch((e) => console.log(e));
-  };
-
-  const crearBackup = () => {
-    axios.create({
-      baseURL: 'https://arcadestation.pythonanywhere.com/backupdb/',
-      'headers': {
-        'Authorization': localStorage.getItem('access_token_as')
-      }
-    }).get().then((res) => {
-      if (res.data.message === 'Success')
-        alert('El respaldo ha sido generado y enviado a la nube MEGA de la empresa.');
-      else
-        alert('No se pudo crear el respaldo.');
-    }).catch((e) => console.log(e));
-  };
-
-  const restaurarBackup = () => {
-    axios.create({
-      baseURL: 'https://arcadestation.pythonanywhere.com/backupdb/',
-      'headers': {
-        'Authorization': localStorage.getItem('access_token_as')
-      }
-    }).post().then((res) => {
-      if (res.data.message === 'Success')
-        alert('El último respaldo guardado en la nube de la empresa ha sido restaurado exitosamente.');
-      else
-        alert('El último respaldo guardado en la nube de la empresa NO pudo ser restaurado.');
-    }).catch((e) => console.log(e));
   };
 
   if (!localStorage.getItem('access_token_as'))
@@ -167,7 +167,7 @@ const Home = () => {
             <li><Link to="/consultar/clientes" class="dropdown-item">Consultar Cliente</Link></li>
             <li><Link to="/consultar/empleados" class="dropdown-item">Consultar Empleado</Link></li>
             <li><Link to="/consultar/tarjeta" class="dropdown-item">Consultar Tarjeta</Link></li>
-            <li><Link to="/consultar/maquinas" class="dropdown-item">Consultar Maquina</Link></li>
+            <li><Link to="/consultar/maquinas" class="dropdown-item">Consultar Máquina</Link></li>
           </div>
         </div>
         <div class="div-gerente modificar">
@@ -178,12 +178,11 @@ const Home = () => {
           <div class="div-gerente dropdown-menu">
             <li><Link to="/modificar/clientes" class="dropdown-item">Modificar Cliente</Link></li>
             <li><Link to="/modificar/empleados" class="dropdown-item">Modificar Empleado</Link></li>
-            <li><Link to="/modificar/maquinas" class="dropdown-item">Modificar Maquina</Link></li>
+            <li><Link to="/modificar/maquinas" class="dropdown-item">Modificar Máquina</Link></li>
             </div>
           </div>
 
-
-          <img src={img4} class="logo" />
+          <img src={img4} class="logo" onClick={() => navigate('/home')} style={{cursor:'pointer'}} />
 
         </div>
 
@@ -220,7 +219,6 @@ const Home = () => {
         <div class="div-gerente menu">
           <label for="check">
             <span class="span-gerente fas fa-times" id="times"></span>
-            a
             <span class="span-gerente far fa-circle-user" id="bars"></span>
           </label>
           <div class="div-gerente head"> menu </div> <br /> <br /> <br /> <br />
