@@ -275,7 +275,7 @@ const Home = () => {
         </div>
         <div className='div-gerente' id="saludo">
           Aquí tendrás tus funciones laborales de ARCADESTATION. Echa un vistazo y descubre tus funciones, en caso
-          de una duda utilice el boton de ayuda.
+          de una duda utilice el manual de usuario.
         </div>
 
         <img src={img5} id="mask_group_ek2" />
