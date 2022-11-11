@@ -1,6 +1,10 @@
 import axios from 'axios';
 import React,{useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import img4 from '../Img/logo_ek1.png';
+import {crearBackup, restaurarBackup, reporteClientes, reporteEmpleados, reporteMaquinas} from '../Home.jsx';
+
+import '../css/form_trans_gerente.css';
 
 const FormularioClientes = () => {
 
@@ -82,55 +86,140 @@ const FormularioClientes = () => {
     }
 
     return (
-        <div>
-            <h1>Registrar Transacción</h1>
-            <form onSubmit={(e) => checkCreacion(e)}>
-                {editable ? (<>
-                <label htmlFor="tarjeta">Tarjeta:</label>
-                <input name="tarjeta" type="text" maxLength={13} pattern='\d+' value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
-                
-                <label htmlFor="monto">Monto:</label>
-                <input name="monto" type="number" step={0.01} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required disabled />
+        <main class="main-container">
+        <input class="" type="checkbox" name="" id="check" />
+            <div class="div-gerente menu">
+                <label for="check">
+                    <span class="fas fa-times" id="times"></span>
+                    <span class="far fa-circle-user" id="bars"></span>
+                </label>
+                <div class="div-gerente head">menú</div><br /> <br /> <br /> <br />
+    
+                <li><a href="#"><i class="fas fa-users"></i> Manual de usuario</a></li>
+                <li><a href="#" onClick={crearBackup}><i class="fas fa-cloud"></i> Crear Respaldo de base de datos</a></li>
+                <li><a href="#" onClick={restaurarBackup}><i class="fas fa-cloud"></i> Restaurar base de datos</a></li>
+                <li><Link to="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
+                <li><Link to="/control/probar_maquina"><i class="fas fa-gamepad"></i> Probar máquina</Link></li>
+            </div>
+          
+            <div class="div-gerente barra_de_navegacion">
+                <div class="div-gerente reportes">
+                    <button type="button" class="btn btn-white dropdownd-toggle" id="reportes" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                        Reportes
+                    </button>
+                    <div class="div-gerente dropdown-menu">
+                    <li><a href="#reporte_empleado" onClick={reporteEmpleados} class="dropdown-item">Reporte de Empleados</a></li>
+                    <li><a href="#reporte_cliente" onClick={reporteClientes} class="dropdown-item">Reporte de Clientes</a></li>
+                    <li><a href="#reporte_maquina" onClick={reporteMaquinas} class="dropdown-item">Reporte de Máquinas</a></li>
+                    </div>
+                </div>
+    
+                <div class="div-gerente agregar">
+    
+                    <button type="button" class="btn btn-white dropdownd-toggle" id="agregar" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                        Agregar
+                    </button>
+                    <div class="div-gerente dropdown-menu">
+                        <li><Link to="/crear/clientes" class="dropdown-item">Agregar Cliente</Link></li>
+                        <li><Link to="/crear/empleados" class="dropdown-item">Agregar Empleado</Link></li>
+                        <li><Link to="/crear/maquinas" class="dropdown-item">Agregar Máquina</Link></li>
+                        <li><Link to="/crear/transaccion" class="dropdown-item">Agregar Recarga</Link></li>    
+                    </div>
+                </div>
+                <div class="div-gerente consultar">
+                    <button type="button" class="btn btn-white dropdownd-toggle" id="consultar" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                        Consultar
+                    </button>
+                    <div class="div-gerente dropdown-menu">
+                        <li><Link to="/consultar/clientes" class="dropdown-item">Consultar Cliente</Link></li>
+                        <li><Link to="/consultar/empleados" class="dropdown-item">Consultar Empleado</Link></li>
+                        <li><Link to="/consultar/tarjeta" class="dropdown-item">Consultar Tarjeta</Link></li>
+                        <li><Link to="/consultar/maquinas" class="dropdown-item">Consultar Máquina</Link></li>
+                    </div>
+                </div>
+                <div class="div-gerente modificar">
+                    <button type="button" class="btn btn-white dropdownd-toggle" id="modificar" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                        Modificar
+                    </button>
+                    <div class="div-gerente dropdown-menu">
+                    <li><Link to="/modificar/clientes" class="dropdown-item">Modificar Cliente</Link></li>
+                    <li><Link to="/modificar/empleados" class="dropdown-item">Modificar Empleado</Link></li>
+                    <li><Link to="/modificar/maquinas" class="dropdown-item">Modificar Máquina</Link></li>    
+                    </div>
+                </div>
 
-                <label htmlFor="descripcion">Descripción:</label>
-                <input name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value.replace(/^\s+/, ""))} required disabled />
+                <img src={img4} class="logo" onClick={() => navigate('/home')} style={{cursor:'pointer'}} />  
+    
+            </div>
+				
+                    <form class="div-gerente rectangulo_transaccion" onSubmit={(e) => checkCreacion(e)}>
 
-                <label htmlFor="referencia">Referencia:</label>
-                <input name="referencia" type="text" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required disabled />
+                        <div class="div-gerente" id="Tarjeta">
+                            Tarjeta:
+                            <input type="text" class="tarjeta" name="tarjeta" maxLength={13} pattern='\d+' value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
+                        </div>
 
-                <label htmlFor="tipoPago">Tipo de Pago:</label>
-                <select name="tipoPago" id="tipoPago" disabled="disabled" onSelect={(e) => setTipoPago(e.target.value.replace(/^\s+/, ""))}>
-                    <option value="1">Tarjeta de Débito</option>
-                    <option value="2">Pago Móvil</option>
-                    <option value="3">Tarjeta de Crédito</option>
-                    <option value="4">Transferencia</option>
-                </select>
-                </>) :
-                (<>
-                <label htmlFor="tarjeta">Tarjeta:</label>
-                <input name="tarjeta" type="text" pattern='\d+' maxLength={13} value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
-                
-                <label htmlFor="monto">Monto:</label>
-                <input name="monto" type="number" step={0.01} max={99999999.99} min={0.01} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required />
+                        {
+                            editable ? (
+                                <>
+                                <div class="div-gerente" id="Monto">
+                                    Monto:<br />
+                                    <input class="monto" name="monto" type="number" step={0.01} min={0.01} max={9999999.99} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required disabled />
+                                </div>
+                                <div class="div-gerente" id="Descripcion">
+                                    Descripción:
+                                    <input class="monto" name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value.replace(/^\s+/, ""))} required disabled/>
+                                </div>
+                                <div class="div-gerente" id="Referencia">
+                                    Referencia:
+                                    <input type="text" class="monto" name="referencia" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required disabled />
+                                </div>
+                                <div class="div-gerente" id="Tipo">
+                                    Tipo de Pago:
+                                    <select name="tipoPago" onChange={(e) => setTipoPago(e.target.value.replace(/^\s+/, ""))} disabled="disabled">
+                                        <option value="1">Tarjeta de Débito</option>
+                                        <option value="2">Pago Móvil</option>
+                                        <option value="3">Tarjeta de Crédito</option>
+                                        <option value="4">Transferencia</option>                          
+                                    </select>
+                                </div>
+                                </>
+                            ) : (
+                                <>
+                                <div class="div-gerente" id="Monto">
+                                    Monto:<br />
+                                    <input class="monto" name="monto" type="number" step={0.01} min={0.01} max={9999999.99} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required  />
+                                </div>
+                                <div class="div-gerente" id="Descripcion">
+                                    Descripción:
+                                    <input class="monto" name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value.replace(/^\s+/, ""))} required />
+                                </div>
+                                <div class="div-gerente" id="Referencia">
+                                    Referencia:
+                                    <input type="text" class="monto" name="referencia" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required  />
+                                </div>
+                                <div class="div-gerente" id="Tipo">
+                                    Tipo de Pago:
+                                    <select name="tipoPago" onChange={(e) => setTipoPago(e.target.value.replace(/^\s+/, ""))}>
+                                        <option value="1">Tarjeta de Débito</option>
+                                        <option value="2">Pago Móvil</option>
+                                        <option value="3">Tarjeta de Crédito</option>
+                                        <option value="4">Transferencia</option>                          
+                                    </select>
+                                </div>                                
+                                </>
+                            )
+                        }
 
-                <label htmlFor="descripcion">Descripción:</label>
-                <input name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value.replace(/^\s+/, ""))} required />
-
-                <label htmlFor="referencia">Referencia:</label>
-                <input name="referencia" type="text" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required />
-                
-                <label htmlFor="tipoPago">Tipo de Pago:</label>
-                <select name="tipoPago" id="tipoPago" onChange={(e) => setTipoPago(e.target.value.replace(/^\s+/, ""))}>
-                    <option value="1">Tarjeta de Débito</option>
-                    <option value="2">Pago Móvil</option>
-                    <option value="3">Tarjeta de Crédito</option>
-                    <option value="4">Transferencia</option>
-                </select>
-                </>)
-                }
-                <button type='submit'>Enviar Formulario</button>
-            </form>
-        </div>
+                        <div class="div-gerente Crear2">
+                            <button type='submit' class="Crearb"> Crear </button>
+                        </div>
+		            </form>
+     </main>
     );
 };
 
