@@ -27,6 +27,7 @@ import RecuperarContrasena from './components/control/RecuperarContrasena.jsx';
 import FormularioClientesCajero from './components/crear/FormularioClientesCajero';
 import FormularioTransaccionesCajero from './components/crear/FormularioTransaccionesCajero';
 import ConsultarTarjetaCajero from './components/consultar/ConsultaTarjetaCajero';
+import CambiarContraseñaCajero from './components/control/CambiarContraseñaCajero';
 
 function App() {
 
@@ -63,6 +64,8 @@ function App() {
           <Route path='/cajero/clientes' element={<FormularioClientesCajero />} />
           <Route path='/cajero/transaccion' element={<FormularioTransaccionesCajero />} />
           <Route path='/cajero/tarjeta' element={<ConsultarTarjetaCajero />} />
+          <Route path='/cajero/contrasena' element={<CambiarContraseñaCajero />} />
+          <Route path='/cajero/maquina' element={<ConsultarTarjetaCajero />} />
           
         </Routes>
       </BrowserRouter>
