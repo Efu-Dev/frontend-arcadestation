@@ -37,7 +37,6 @@ const CambiarContraseñaCajero = () => {
     return (
         <main class="main-container">
         <input class="" type="checkbox" name="" id="check" />
-        <input class="" type="checkbox" name="" id="check" />
             <div class="div-gerente menu">
           <label for="check">
             <span class="span-gerente fas fa-times" id="times"></span>

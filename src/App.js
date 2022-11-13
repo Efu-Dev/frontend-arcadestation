@@ -28,6 +28,7 @@ import FormularioClientesCajero from './components/crear/FormularioClientesCajer
 import FormularioTransaccionesCajero from './components/crear/FormularioTransaccionesCajero';
 import ConsultarTarjetaCajero from './components/consultar/ConsultaTarjetaCajero';
 import CambiarContraseñaCajero from './components/control/CambiarContraseñaCajero';
+import ProbarMaquinaCajero from './components/crear/ProbarMaquinaCajero';
 
 function App() {
 
@@ -65,7 +66,7 @@ function App() {
           <Route path='/cajero/transaccion' element={<FormularioTransaccionesCajero />} />
           <Route path='/cajero/tarjeta' element={<ConsultarTarjetaCajero />} />
           <Route path='/cajero/contrasena' element={<CambiarContraseñaCajero />} />
-          <Route path='/cajero/maquina' element={<ConsultarTarjetaCajero />} />
+          <Route path='/cajero/maquina' element={<ProbarMaquinaCajero />} />
           
         </Routes>
       </BrowserRouter>
