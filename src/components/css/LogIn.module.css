@@ -5,6 +5,14 @@
     font-family: 'Gill Sans MT';
 }
 
+.form p{
+    margin-top: 20px;
+    font-size: 11.5pt;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: -10px;
+}
+
 .imagen{
     width:auto;
     height: 65px;
@@ -189,7 +197,11 @@ input[type="submit"]
     font-size: 0.90em;
 }
 
-p{
+.form > p{
     margin-left:-160px;
     margin-top: -19px; 
+}
+
+.otrap{
+    
 }

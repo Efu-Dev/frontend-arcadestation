@@ -188,7 +188,7 @@ const Home = () => {
 
         <div class="div-gerente outer button">
 
-          <button onClick={logOut}> LOG OUT </button>
+          <button onClick={logOut}> Salir </button>
           <span className='span-gerente'></span>
           <span className='span-gerente'></span>
         </div>
@@ -259,7 +259,7 @@ const Home = () => {
 
         <div class="div-gerente outer button">
 
-          <button onClick={logOut}> LOG OUT </button>
+          <button onClick={logOut}> Salir </button>
           <span></span>
           <span></span>
         </div>

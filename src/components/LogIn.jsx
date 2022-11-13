@@ -54,28 +54,28 @@ const LogIn = () => {
       <div className={styles.container}>
         <img src={logo} alt="" className={styles.imagen} />
 
-        <form className={styles.box} onSubmit={logIn}>
+        <form className={`${styles.box} ${styles.formulario}`} onSubmit={logIn}>
             <div className={styles.form}>
-                <h2>LOG IN</h2>
+                <h2>INICIAR SESIÓN</h2>
             <div className={styles.inputBox}>
                 <input type="text" required onChange={(e) => setUsername(e.target.value)} />
-                <span>Username</span>
+                <span>Usuario</span>
                 <i></i>
             </div>
         
             <div className={styles.inputBox}>
                 <input type="password" required id="pass" onChange={(e) => setPassword(e.target.value)} />
-                <span>Password</span>
+                <span>Contraseña</span>
                 <i></i>
             </div>
         
             <div className={styles.links}>
-                <Link to="/control/recuperacion_contrasena" style={{zIndex: 2}}>Forgot password?</Link>
+                <Link to="/control/recuperacion_contrasena" style={{zIndex: 2}}>¿Olvidó su contraseña?</Link>
             </div>
 
-            <input type="checkbox" onClick={myFunction} className={styles.check} /> <p className="passw">show password</p> 
+            <input type="checkbox" onClick={myFunction} className={styles.check} /> <p className={`${styles.ver}`}>ver contraseña</p> 
         
-            <input type="submit" value="Login"></input>
+            <input className='mt-4' type="submit" value="Entrar" ></input>
             </div>
         
            </form>
