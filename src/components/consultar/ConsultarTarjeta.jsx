@@ -83,8 +83,7 @@ const ConsultarTarjeta = () => {
                         ${new Date(tarjeta.fecha_creacion).getHours()}:${new Date(tarjeta.fecha_creacion).getMinutes()}`}</td>
                         <td style={{border: 'solid 1px black'}}>{tarjeta.anulada === 'N' ? "No" : "Sí"}</td>
                         {tarjeta.anulada === 'S' ? (
-                            <td style={{border: 'solid 1px black'}}>{`${new Date(tarjeta.fecha_anulacion).getDate()+1}/${new Date(tarjeta.fecha_anulacion).getMonth()+1}/${new Date(tarjeta.fecha_anulacion).getFullYear()} 
-                            ${new Date(tarjeta.fecha_anulacion).getHours()}:${new Date(tarjeta.fecha_anulacion).getMinutes()}`}</td>
+                            <td style={{border: 'solid 1px black'}}>{`${new Date(tarjeta.fecha_anulacion).getDate()+1}/${new Date(tarjeta.fecha_anulacion).getMonth()+1}/${new Date(tarjeta.fecha_anulacion).getFullYear()}`}</td>
                         ) : (
                             <td style={{border: 'solid 1px black'}}>-</td>
                         )}
