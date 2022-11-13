@@ -195,13 +195,10 @@ input[type="submit"]
     margin-left: 34px;
     margin-top: -15px;
     font-size: 0.90em;
+    
 }
 
 .form > p{
     margin-left:-160px;
-    margin-top: -19px; 
-}
-
-.otrap{
-    
+    margin-top: -19px;
 }
