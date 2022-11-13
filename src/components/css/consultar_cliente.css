@@ -337,3 +337,7 @@ span {
 #container-consulta{
     background-color: rgba(251.82, 74.62, 148.26, 1);
 }
+
+td, th{
+	overflow-wrap: break-word;
+}
