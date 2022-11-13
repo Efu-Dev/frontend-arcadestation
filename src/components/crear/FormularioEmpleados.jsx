@@ -142,7 +142,7 @@ const FormularioEmpleados = () => {
                 <div class="div-gerente reportes">
                     <button type="button" class="btn btn-white dropdownd-toggle" id="reportes" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="true">
-                        Reportes
+                        <u>Reportes</u>
                     </button>
                     <div class="div-gerente dropdown-menu">
                     <li><a href="#reporte_empleado" onClick={reporteEmpleados} class="dropdown-item">Reporte de Empleados</a></li>
@@ -248,7 +248,7 @@ const FormularioEmpleados = () => {
 
                             <div class="div-gerente" id="tele">
                                 Teléfono:
-                                <input pattern='/d+' class="telefono" type="text" maxLength={15} value={telefono} onChange={(e) => setTelefono(e.target.value.replace(/^\s+/, ""))} required disabled />
+                                <input pattern='\d+' class="telefono" type="text" maxLength={15} value={telefono} onChange={(e) => setTelefono(e.target.value.replace(/^\s+/, ""))} required disabled />
                             </div>
 
                             <div class="div-gerente" id="Cargo">
@@ -292,7 +292,7 @@ const FormularioEmpleados = () => {
 
                             <div class="div-gerente" id="tele">
                                 Teléfono:
-                                <input pattern='/d+' class="telefono" type="text" maxLength={15} value={telefono} onChange={(e) => setTelefono(e.target.value.replace(/^\s+/, ""))} required />
+                                <input pattern='\d+' class="telefono" type="text" maxLength={15} value={telefono} onChange={(e) => setTelefono(e.target.value.replace(/^\s+/, ""))} required />
                             </div>
 
                             <div class="div-gerente" id="Cargo">
@@ -312,7 +312,7 @@ const FormularioEmpleados = () => {
 
                             <div class="div-gerente" id="tele">
                                 Teléfono:
-                                <input pattern='/d+' class="telefono" type="text" maxLength={15} value={telefono} onChange={(e) => setTelefono(e.target.value.replace(/^\s+/, ""))} required disabled />
+                                <input pattern='\d+' class="telefono" type="text" maxLength={15} value={telefono} onChange={(e) => setTelefono(e.target.value.replace(/^\s+/, ""))} required disabled />
                             </div>
 
                             <div class="div-gerente" id="Cargo">

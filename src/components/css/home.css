@@ -15,7 +15,7 @@ img {
 .main-container {
 	display: flex;
 	width: 100vw;
-	height: 100vh;
+	min-height: 100vh;
 	background: linear-gradient(-175.82388596164deg, rgba(251.82, 74.62, 148.26, 1) 0%, rgba(189.07, 158.69, 211.44, 0.86000001430511) 48%, rgba(69.52, 74.27, 213.57, 0.94999998807907) 87%);
 
 }
