@@ -341,3 +341,11 @@ span {
 td, th{
 	overflow-wrap: break-word;
 }
+
+#consulta-contenedor{
+	background-color: rgba(251.82, 74.62, 148.26, 1);
+}
+
+#tabla2{
+	background-color: rgba(251.82, 74.62, 148.26, 1);
+}
