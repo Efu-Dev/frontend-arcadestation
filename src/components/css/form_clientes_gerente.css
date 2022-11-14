@@ -347,8 +347,6 @@ li:hover a {
 
 	margin-top: 70vh;
 	margin-left: 80vw;
-
-
 }
 
 .Crearb {
@@ -356,4 +354,9 @@ li:hover a {
 	height: 6vh;
 	border-radius: 20px;
 	background: #A9B5EF;
+}
+
+.cambiar-contrasena-submit{
+	margin-top: 60vh;
+	margin-left: 80vw;
 }

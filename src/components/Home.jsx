@@ -188,7 +188,7 @@ const Home = () => {
 
         <div class="div-gerente outer button">
 
-          <button onClick={logOut}> LOG OUT </button>
+          <button onClick={logOut}> Salir </button>
           <span className='span-gerente'></span>
           <span className='span-gerente'></span>
         </div>
@@ -223,8 +223,8 @@ const Home = () => {
           </label>
           <div class="div-gerente head">menú</div> <br /> <br /> <br /> <br />
           <li><a href="#"><i class="fas fa-users"></i> Manual de Ayuda de Usuario</a></li>
-          <li><Link to="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
-          <li><Link to="/control/probar_maquina"><i class="fas fa-info"></i> Probar Máquina</Link></li>
+          <li><Link to="/cajero/contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
+          <li><Link to="/cajero/maquina"><i class="fas fa-info"></i> Probar Máquina</Link></li>
         </div>
 
         <img src={img6} class="img-1" />
@@ -259,7 +259,7 @@ const Home = () => {
 
         <div class="div-gerente outer button">
 
-          <button onClick={logOut}> LOG OUT </button>
+          <button onClick={logOut}> Salir </button>
           <span></span>
           <span></span>
         </div>

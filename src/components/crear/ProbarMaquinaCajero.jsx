@@ -5,7 +5,7 @@ import '../css/form_maquina.css';
 import img4 from '../Img/logo_ek1.png';
 import {crearBackup, restaurarBackup, reporteClientes, reporteEmpleados, reporteMaquinas} from '../Home.jsx';
 
-const ProbarMaquina = () => {
+const ProbarMaquinaCajero = () => {
 
     const [maquinas, setMaquinas] = useState(false);
     const [maquina, setMaquina] = useState(false);
@@ -94,69 +94,38 @@ const ProbarMaquina = () => {
         <main class="main-container">
         <input class="" type="checkbox" name="" id="check" />
             <div class="div-gerente menu">
-                <label for="check">
-                    <span class="fas fa-times" id="times"></span>
-                    <span class="far fa-circle-user" id="bars"></span>
-                </label>
-                <div class="div-gerente head">menú</div><br /> <br /> <br /> <br />
-    
-                <li><a href="#"><i class="fas fa-users"></i> Manual de usuario</a></li>
-                <li><a href="#" onClick={crearBackup}><i class="fas fa-cloud"></i> Crear Respaldo de base de datos</a></li>
-                <li><a href="#" onClick={restaurarBackup}><i class="fas fa-cloud"></i> Restaurar base de datos</a></li>
-                <li><Link to="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
-                <li><Link to="/control/probar_maquina"><i class="fas fa-gamepad"></i> Probar máquina</Link></li>
+          <label for="check">
+            <span class="span-gerente fas fa-times" id="times"></span>
+            <span class="span-gerente far fa-circle-user" id="bars"></span>
+          </label>
+          <div class="div-gerente head">menú</div> <br /> <br /> <br /> <br />
+          <li><a href="#"><i class="fas fa-users"></i> Manual de Ayuda de Usuario</a></li>
+          <li><Link to="/cajero/contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
+          <li><Link to="/cajero/maquina"><i class="fas fa-info"></i> Probar Máquina</Link></li>
+        </div>
+
+        <div class="div-gerente barra_de_navegacion">
+          <div class="div-gerente Crear">
+            <button type="button" class="btn btn-white dropdown-toggle" id="Crear" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="true">
+              Crear
+            </button>
+            <div class="div-gerente dropdown-menu">
+              <li><Link to="/cajero/clientes" class="dropdown-item">Crear Cliente</Link></li>
+              <li><Link to="/cajero/transaccion" class="dropdown-item">Crear Recarga</Link></li>
             </div>
-          
-    
-            <div class="div-gerente barra_de_navegacion">
-                <div class="div-gerente reportes">
-                    <button type="button" class="btn btn-white dropdownd-toggle" id="reportes" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="true">
-                        <u>Reportes</u>
-                    </button>
-                    <div class="div-gerente dropdown-menu">
-                    <li><a href="#reporte_empleado" onClick={reporteEmpleados} class="dropdown-item">Reporte de Empleados</a></li>
-                    <li><a href="#reporte_cliente" onClick={reporteClientes} class="dropdown-item">Reporte de Clientes</a></li>
-                    <li><a href="#reporte_maquina" onClick={reporteMaquinas} class="dropdown-item">Reporte de Máquinas</a></li>
-                    </div>
-                </div>
-    
-                <div class="div-gerente agregar">
-    
-                    <button type="button" class="btn btn-white dropdownd-toggle" id="agregar" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="true">
-                        Agregar
-                    </button>
-                    <div class="div-gerente dropdown-menu">
-                        <li><Link to="/crear/clientes" class="dropdown-item">Agregar Cliente</Link></li>
-                        <li><Link to="/crear/empleados" class="dropdown-item">Agregar Empleado</Link></li>
-                        <li><Link to="/crear/maquinas" class="dropdown-item">Agregar Máquina</Link></li>
-                        <li><Link to="/crear/transaccion" class="dropdown-item">Agregar Recarga</Link></li>    
-                    </div>
-                </div>
-                <div class="div-gerente consultar">
-                    <button type="button" class="btn btn-white dropdownd-toggle" id="consultar" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="true">
-                        Consultar
-                    </button>
-                    <div class="div-gerente dropdown-menu">
-                        <li><Link to="/consultar/clientes" class="dropdown-item">Consultar Cliente</Link></li>
-                        <li><Link to="/consultar/empleados" class="dropdown-item">Consultar Empleado</Link></li>
-                        <li><Link to="/consultar/tarjeta" class="dropdown-item">Consultar Tarjeta</Link></li>
-                        <li><Link to="/consultar/maquinas" class="dropdown-item">Consultar Máquina</Link></li>
-                    </div>
-                </div>
-                <div class="div-gerente modificar">
-                    <button type="button" class="btn btn-white dropdownd-toggle" id="modificar" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="true">
-                        Modificar
-                    </button>
-                    <div class="div-gerente dropdown-menu">
-                    <li><Link to="/modificar/clientes" class="dropdown-item">Modificar Cliente</Link></li>
-                    <li><Link to="/modificar/empleados" class="dropdown-item">Modificar Empleado</Link></li>
-                    <li><Link to="/modificar/maquinas" class="dropdown-item">Modificar Máquina</Link></li>    
-                    </div>
-                </div>
+          </div>
+
+          <div class="div-gerente Consultar">
+            <button type="button" class="btn btn-white dropdown-toggle" id="Consultar" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="true">
+              Consultar
+            </button>
+            <div class="div-gerente dropdown-menu">
+
+              <li><Link to="/cajero/tarjeta" class="dropdown-item">Consultar tarjeta</Link></li>
+            </div>
+          </div>
 
                 <img src={img4} class="logo" onClick={() => navigate('/home')} style={{cursor:'pointer'}} />   
     
@@ -224,4 +193,4 @@ const ProbarMaquina = () => {
         </div>)
 }
 
-export default ProbarMaquina;
+export default ProbarMaquinaCajero;

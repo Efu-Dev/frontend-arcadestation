@@ -121,8 +121,8 @@ const FormularioClientesCajero = () => {
           </label>
           <div class="div-gerente head">menú</div> <br /> <br /> <br /> <br />
           <li><a href="#"><i class="fas fa-users"></i> Manual de Ayuda de Usuario</a></li>
-          <li><Link to="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
-          <li><Link to="/control/probar_maquina"><i class="fas fa-info"></i> Probar Máquina</Link></li>
+          <li><Link to="/cajero/contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
+          <li><Link to="/cajero/maquina"><i class="fas fa-info"></i> Probar Máquina</Link></li>
         </div>
 
         <div class="div-gerente barra_de_navegacion">
