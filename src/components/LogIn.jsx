@@ -58,7 +58,7 @@ const LogIn = () => {
             <div className={styles.form}>
                 <h2>INICIAR SESIÓN</h2>
             <div className={styles.inputBox}>
-                <input type="text" required onChange={(e) => setUsername(e.target.value)} />
+                <input type="text" required onChange={(e) => setUsername(e.target.value.trim())} />
                 <span>Usuario</span>
                 <i></i>
             </div>

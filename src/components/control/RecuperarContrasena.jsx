@@ -46,7 +46,7 @@ const RecuperarContrasena = () => {
         <div class={styles.box}>
             <form class={styles.form} onSubmit={(e) => enviarPeticion(e)}>
               <h2>¿OLVIDÓ CONTRASEÑA?</h2>
-              <i className='text-center'>Por favor introduzca su email. Recibirá un correo con su nueva contraseña.</i>
+              <i className='text-center'>Por favor introduzca su cédula. Recibirá un correo con su nueva contraseña.</i>
               <div class={styles.inputBox}>
                   <input type="text" required onChange={(e) => setCedula(e.target.value.replace(/^\s+/, ""))} name="cedula" placeholder='Ingrese su cédula' pattern='\d+' maxLength={9} />
                   <span>Cédula</span>

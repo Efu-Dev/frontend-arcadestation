@@ -81,7 +81,7 @@ const CambiarContraseñaCajero = () => {
                     </div>
 
                     <div className='div-gerente' id="Precio">
-                        Precio:
+                        Repetir Contraseña:
                         <input type="password" placeholder='Al menos 5 y máximo 20.' maxLength={20} minLength={5} required onChange={(e) => setContrasenaRepetir(e.target.value.replace(/^\s+/, ""))} />
                     </div>
 
