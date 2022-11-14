@@ -265,16 +265,6 @@ span {
 	border: 1px solid #000;
 }
 
-.cuadrado {
-	top: 75%;
-	left: 35%;
-	width: 12vw;
-	height: 13vh;
-	border-radius: 20px;
-	background: #FBD8FC;
-	border: 2px solid #000;
-}
-
 .cuadrado2 {
 	top: 78%;
 	left: 50%;

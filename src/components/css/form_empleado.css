@@ -267,19 +267,11 @@ span {
 	border: 1px solid #000; 
 }
 
-.cuadrado {
-	top: 74%;
-	left: 45%;
-	width: 12vw;           
-	height: 13vh;
-	border-radius: 20px;          
-	background: #FBD8FC;        
-	border: 2px solid #000; 
-}
+
 
 #nombre_ek1 {
 	top: 20%;
-	left: 20%;
+	left: 10%;
 	width: 39vh;
 	height: 4vh;
 	font-family: Sintony;
@@ -297,38 +289,12 @@ span {
 	
 }
 
-#genero {
-	
-	left: 20%;
-	
-	font-family: Sintony;
-	font-size: 3vh;
-	font-weight: bold;
-	text-align: center;
-	letter-spacing: 3.9px;
-	color:#000000;
-}
-
-
-
-#sexo {
-	margin-top: 6vh;
-	margin-left: 2vh;
-	
-	font-family: Sintony;
-	font-size: 3vh;
-	font-weight: bold;
-	text-align: center;
-	letter-spacing: 3vh;
-	color:#000000;
-	
-}
 
 
 
 #direccion_ek1 {
 	top: 40%;
-	left: 20%;
+	left: 10%;
 	width: 39vh;
 	height: 4vh;
 
@@ -349,13 +315,13 @@ span {
 
 #ingrese_cedula__ek1 {
 	top: 3%;
-	left: 40%;
+	left: 30%;
 	width: 39vh;
 	height: 4vh;
 	font-family: Sintony;
 	font-size: 3vh;
 	font-weight: bold;
-	text-align: center;
+	text-align: left;
 	letter-spacing: 3.9px;
 	color:#000000;
 }
@@ -387,7 +353,7 @@ span {
 }
 
 #tele {
-	top: 36%;
+	top: 40%;
 	left: 55%;
 	width: 39vh;
 	height: 4vh;
@@ -407,7 +373,7 @@ span {
 }
 
 #Cargo {
-	top: 53%;
+	top: 60%;
 	left: 55%;
 	width: 39vh;
 	height: 4vh;
@@ -421,13 +387,15 @@ span {
 
 .crear {
 
-    margin-top: 37%;
-	margin-left: 85%;
+    margin-top: 70vh;
+	margin-left: 80%;
 	width: 15vh;	
 	height: 6vh;
 	border-radius: 30px;          
 	background: #A9B5EF; 
     font-weight: bold; 
 	font-family: Tomorrow; 
+	
+	
 	
 }
