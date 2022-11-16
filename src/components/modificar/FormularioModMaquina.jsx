@@ -158,17 +158,17 @@ const FormularioModClientes = () => {
                         <h1>Modificar Maquina</h1>
                         <div className='div-gerente' id="nombre_ek1_maquina_mod">
                             Nombre:
-                            <input type="text" class="nombre" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
+                            <input placeholder='Ejemplo: Space Invaders 2' type="text" class="nombre" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
                         </div>
 
                         <div className='div-gerente' id="Precio">
                             Precio:
-                            <input class="precio" type="number" min={0.01} step={0.01} max={99.99} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required disabled />
+                            <input placeholder='Ejemplo: 2.55'  class="precio" type="number" min={0.01} step={0.01} max={99.99} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required disabled />
                         </div>
 
                         <div className='div-gerente' id="Codigo">
                             Código: <br/>
-                            <input type="text" class="codigo" maxLength={8} value={codigo} onChange={(e) => onChangeCodigo(e)} pattern="[0-9]+" required />
+                            <input  placeholder='Ejemplo: 123456789' onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => {e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')}} type="text" class="codigo" maxLength={8} value={codigo} onChange={(e) => onChangeCodigo(e)} pattern="[0-9]+" required />
                         </div>
 
                         <div class="div-gerente cuadrado2-mod-maquina">
@@ -183,17 +183,17 @@ const FormularioModClientes = () => {
                         <h1>Modificar Maquina</h1>
                         <div className='div-gerente' id="nombre_ek1_maquina_mod">
                             Nombre:
-                            <input type="text" class="nombre" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required  />
+                            <input placeholder='Ejemplo: Space Invaders 2' type="text" class="nombre" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required  />
                         </div>
 
                         <div className='div-gerente' id="Precio">
                             Precio:
-                            <input class="precio" type="number" min={0.01} step={0.01} max={99.99} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required  />
+                            <input placeholder='Ejemplo: 2.55'  class="precio" type="number" min={0.01} step={0.01} max={99.99} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required  />
                         </div>
 
                         <div className='div-gerente' id="Codigo">
                             Código: <br/>
-                            <input type="text" class="codigo" maxLength={8} value={codigo} onChange={(e) => onChangeCodigo(e)} pattern="[0-9]+" required />
+                            <input  placeholder='Ejemplo: 123456789' onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => {e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')}} type="text" class="codigo" maxLength={8} value={codigo} onChange={(e) => onChangeCodigo(e)} pattern="[0-9]+" required />
                         </div>
 
                         <div class="div-gerente cuadrado2-mod-maquina">

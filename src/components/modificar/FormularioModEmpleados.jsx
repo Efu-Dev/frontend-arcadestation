@@ -30,6 +30,10 @@ const FormularioModEmpleados = () => {
         setEmail((e) => e.trimEnd());
         setTelefono((e) => e.trimEnd());
         
+        if(cedula === '' || nombre === '' || direccion === ''){
+            alert("El cliente no está registrado");
+            return;
+        }        
         if(nombre.split(" ").length !== 2){
             alert("El nombre debe seguir el siguiente formato: Nombre Apellido");
             return;
@@ -80,7 +84,7 @@ const FormularioModEmpleados = () => {
             res = r.data.datos;
         });
 
-        if(res.cedula === undefined && e.target.value.replace(/^\s+/, "").replace(/^0+/, "") !== ''){
+        if(res.cedula === undefined || e.target.value.replace(/^\s+/, "").replace(/^0+/, "") === ''){
             setNombre('');
             setDireccion('');
             setGenero('');
@@ -208,8 +212,8 @@ const FormularioModEmpleados = () => {
                                 Género:
                             </div>
                             <form method="get" id="sexo" onChange={(e) => setGenero(e.target.value)} disabled>
-                                <input name="intereses" type="radio" value={'H'} defaultChecked={true} checked={genero === 'H' || genero !== 'M'} />H
-                                <input name="intereses" type="radio" value={'M'} checked={genero === 'M'} />M
+                                <input name="intereses" type="radio" value={'H'} defaultChecked={true} checked={genero === 'H' || genero !== 'M'} disabled />H
+                                <input name="intereses" type="radio" value={'M'} checked={genero === 'M'} disabled />M
                             </form>
                         </div>                        
                         
@@ -220,12 +224,12 @@ const FormularioModEmpleados = () => {
 
                             <div class="div-gerente" id="tele">
                                 Teléfono:
-                                <input pattern='\d+' class="telefono" type="text" maxLength={15} value={telefono} onChange={(e) => setTelefono(e.target.value.replace(/^\s+/, ""))} required disabled />
+                                <input placeholder='Ejemplo: 04121273360' pattern='\d+' class="telefono" type="text" maxLength={15} value={telefono} onChange={(e) => setTelefono(e.target.value.replace(/^\s+/, ""))} required disabled />
                             </div>
 
                             <div class="div-gerente" id="Cargo">
                                 Cargo:
-                                <select class="cargo" value={cargo} onChange={(e) => setCargo(e.target.value)} disabled>
+                                <select class="cargo" value={cargo} onChange={(e) => setCargo(e.target.value)} disabled >
                                     <option value={'Cajero'}>Cajero</option>
                                     <option value={'Gerente'}>Gerente</option>
                                 </select>
@@ -243,7 +247,7 @@ const FormularioModEmpleados = () => {
                         <h1>Modificar Empleado</h1>
                         <div class="div-gerente" id="nombre_ek1">
                             Nombre y Apellido:
-                            <input placeholder='Ej: Andrés González' type="text" class="nombre" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
+                            <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y estar compuesto de un solo nombre y un solo apellido (conformados únicamente por caracteres alfabéticos) separados por un único espacio. Ejemplo: Andrés Gutiérrez.')}  placeholder='Ej: Andrés González' type="text" class="nombre" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
                         </div>
 
                         <div class="div-gerente" id="direccion_ek1">
@@ -267,7 +271,7 @@ const FormularioModEmpleados = () => {
 
                             <div class="div-gerente" id="tele">
                                 Teléfono:
-                                <input pattern='\d+' class="telefono" type="text" maxLength={15} value={telefono} onChange={(e) => setTelefono(e.target.value.replace(/^\s+/, ""))} required />
+                                <input placeholder='Ejemplo: 04121273360' onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} pattern='\d+' class="telefono" type="text" maxLength={15} value={telefono} onChange={(e) => setTelefono(e.target.value.replace(/^\s+/, ""))} required />
                             </div>
 
                             <div class="div-gerente" id="Cargo">
