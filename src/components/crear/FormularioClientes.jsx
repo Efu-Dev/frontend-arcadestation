@@ -212,26 +212,26 @@ const FormularioClientes = () => {
                         </>
                     ) : (
                         <>
-                            <div class="div-gerente" id="nombre_ek1">
+                            <div class="div-gerente" id="nombre_ek1G">
                                 Nombre y Apellido:
 
                             <input class="nombre" name="nombre" type="text" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
                             </div>
 
-                            <div class="div-gerente" id="direccion_ek1">
+                            <div class="div-gerente" id="direccion_ek1G">
                                 Dirección:
                                 <textarea class="direccion" name="direccion" type="text" required maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))}  />
                             </div>
 
-                            <div class="div-gerente cuadrado">
-                                    <div class="div-gerente" id="genero">
-                                        Género:
-                                    </div>
-                                    <form method="get" id="sexo" onChange={(e) => setGenero(e.target.value)} disabled>
-                                        <input name="intereses" type="radio" value={'H'} defaultChecked={true} checked={genero === 'H' || genero !== 'M'} />H
-                                        <input name="intereses" type="radio" value={'M'} checked={genero === 'M'} />M
-                                    </form>
-                            </div>                         
+                            <div class="div-gerente cuadradoe">
+                                <div class="div-gerente" id="genero">
+                                    Género:
+                                </div>
+                                <form method="get" id="sexo" onChange={(e) => setGenero(e.target.value)} disabled>
+                                    <input name="intereses" type="radio" value={'H'} defaultChecked={true} checked={genero === 'H' || genero !== 'M'} />H
+                                    <input name="intereses" type="radio" value={'M'} checked={genero === 'M'} />M
+                                </form>
+                            </div>       
                         </>
                     )}
 
