@@ -112,7 +112,7 @@ const Home = () => {
   if (datos.empleado.activo === 'N'){
     localStorage.removeItem('access_token_as')
     localStorage.removeItem('refresh_token_as')
-    alert("Su cuenta fue anulada.");
+    alert("Su cuenta se encuentra anulada.");
     navigate('/');
   }
 
