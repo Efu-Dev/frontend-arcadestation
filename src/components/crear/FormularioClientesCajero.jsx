@@ -158,7 +158,7 @@ const FormularioClientesCajero = () => {
 
                     <div class="div-gerente" id="ingrese_cedula__ek1G">
                         Ingrese Cédula:
-                        <input placeholder='Ejemplo: 123456789' onInput={e => {e.preventDefault(); e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} class="cedula" name="cedula" type="text" maxLength={9} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" required />
+                        <input placeholder='Ejemplo: 123456789' onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} class="cedula" name="cedula" type="text" maxLength={9} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" required />
                     </div>
 
                     {editable ? (
@@ -192,7 +192,7 @@ const FormularioClientesCajero = () => {
                             <div class="div-gerente" id="nombre_ek1G">
                                 Nombre y Apellido:
 
-                            <input onInput={e => {e.preventDefault(); e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y estar compuesto de un solo nombre y un solo apellido (conformados únicamente por caracteres alfabéticos) separados por un único espacio. Ejemplo: Andrés Gutiérrez.')} placeholder='Ejemplo: Julio García.' class="nombre" name="nombre" type="text" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, "").replace(/\s+/, ' '))} required />
+                            <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y estar compuesto de un solo nombre y un solo apellido (conformados únicamente por caracteres alfabéticos) separados por un único espacio. Ejemplo: Andrés Gutiérrez.')} placeholder='Ejemplo: Julio García.' class="nombre" name="nombre" type="text" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, "").replace(/\s+/, ' '))} required />
                             </div>
 
                             <div class="div-gerente" id="direccion_ek1G">
