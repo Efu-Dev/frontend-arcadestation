@@ -104,10 +104,17 @@ const Home = () => {
   };
 
   if (!localStorage.getItem('access_token_as'))
-    return (<h1>Estimado Usuario, no tiene permiso para acceder a este módulo.</h1>);
+    navigate('/');
 
   if (loading)
     return (<h3>Cargando...</h3>)
+
+  if (datos.empleado.activo === 'N'){
+    localStorage.removeItem('access_token_as')
+    localStorage.removeItem('refresh_token_as')
+    alert("Su cuenta se encuentra anulada.");
+    navigate('/');
+  }
 
   if (datos.empleado.cargo === 'Gerente')
     return (
@@ -126,7 +133,6 @@ const Home = () => {
           <li><a href="#" onClick={restaurarBackup}><i class="fas fa-cloud"></i> Restaurar base de datos</a></li>
           <li><Link to="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
           <li><Link to="/control/probar_maquina"><i class="fas fa-gamepad"></i> Probar máquina</Link></li>
-
 
         </div>
         <img src={img1} class="img-1" />

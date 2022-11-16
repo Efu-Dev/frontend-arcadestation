@@ -74,7 +74,7 @@ const FormularioModClientes = () => {
     };
 
     const onChangeCedula = async (e) => {
-        setCedula(e.target.value.replace(/^\s+/, ""));
+        setCedula(e.target.value.replace(/^\s+/, "").replace(/^0+/, ""));
         let res = undefined;
         await axios.create({
             baseURL: `https://arcadestation.pythonanywhere.com/api/clientes/${e.target.value.replace(/^\s+/, "")}`,
@@ -90,7 +90,7 @@ const FormularioModClientes = () => {
         console.log(res);
         setTarjetaAnulada(res.tarjeta_activa === 'S')
 
-        if(res.cedula === undefined && e.target.value.replace(/^\s+/, "") !== ''){
+        if(res.cedula === undefined && e.target.value.replace(/^\s+/, "").replace(/^0+/, "") !== ''){
             setNombre('');
             setDireccion('');
             setGenero('');
@@ -98,7 +98,7 @@ const FormularioModClientes = () => {
         }
         else{
             await axios.create({
-                baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value.replace(/^\s+/, "")}`,
+                baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value.replace(/^\s+/, "").replace(/^0+/, "")}`,
                 'headers': {
                   'Authorization': localStorage.getItem('access_token_as')
                 }
