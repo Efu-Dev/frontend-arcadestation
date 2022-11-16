@@ -189,6 +189,8 @@ const FormularioClientes = () => {
 
                     {editable ? (
                         <>
+                            <h1>Agregar Cliente</h1>
+
                             <div class="div-gerente" id="nombre_ek1G">
                                 Nombre y Apellido:
 
@@ -200,7 +202,7 @@ const FormularioClientes = () => {
                                 <textarea class="direccion" name="direccion" type="text" required disabled maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))}  />
                             </div>
 
-                            <div class="div-gerente cuadrado">
+                            <div class="div-gerente cuadradoe">
                                     <div class="div-gerente" id="genero">
                                         Género:
                                     </div>
@@ -212,6 +214,8 @@ const FormularioClientes = () => {
                         </>
                     ) : (
                         <>
+                            <h1>Agregar Cliente</h1>
+
                             <div class="div-gerente" id="nombre_ek1G">
                                 Nombre y Apellido:
 

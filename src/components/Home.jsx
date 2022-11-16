@@ -124,7 +124,7 @@ const Home = () => {
       <div class="div-gerente menu">
         <label for="check">
           <span class="span-gerente fas fa-times" id="times"></span>
-          <span class="span-gerente fas fa-circle-user" id="bars"></span>
+          <span class="span-gerente far fa-circle-user" id="bars"></span>
         </label>
         <div class="div-gerente head" style={{marginBottom: '50px'}}>menú</div> <br /><br /><br /><br />
         
@@ -241,11 +241,11 @@ const Home = () => {
           <div class="div-gerente Crear">
             <button type="button" class="btn btn-white dropdown-toggle" id="Crear" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="true">
-              Crear
+              Agregar
             </button>
             <div class="div-gerente dropdown-menu">
-              <li><Link to="/cajero/clientes" class="dropdown-item">Crear Cliente</Link></li>
-              <li><Link to="/cajero/transaccion" class="dropdown-item">Crear Recarga</Link></li>
+              <li><Link to="/cajero/clientes" class="dropdown-item">Agregar Cliente</Link></li>
+              <li><Link to="/cajero/transaccion" class="dropdown-item">Agregar Recarga</Link></li>
             </div>
           </div>
 
