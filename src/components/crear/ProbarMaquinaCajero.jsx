@@ -128,8 +128,6 @@ const ProbarMaquinaCajero = () => {
           </div>
 
                 <img src={img4} class="logo" onClick={() => navigate('/home')} style={{cursor:'pointer'}} />   
-    
-           
 
                 <form class="div-gerente rectangulo" onSubmit={(e) => probarMaquina(e)}>
                 <h1>Probar Máquina</h1>
@@ -138,7 +136,7 @@ const ProbarMaquinaCajero = () => {
                     <select name="maquina" id="maquina" onChange={e => changeMaquina(e.target.value)} value={maquina.codigo}>
                         {
                             maquinas.filter((i) => i.activa === 'S').map((i) => (
-                                <option value={i.codigo}>{i.nombre}</option>
+                                <option value={i.codigo}>{i.codigo} - {i.nombre}</option>
                             ))
                         }
                     </select>
@@ -150,11 +148,11 @@ const ProbarMaquinaCajero = () => {
                 </div>
                 <div class="div-gerente" id="Referencia">
                     Tarjeta:
-                    <input type="text" pattern='\d+' maxLength={13} onChange={e => setTarjeta(e.target.value.trimStart())} required />
+                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => {e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')}} placeholder="Ejemplo: 1234567890123" type="text" pattern='\d+' maxLength={13} minLength={13}  onChange={e => setTarjeta(e.target.value.trimStart())} required />
                 </div>
                 <div class="div-gerente" id="Tipo">
                     Puntaje:
-                    <input name='puntaje' type="number" maxLength={9} onChange={e => setPuntaje(e.target.value.trim())} value={puntaje} required />
+                    <input step={1} onKeyDown={(e) => {e.key === '.' ? e.preventDefault() : console.log('');}} name='puntaje' type="number" maxLength={9} onChange={e => setPuntaje(e.target.value.trim())} value={puntaje} required />
                 </div>     
 
                 <div class="div-gerente cambiar-contrasena-submit">

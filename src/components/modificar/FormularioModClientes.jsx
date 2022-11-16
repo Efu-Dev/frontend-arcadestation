@@ -27,6 +27,10 @@ const FormularioModClientes = () => {
         setNombre((n) => n.trimEnd());
         setDireccion((dir) => dir.trimEnd())
 
+        if(cedula === '' || nombre === '' || direccion === ''){
+            alert("El cliente no está registrado");
+            return;
+        }
         if(nombre.split(" ").length !== 2){
             alert("El nombre debe seguir el siguiente formato: Nombre Apellido");
             return;
@@ -90,7 +94,7 @@ const FormularioModClientes = () => {
         console.log(res);
         setTarjetaAnulada(res.tarjeta_activa === 'S')
 
-        if(res.cedula === undefined && e.target.value.replace(/^\s+/, "").replace(/^0+/, "") !== ''){
+        if(res.cedula === undefined || e.target.value.replace(/^\s+/, "").replace(/^0+/, "") === ''){
             setNombre('');
             setDireccion('');
             setGenero('');
@@ -137,7 +141,7 @@ const FormularioModClientes = () => {
                 <div class="div-gerente reportes">
                     <button type="button" class="btn btn-white dropdownd-toggle" id="reportes" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="true">
-                        <u>Reportes</u>
+                        Reportes
                     </button>
                     <div class="div-gerente dropdown-menu">
                     <li><a href="#reporte_empleado" onClick={reporteEmpleados} class="dropdown-item">Reporte de Empleados</a></li>
@@ -189,7 +193,7 @@ const FormularioModClientes = () => {
 
                     <div class="div-gerente" id="ingrese_cedula__ek1_mcliente">
                         Ingrese Cédula:
-                        <input class="cedula" name="cedula" type="text" maxLength={9} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" required />
+                        <input placeholder='Ejemplo: 123456789' onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => {e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')}} class="cedula" name="cedula" type="text" maxLength={9} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" required />
                     </div>
 
                     {editable ? (
@@ -199,12 +203,12 @@ const FormularioModClientes = () => {
                             <div class="div-gerente" id="nombre_ek1_mcliente">
                             Nombre y Apellido:
 
-                            <input class="nombre" name="nombre" type="text" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
+                            <input placeholder='Ejemplo: Julio García.'  class="nombre" name="nombre" type="text" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
                             </div>
 
                             <div class="div-gerente" id="direccion_ek1mcliente">
                                 Dirección:
-                                <textarea class="direccion" name="direccion" type="text" required disabled maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))}  />
+                                <textarea placeholder='Ejemplo: Edificio Vista Lago Apt. 4-A.' class="direccion" name="direccion" type="text" required disabled maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))}  />
                             </div>
 
                             <div class="div-gerente cuadrado">
@@ -212,8 +216,8 @@ const FormularioModClientes = () => {
                                         Género:
                                     </div>
                                     <form method="get" id="sexo" onChange={(e) => setGenero(e.target.value)} disabled>
-                                        <input name="intereses" type="radio" value={'H'} defaultChecked={true} checked={genero === 'H' || genero !== 'M'} />H
-                                        <input name="intereses" type="radio" value={'M'} checked={genero === 'M'} />M
+                                        <input name="intereses" type="radio" value={'H'} defaultChecked={true} checked={genero === 'H' || genero !== 'M'} disabled />H
+                                        <input name="intereses" type="radio" value={'M'} checked={genero === 'M'} disabled />M
                                     </form>
                             </div>
                             <div class="div-gerente cuadrado2">
@@ -234,14 +238,14 @@ const FormularioModClientes = () => {
 
                             <div class="div-gerente" id="direccion_ek1mcliente">
                                 Dirección:
-                                <textarea class="direccion" name="direccion" type="text" required maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))}  />
+                                <textarea placeholder='Ejemplo: Edificio Vista Lago Apt. 4-A.' class="direccion" name="direccion" type="text" required maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))}  />
                             </div>
 
                             <div class="div-gerente cuadrado">
                                     <div class="div-gerente" id="genero">
                                         Género:
                                     </div>
-                                    <form method="get" id="sexo" onChange={(e) => setGenero(e.target.value)} disabled>
+                                    <form method="get" id="sexo" onChange={(e) => setGenero(e.target.value)}>
                                         <input name="intereses" type="radio" value={'H'} defaultChecked={true} checked={genero === 'H' || genero !== 'M'} />H
                                         <input name="intereses" type="radio" value={'M'} checked={genero === 'M'} />M
                                     </form>
@@ -264,51 +268,10 @@ const FormularioModClientes = () => {
                             <button class="Crearb" type='submit' disabled> Modificar </button>
                         </div>
                     )}
-
                 
                 </form>
             </div>
         </main>
-    );
-
-    return (
-        <div>
-            <h1>Crear Cliente</h1>
-            <form onSubmit={(e) => checkCreacion(e)}>
-                {editable ? (<><label htmlFor="cedula">Cédula:</label>
-                <input name="cedula" type="text" maxLength={8} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" />
-
-                <label htmlFor="nombre">Nombre y Apellido:</label>
-                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
-
-                <label htmlFor="direccion">Dirección:</label>
-                <input name="direccion" type="text" required maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))} disabled />
-
-                <label htmlFor="genero">Género (H/M):</label>
-                <input name="genero" type="text" maxLength={1} value={genero} onChange={(e) => setGenero(e.target.value.replace(/^\s+/, ""))} pattern="[h|m|H|M]" required disabled />
-                
-                <label htmlFor="tarjeta_anulada">Tarjeta Anulada:</label>
-                <input type="checkbox" name="tarjeta_anulada" id="tarjeta_anulada" disabled />
-                </>) :
-                (<><label htmlFor="cedula">Cédula:</label>
-                <input name="cedula" type="text" maxLength={8} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" />
-
-                <label htmlFor="nombre">Nombre y Apellido:</label>
-                <input name="nombre" type="text" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
-
-                <label htmlFor="direccion">Dirección:</label>
-                <input name="direccion" type="text" required maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))} />
-
-                <label htmlFor="genero">Género (H/M):</label>
-                <input name="genero" type="text" maxLength={1} value={genero} onChange={(e) => setGenero(e.target.value.replace(/^\s+/, ""))} pattern="[h|m|H|M]" required />
-                
-                <label htmlFor="tarjeta_anulada">Tarjeta Anulada:</label>
-                <input type="checkbox" name="tarjeta_anulada" id="tarjeta_anulada" onChange={(e) => {setTarjetaAnulada(e.target.checked)}} checked={tarjetaAnulada} />
-                </>)
-                }
-                {sendable ? (<button type='submit'>Enviar Formulario</button>) : <button type='submit' disabled>Enviar Formulario</button>}
-            </form>
-        </div>
     );
 };
 

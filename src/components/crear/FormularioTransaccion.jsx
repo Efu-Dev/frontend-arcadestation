@@ -106,7 +106,7 @@ const FormularioClientes = () => {
                 <div class="div-gerente reportes">
                     <button type="button" class="btn btn-white dropdownd-toggle" id="reportes" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="true">
-                        <u>Reportes</u>
+                        Reportes
                     </button>
                     <div class="div-gerente dropdown-menu">
                     <li><a href="#reporte_empleado" onClick={reporteEmpleados} class="dropdown-item">Reporte de Empleados</a></li>
@@ -160,7 +160,7 @@ const FormularioClientes = () => {
 
                         <div class="div-gerente" id="Tarjeta">
                             Tarjeta:
-                            <input placeholder='Ejemplo: 1234567890123' type="text" class="tarjeta" name="tarjeta" onInput={e => e.target.setCustomValidity('')} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} maxLength={13} pattern='\d+' value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
+                            <input placeholder='Ejemplo: 1234567890123' type="text" class="tarjeta" name="tarjeta" onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} maxLength={13} minLength={13}  pattern='\d+' value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
                         </div>
 
                         {
