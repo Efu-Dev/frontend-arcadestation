@@ -262,8 +262,7 @@ const FormularioModClientes = () => {
                         </div>
                     )}
 
-                <img src={img1} id="luigi" />
-                <img src={img2} id="mario" />
+                
                 </form>
             </div>
         </main>
