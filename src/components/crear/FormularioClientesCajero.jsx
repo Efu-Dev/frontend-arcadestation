@@ -64,11 +64,11 @@ const FormularioClientesCajero = () => {
     };
 
     const onChangeCedula = async (e) => {
-        setCedula(e.target.value.replace(/^\s+/, ""));
+        setCedula(e.target.value.replace(/\s+/, "").replace(/^0+/, ""));
         setSendable(true);
         let res = undefined;
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value.replace(/^\s+/, "")}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value.replace(/\s+/, "").replace(/^0+/, "")}`,
             'headers': {
                 'Authorization': localStorage.getItem('access_token_as')
             }
@@ -78,19 +78,19 @@ const FormularioClientesCajero = () => {
                 res = r.data.datos;
             });
 
-        if (res.nombre === undefined && e.target.value.replace(/^\s+/, "") !== '') {
+        if(res.nombre === undefined && e.target.value.replace(/^\s+/, "") !== ''){
             setNombre('');
             setDireccion('');
             setGenero('');
             setEditable(false);
         }
-        else {
-            if (e.target.value.replace(/^\s+/, "") !== '') {
+        else{
+            if(e.target.value.replace(/^\s+/, "") !== ''){
                 setNombre(res.nombre);
                 setDireccion(res.direccion);
                 setGenero(res.genero);
                 await axios.create({
-                    baseURL: `https://arcadestation.pythonanywhere.com/api/clientes/${e.target.value.replace(/^\s+/, "")}`,
+                    baseURL: `https://arcadestation.pythonanywhere.com/api/clientes/${e.target.value.replace(/\s+/, "").replace(/^0+/, "")}`,
                     'headers': {
                         'Authorization': localStorage.getItem('access_token_as')
                     }
@@ -155,7 +155,7 @@ const FormularioClientesCajero = () => {
 
                     <div class="div-gerente" id="ingrese_cedula__ek1G">
                         Ingrese Cédula:
-                        <input class="cedula" name="cedula" type="text" maxLength={9} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" required />
+                        <input placeholder='Ejemplo: 123456789' onInput={e => e.target.setCustomValidity('')} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} class="cedula" name="cedula" type="text" maxLength={9} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" required />
                     </div>
 
                     {editable ? (
@@ -165,23 +165,23 @@ const FormularioClientesCajero = () => {
                             <div class="div-gerente" id="nombre_ek1G">
                                 Nombre y Apellido:
 
-                                <input class="nombre" name="nombre" type="text" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
+                            <input class="nombre" name="nombre" type="text" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
                             </div>
 
                             <div class="div-gerente" id="direccion_ek1G">
                                 Dirección:
-                                <textarea class="direccion" name="direccion" type="text" required disabled maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))} />
+                                <textarea class="direccion" name="direccion" type="text" required disabled maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))}  />
                             </div>
 
                             <div class="div-gerente cuadradoe">
-                                <div class="div-gerente" id="genero">
-                                    Género:
-                                </div>
-                                <form method="get" id="sexo" onChange={(e) => setGenero(e.target.value)} disabled>
-                                    <input name="intereses" type="radio" value={'H'} defaultChecked={true} checked={genero === 'H' || genero !== 'M'} />H
-                                    <input name="intereses" type="radio" value={'M'} checked={genero === 'M'} />M
-                                </form>
-                            </div>
+                                    <div class="div-gerente" id="genero">
+                                        Género:
+                                    </div>
+                                    <form method="get" id="sexo" onChange={(e) => setGenero(e.target.value)} disabled>
+                                        <input name="intereses" type="radio" value={'H'} defaultChecked={true} checked={genero === 'H' || genero !== 'M'} />H
+                                        <input name="intereses" type="radio" value={'M'} checked={genero === 'M'} />M
+                                    </form>
+                            </div>                         
                         </>
                     ) : (
                         <>
@@ -189,12 +189,12 @@ const FormularioClientesCajero = () => {
                             <div class="div-gerente" id="nombre_ek1G">
                                 Nombre y Apellido:
 
-                                <input class="nombre" name="nombre" type="text" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
+                            <input class="nombre" name="nombre" type="text" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
                             </div>
 
                             <div class="div-gerente" id="direccion_ek1G">
                                 Dirección:
-                                <textarea class="direccion" name="direccion" type="text" required maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))} />
+                                <textarea class="direccion" name="direccion" type="text" required maxLength={40} value={direccion} onChange={(e) => setDireccion(e.target.value.replace(/^\s+/, ""))}  />
                             </div>
 
                             <div class="div-gerente cuadradoe">

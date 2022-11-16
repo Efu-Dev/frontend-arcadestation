@@ -67,10 +67,10 @@ const FormularioModEmpleados = () => {
     };
 
     const onChangeCedula = async (e) => {
-        setCedula(e.target.value.replace(/^\s+/, ""));
+        setCedula(e.target.value.replace(/^\s+/, "").replace(/^0+/, ""));
         let res = undefined;
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/empleados/${e.target.value.replace(/^\s+/, "")}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/empleados/${e.target.value.replace(/^\s+/, "").replace(/^0+/, "")}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -80,7 +80,7 @@ const FormularioModEmpleados = () => {
             res = r.data.datos;
         });
 
-        if(res.cedula === undefined && e.target.value.replace(/^\s+/, "") !== ''){
+        if(res.cedula === undefined && e.target.value.replace(/^\s+/, "").replace(/^0+/, "") !== ''){
             setNombre('');
             setDireccion('');
             setGenero('');
@@ -92,7 +92,7 @@ const FormularioModEmpleados = () => {
         else{
             let res2 = undefined;
             await axios.create({
-                baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value.replace(/^\s+/, "")}`,
+                baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value.replace(/^\s+/, "").replace(/^0+/, "")}`,
                 'headers': {
                   'Authorization': localStorage.getItem('access_token_as')
                 }

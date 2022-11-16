@@ -52,10 +52,10 @@ const FormularioTransaccionesCajero = () => {
     };
 
     const onChangeTarjeta = async(e) => {
-        setTarjeta(e);
+        setTarjeta(e.replace(/\s+/, ''));
         let res = "";
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/tarjetas/${e}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/tarjetas/${e.replace(/\s+/, '')}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -65,7 +65,7 @@ const FormularioTransaccionesCajero = () => {
         });
 
         console.log(res.data);
-        if(res.data.message !== '404' && e !== '' && res.data.datos.anulada !== 'S'){
+        if(res.data.message !== '404' && !e.replace(/\s+/, '').match(/^0+$/) && e.replace(/\s+/, '') !== '' && res.data.datos.anulada !== 'S'){
             setEditable(false);
         }
         else if (res.data.datos.anulada === 'S'){
@@ -130,7 +130,7 @@ const FormularioTransaccionesCajero = () => {
 
                         <div class="div-gerente" id="Tarjeta">
                             Tarjeta:
-                            <input type="text" class="tarjeta" name="tarjeta" maxLength={13} pattern='\d+' value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required />
+                            <input placeholder='Ejemplo: 1234567890123' type="text" class="tarjeta" name="tarjeta" maxLength={13} pattern='\d+' value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required onInput={e => e.target.setCustomValidity('')} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} />
                         </div>
 
                         {
@@ -139,15 +139,15 @@ const FormularioTransaccionesCajero = () => {
                                 <h1>Agregar Recarga</h1>
                                 <div class="div-gerente" id="Monto">
                                     Monto:<br />
-                                    <input class="monto" name="monto" type="number" step={0.01} min={0.01} max={9999999.99} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required disabled />
+                                    <input placeholder='Ejemplo: 2.65' class="monto" name="monto" type="number" step={0.01} min={0.01} max={9999999.99} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required disabled />
                                 </div>
                                 <div class="div-gerente" id="Descripcion">
                                     Descripción:
-                                    <input class="monto" name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value.replace(/^\s+/, ""))} required disabled/>
+                                    <input placeholder='Ejemplo: Recarga' class="monto" name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value.replace(/^\s+/, ""))} required disabled/>
                                 </div>
                                 <div class="div-gerente" id="Referencia">
                                     Referencia:
-                                    <input type="text" class="monto" name="referencia" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required disabled />
+                                    <input placeholder='Ejemplo: 125540' type="text" class="monto" name="referencia" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required disabled />
                                 </div>
                                 <div class="div-gerente" id="Tipo">
                                     Tipo de Pago:
@@ -164,15 +164,15 @@ const FormularioTransaccionesCajero = () => {
                                 <h1>Agregar Recarga</h1>
                                 <div class="div-gerente" id="Monto">
                                     Monto:<br />
-                                    <input class="monto" name="monto" type="number" step={0.01} min={0.01} max={9999999.99} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required  />
+                                    <input placeholder='Ejemplo: 2.65' class="monto" name="monto" type="number" step={0.01} min={0.01} max={9999999.99} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required  />
                                 </div>
                                 <div class="div-gerente" id="Descripcion">
                                     Descripción:
-                                    <input class="monto" name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value.replace(/^\s+/, ""))} required />
+                                    <input placeholder='Ejemplo: Recarga' class="monto" name="descripcion" type="text" maxLength={40} value={descripcion} onChange={(e) => setDescripcion(e.target.value.replace(/^\s+/, ""))} required />
                                 </div>
                                 <div class="div-gerente" id="Referencia">
                                     Referencia:
-                                    <input type="text" class="monto" name="referencia" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required  />
+                                    <input placeholder='Ejemplo: 125540' type="text" class="monto" name="referencia" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required  />
                                 </div>
                                 <div class="div-gerente" id="Tipo">
                                     Tipo de Pago:

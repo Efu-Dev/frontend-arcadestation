@@ -69,11 +69,11 @@ const FormularioEmpleados = () => {
     };
 
     const onChangeCedula = async (e) => {
-        setCedula(e.target.value.replace(/^\s+/, ""));
+        setCedula(e.target.value.replace(/^\s+/, "").replace(/^0+/, ""));
         setSendable(true);
         let res = undefined;
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value.replace(/^\s+/, "")}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/personas/${e.target.value.replace(/^\s+/, "").replace(/^0+/, "")}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -83,7 +83,7 @@ const FormularioEmpleados = () => {
             res = r.data.datos;
         });
 
-        if(res.nombre === undefined && e.target.value.replace(/^\s+/, "") !== ''){
+        if(res.nombre === undefined && e.target.value.replace(/^\s+/, "").replace(/^0+/, "") !== ''){
             setNombre('');
             setDireccion('');
             setGenero('');
@@ -93,7 +93,7 @@ const FormularioEmpleados = () => {
             setEditable(false);
         }
         else{
-            if(e.target.value.replace(/^\s+/, "") !== ''){
+            if(e.target.value.replace(/^\s+/, "").replace(/^0+/, "") !== ''){
                 setNombre(res.nombre);
                 setDireccion(res.direccion);
                 setGenero(res.genero);
