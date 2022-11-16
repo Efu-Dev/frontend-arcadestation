@@ -199,6 +199,7 @@ const FormularioEmpleados = () => {
                 {
                     editable ? (
                         <>
+                        <h1>Agregar Empleado</h1>
                         <div class="div-gerente" id="nombre_ek1">
                             Nombre y Apellido:
                             <input placeholder='Ej: Andrés González' type="text" class="nombre" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
@@ -221,6 +222,7 @@ const FormularioEmpleados = () => {
                         
                         {sendable ? (
                             <>
+                            
                             <div class="div-gerente" id="email">
                                 Email:
                                 <input placeholder='Ej: noreply@arcadestation.com' type="email" class="Email" maxLength={320} value={email} onChange={(e) => setEmail(e.target.value.replace(/^\s+/, ""))} required />
@@ -263,6 +265,7 @@ const FormularioEmpleados = () => {
                         </>
                     ) : (
                         <>
+                        <h1>Agregar Empleado</h1>
                         <div class="div-gerente" id="nombre_ek1">
                             Nombre y Apellido:
                             <input placeholder='Ej: Andrés González' type="text" class="nombre" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />

@@ -136,6 +136,7 @@ const FormularioTransaccionesCajero = () => {
                         {
                             editable ? (
                                 <>
+                                <h1>Agregar Recarga</h1>
                                 <div class="div-gerente" id="Monto">
                                     Monto:<br />
                                     <input class="monto" name="monto" type="number" step={0.01} min={0.01} max={9999999.99} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required disabled />
@@ -160,6 +161,7 @@ const FormularioTransaccionesCajero = () => {
                                 </>
                             ) : (
                                 <>
+                                <h1>Agregar Recarga</h1>
                                 <div class="div-gerente" id="Monto">
                                     Monto:<br />
                                     <input class="monto" name="monto" type="number" step={0.01} min={0.01} max={9999999.99} value={monto} onChange={(e) => setMonto(e.target.value.replace(/^\s+/, ""))} required  />

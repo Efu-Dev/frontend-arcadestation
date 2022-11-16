@@ -5,161 +5,6 @@ img {
 	border: none;
 	padding: 0px;
 }
-
-/* Only edit this if you know what you are doing! */
-::-webkit-scrollbar {
-	display: none;
-}
-
-
-.main-container {
-	display: flex;
-	width: 100vw;
-	min-height: 100vh;
-	background: linear-gradient(-175.82388596164deg, rgba(251.82, 74.62, 148.26, 1) 0%, rgba(189.07, 158.69, 211.44, 0.86000001430511) 48%, rgba(69.52, 74.27, 213.57, 0.94999998807907) 87%);
-
-}
-
-body {
-	margin: 0;
-	padding: 0;
-}
-
-.main-container>.img-1 {
-	height: 100vh;
-	width: 60vw;
-}
-
-.main-container>.img-2 {
-
-	left: 20.5%;
-	height: 100vh;
-	width: 79vw;
-}
-
-.main-container>.img-3 {
-	top: 29%;
-	left: 0%;
-	width: 27vw;
-	height: 40vh;
-}
-
-.main-container>.barra_de_navegacion {
-
-	width: 100vw;
-	height: 12vh;
-	background: rgba(230.56, 231.54, 255, 1);
-}
-
-.main-container>.barra_de_navegacion>.reportes {
-
-	top: 25%;
-	left: 30%;
-
-}
-
-.main-container>.barra_de_navegacion>.reportes>#reportes {
-
-	font-family: Tomorrow;
-	font-size: 22px;
-
-}
-
-.main-container>.barra_de_navegacion>.agregar {
-
-	top: 25%;
-	left: 65%;
-}
-
-.main-container>.barra_de_navegacion>.agregar>#agregar {
-
-	font-family: Tomorrow;
-	font-size: 22px;
-
-}
-
-.main-container>.barra_de_navegacion>.consultar {
-	top: 25%;
-	left: 80%;
-
-}
-
-.main-container>.barra_de_navegacion>.consultar>#consultar {
-
-	font-family: Tomorrow;
-	font-size: 22px;
-
-}
-
-.main-container>.barra_de_navegacion>.modificar {
-	top: 25%;
-	left: 15%;
-
-}
-
-.main-container>.barra_de_navegacion>.modificar #modificar {
-
-	font-family: Tomorrow;
-	font-size: 22px;
-	border-color: black;
-	
-
-}
-
-.main-container>.barra_de_navegacion>.reportes :hover {
-background-color: #decef2;
-
-}
-
-.main-container>.barra_de_navegacion>.agregar :hover{
-	background-color: #decef2;
-
-}
-.main-container>.barra_de_navegacion>.modificar :hover{
-	background-color: #decef2;
-
-}
-.main-container>.barra_de_navegacion>.consultar :hover {
-	background-color: #decef2;
-	
-}
-
-.main-container>.barra_de_navegacion>.reportes:hover>.dropdown-menu {
-	display: block;
-	background-color: white;
-}
-
-.main-container>.barra_de_navegacion>.agregar:hover>.dropdown-menu {
-	display: block;
-	background-color: white;
-}
-
-.main-container>.barra_de_navegacion>.modificar:hover>.dropdown-menu {
-	display: block;
-	background-color: white;
-}
-
-.main-container>.barra_de_navegacion>.consultar:hover>.dropdown-menu {
-	display: block;
-	background-color: white;
-}
-
-.main-container>.barra_de_navegacion>.logo {
-	top: 30%;
-	left: 40%;
-	width: 20vw;
-	height: 7vh;
-}
-
-
-img {
-	position: absolute;
-	display: block;
-	margin: 0px;
-	border: none;
-	padding: 0px;
-}
-
 /* Only edit this if you know what you are doing! */
 .div-gerente {
 	position: absolute;
@@ -210,9 +55,9 @@ body {
 }
 
 .main-container>.barra_de_navegacion>.reportes {
-
 	top: 25%;
-	left: 30%;
+	left: 80%;
+	
 
 }
 
@@ -220,38 +65,41 @@ body {
 
 	font-family: Tomorrow;
 	font-size: 22px;
-
+	border-color: black;
+	border-radius: 30px;
+	
 }
 
 .main-container>.barra_de_navegacion>.agregar {
-
 	top: 25%;
-	left: 65%;
+	left: 15%;
+	
 }
 
 .main-container>.barra_de_navegacion>.agregar>#agregar {
 
 	font-family: Tomorrow;
 	font-size: 22px;
-
+	border-color: black;
+	border-radius: 30px;
 }
 
 .main-container>.barra_de_navegacion>.consultar {
 	top: 25%;
-	left: 80%;
-
+	left: 65%;
 }
 
 .main-container>.barra_de_navegacion>.consultar>#consultar {
 
 	font-family: Tomorrow;
 	font-size: 22px;
-
+	border-color: black;
+	border-radius: 30px;
 }
 
 .main-container>.barra_de_navegacion>.modificar {
 	top: 25%;
-	left: 15%;
+	left: 30%;
 
 }
 
@@ -259,7 +107,8 @@ body {
 
 	font-family: Tomorrow;
 	font-size: 22px;
-
+	border-color: black;
+	border-radius: 30px;
 }
 
 .main-container>.barra_de_navegacion>.reportes :hover {
@@ -398,6 +247,7 @@ li:hover a {
 	font-size: 50px;
 	left: 380px;
 	color: black;
+	
 }
 
 #times {
@@ -438,11 +288,13 @@ li:hover a {
 	margin-right: 25px;
 	top: 85%;
 	left: 85%;
+	z-index: 2;
 }
 
 .outer span {
 	position: absolute;
 	border-radius: 50px;
+	
 
 }
 
@@ -475,6 +327,8 @@ li:hover a {
 	height: 38px;
 	width: 125px;
 	border-radius: 50px;
+	
+
 }
 
 .outer span {
@@ -571,7 +425,7 @@ li:hover a {
 
 .main-container > .barra_de_navegacion > .Consultar {
 	top: 30%;
-	left: 30%;
+	left: 62%;
 
 }
 .main-container>.barra_de_navegacion>.Consultar>.dropdown-menu {
@@ -584,12 +438,14 @@ li:hover a {
 
 	font-family: Tomorrow;
 	font-size: 22px;
+	border-color: black;
+	border-radius: 30px;
 
 }
 
 .main-container > .barra_de_navegacion > .Crear {
 	top: 30%;
-	left: 62%;
+	left: 30%;
 	
 }
 
@@ -597,6 +453,8 @@ li:hover a {
 
 	font-family: Tomorrow;
 	font-size: 22px;
+	border-color: black;
+	border-radius: 30px;
 
 }
 

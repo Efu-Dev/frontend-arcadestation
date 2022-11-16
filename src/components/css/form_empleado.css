@@ -3,7 +3,7 @@
 
 
 #nombre_ek1 {
-	top: 20%;
+	top: 25%;
 	left: 10%;
 	width: 39vh;
 	height: 4vh;
@@ -23,7 +23,7 @@
 }
 
 #direccion_ek1 {
-	top: 40%;
+	top: 45%;
 	left: 10%;
 	width: 39vh;
 	height: 4vh;
@@ -44,8 +44,8 @@
 }
 
 #ingrese_cedula__ek1 {
-	top: 3%;
-	left: 30%;
+	top: 10%;
+	left: 35%;
 	width: 39vh;
 	height: 4vh;
 	font-family: Sintony;
@@ -63,7 +63,7 @@
 }
 
 #email {
-	top: 20%;
+	top: 25%;
 	left: 55%;
 	width: 39vh;
 	height: 4vh;
@@ -83,7 +83,7 @@
 }
 
 #tele {
-	top: 40%;
+	top: 45%;
 	left: 55%;
 	width: 39vh;
 	height: 4vh;
@@ -103,7 +103,7 @@
 }
 
 #Cargo {
-	top: 60%;
+	top: 65%;
 	left: 55%;
 	width: 39vh;
 	height: 4vh;
@@ -117,7 +117,7 @@
 
 .crear {
 
-    margin-top: 70vh;
+    margin-top: 65vh;
 	margin-left: 80%;
 	width: 15vh;	
 	height: 6vh;

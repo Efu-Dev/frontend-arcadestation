@@ -192,6 +192,7 @@ const FormularioModEmpleados = () => {
                 {
                     editable ? (
                         <>
+                           <h1>Modificar Empleado</h1>
                         <div class="div-gerente" id="nombre_ek1">
                             Nombre y Apellido:
                             <input placeholder='Ej: Andrés González' type="text" class="nombre" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
@@ -239,6 +240,7 @@ const FormularioModEmpleados = () => {
                             </>
                     ) : (
                         <>
+                        <h1>Modificar Empleado</h1>
                         <div class="div-gerente" id="nombre_ek1">
                             Nombre y Apellido:
                             <input placeholder='Ej: Andrés González' type="text" class="nombre" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />

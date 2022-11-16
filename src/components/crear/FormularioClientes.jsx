@@ -189,6 +189,8 @@ const FormularioClientes = () => {
 
                     {editable ? (
                         <>
+                            <h1>Agregar Cliente</h1>
+
                             <div class="div-gerente" id="nombre_ek1G">
                                 Nombre y Apellido:
 
@@ -212,6 +214,8 @@ const FormularioClientes = () => {
                         </>
                     ) : (
                         <>
+                            <h1>Agregar Cliente</h1>
+
                             <div class="div-gerente" id="nombre_ek1G">
                                 Nombre y Apellido:
 
