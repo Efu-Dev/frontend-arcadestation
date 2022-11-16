@@ -42,11 +42,11 @@ const FormularioClientes = () => {
     };
 
     const onChangeCodigo = async(e) => {
-        setCodigo(e.target.value.replace(/^\s+/, ""));
+        setCodigo(e.target.value.replace(/^\s+/, "").replace(/\D/, ''));
         setSendable(true);
         let res = undefined;
         await axios.create({
-            baseURL: `https://arcadestation.pythonanywhere.com/api/maquinas/${e.target.value.replace(/^\s+/, "")}`,
+            baseURL: `https://arcadestation.pythonanywhere.com/api/maquinas/${e.target.value.replace(/^\s+/, "").replace(/\D/, '')}`,
             'headers': {
               'Authorization': localStorage.getItem('access_token_as')
             }
@@ -56,12 +56,12 @@ const FormularioClientes = () => {
             res = r.data.datos;
         });
 
-        if((res === undefined || res.codigo === undefined) && e.target.value.replace(/^\s+/, "") !== ''){ // Máquina no existe
+        if((res === undefined || res.codigo === undefined) && e.target.value.replace(/^\s+/, "").replace(/\D/, '') !== ''){ // Máquina no existe
             setEditable(false);
             setNombre('');
             setPrecio('');        
         }
-        else if(e.target.value.replace(/^\s+/, "") === ''){
+        else if(e.target.value.replace(/^\s+/, "").replace(/\D/, '') === ''){
             setEditable(true);
             setNombre('');
             setPrecio('');
@@ -151,7 +151,7 @@ const FormularioClientes = () => {
 
                     <div className='div-gerente' id="Codigo">
                         Código:
-                        <input type="text" class="codigo" maxLength={8} value={codigo} onChange={(e) => onChangeCodigo(e)} pattern="[0-9]+" required />
+                        <input placeholder='Ejemplo: 123456789' onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => {e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')}} type="text" class="codigo" maxLength={9} value={codigo} onChange={(e) => onChangeCodigo(e)} pattern="[0-9]+" required />
                     </div>
 
                     {
@@ -161,12 +161,12 @@ const FormularioClientes = () => {
                                 <h1>Agregar Maquina</h1>
                                 <div className='div-gerente' id="nombre_maq">
                                     Nombre:
-                                    <input type="text" class="nombre"  maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
+                                    <input placeholder='Ejemplo: Space Invaders 2' type="text" class="nombre"  maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
                                 </div>
 
                                 <div className='div-gerente' id="Precio">
                                     Precio:
-                                    <input class="precio" type="number" min={0.01} max={99.99} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required disabled />
+                                    <input placeholder='Ejemplo: 2.55' class="precio" type="number" min={0.01} max={99.99} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required disabled />
                                 </div>
                             </>
                         ) : (
@@ -174,12 +174,12 @@ const FormularioClientes = () => {
                               <h1>Agregar Maquina</h1>
                             <div className='div-gerente' id="nombre_maq">
                                 Nombre:
-                                <input type="text" class="nombre"  maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
+                                <input placeholder='Ejemplo: Space Invaders 2' type="text" class="nombre"  maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
                             </div>
 
                             <div className='div-gerente' id="Precio">
                                 Precio:
-                                <input class="precio" type="number" min={0.01} max={99.99} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required />
+                                <input placeholder='Ejemplo: 2.55' class="precio" type="number" min={0.01} max={99.99} step={0.01} value={precio} onChange={(e) => setPrecio(e.target.value.replace(/^\s+/, ""))} required />
                             </div>
                             </>
                         )
