@@ -31,7 +31,7 @@ const FormularioModEmpleados = () => {
         setTelefono((e) => e.trimEnd());
         
         if(cedula === '' || nombre === '' || direccion === ''){
-            alert("El cliente no está registrado");
+            alert("El empleado no está registrado.");
             return;
         }        
         if(nombre.split(" ").length !== 2){
