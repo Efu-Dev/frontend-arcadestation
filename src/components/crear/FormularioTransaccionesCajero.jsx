@@ -130,7 +130,7 @@ const FormularioTransaccionesCajero = () => {
 
                         <div class="div-gerente" id="Tarjeta">
                             Tarjeta:
-                            <input placeholder='Ejemplo: 1234567890123' type="text" class="tarjeta" name="tarjeta" maxLength={13} minLength={13}  pattern='\d+' value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/^\s+/, ""))} required onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} />
+                            <input placeholder='Ejemplo: 1234567890123' type="text" class="tarjeta" name="tarjeta" maxLength={13} pattern='\d+' value={tarjeta} onChange={(e) => onChangeTarjeta(e.target.value.replace(/\s+/, ""))} required onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} />
                         </div>
 
                         {
@@ -172,7 +172,7 @@ const FormularioTransaccionesCajero = () => {
                                 </div>
                                 <div class="div-gerente" id="Referencia">
                                     Referencia:
-                                    <input placeholder='Ejemplo: 125540' type="text" class="monto" name="referencia" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required  />
+                                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} placeholder='Ejemplo: 125540' type="text" class="monto" name="referencia" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required  />
                                 </div>
                                 <div class="div-gerente" id="Tipo">
                                     Tipo de Pago:
