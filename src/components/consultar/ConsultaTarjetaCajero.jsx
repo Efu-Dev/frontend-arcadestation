@@ -101,7 +101,7 @@ const ConsultarTarjetaCajero = () => {
                 </header>
 
                 <form onSubmit={(e) => mostrarTarjeta(e)}>
-                    <input type="text" placeholder="Ingrese Número" class="search" pattern='[0-9]+' onChange={(e) => onChangeNumero(e.target.value.replace(/^\s+/, ""))} maxLength={13} minLength={13}  required />
+                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Para hacer la búsqueda, campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} type="text" placeholder="Ingrese Número" class="search" pattern='[0-9]+' onChange={(e) => onChangeNumero(e.target.value.replace(/\s+/, ""))} maxLength={13} required />
                     <button class="boton" type='submit'>Buscar</button>
                 </form>
         
