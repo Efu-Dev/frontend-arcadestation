@@ -126,7 +126,7 @@ const ConsultarClientes = () => {
                 </header>
 
                 <form onSubmit={(e) => mostrarEmpleado(e)}>
-                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Para hacer la búsqueda, este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} type="text" placeholder="Ingrese Cédula." class="search" pattern='[0-9]+' onChange={(e) => onChangeCedula(e.target.value.replace(/\s+/, ""))} value={cedula} maxLength={9} required />
+                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Para hacer la búsqueda, este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} type="text" placeholder="Ingrese Cédula." class="search" pattern='[0-9]+' onChange={(e) => onChangeCedula(e.target.value.replace(/\s+/, "").replace(' ', '').replace(/\^0+/, ''))} value={cedula} maxLength={9} required />
                     <button class="boton" type='submit'>Buscar</button>
                 </form>
 
@@ -137,14 +137,12 @@ const ConsultarClientes = () => {
                             <tr>
                                 <th>Nombre</th>
                                 <th>Cédula</th>
-                                <th>Género</th>
                                 <th>Dirección</th>
                                 <th>Cargo</th>
                                 <th>F. Entrada</th>
                                 <th>Correo</th>
                                 <th>Teléfono</th>
                                 <th>Activo</th>
-                                <th>Usuario</th>
                             </tr>
                         </thead>
 
@@ -153,14 +151,12 @@ const ConsultarClientes = () => {
                             return(<tr key={empleado.id}>
                                     <td>{empleado.persona.nombre}</td>
                                     <td>{empleado.cedula_id}</td>
-                                    <td>{empleado.persona.genero === 'H' ? "Hombre" : "Mujer"}</td>
                                     <td>{empleado.persona.direccion}</td>
                                     <td>{empleado.cargo}</td>
                                     <td>{`${new Date(empleado.fecha_entrada).getDate()}/${new Date(empleado.fecha_entrada).getMonth()+1}/${new Date(empleado.fecha_entrada).getFullYear()}`}</td>
                                     <td style={{'overflowWrap': 'break-word'}}>{empleado.email}</td>
                                     <td>{empleado.telefono}</td>
-                                    <td>{empleado.activo === 'S' ? "Sí" : "No"}</td>
-                                    <td>{empleado.usuario}</td>                        
+                                    <td>{empleado.activo === 'S' ? "Sí" : "No"}</td>         
                                 </tr>)
                             })}                            
                         </tbody>
