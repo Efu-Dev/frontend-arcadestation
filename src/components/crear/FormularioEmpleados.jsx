@@ -13,7 +13,7 @@ const FormularioEmpleados = () => {
     const [cedula, setCedula] = useState("");
     const [direccion, setDireccion] = useState("");
     const [genero, setGenero] = useState('');
-    const [cargo, setCargo] = useState('');
+    const [cargo, setCargo] = useState('Cajero');
     const [email, setEmail] = useState('');
     const [telefono, setTelefono] = useState('');
 
@@ -92,7 +92,7 @@ const FormularioEmpleados = () => {
             setGenero('');
             setEmail('');
             setTelefono('');
-            setCargo('');
+            setCargo('Cajero');
             setEditable(false);
         }
         else{
