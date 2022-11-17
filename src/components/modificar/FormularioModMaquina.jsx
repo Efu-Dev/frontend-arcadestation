@@ -155,7 +155,7 @@ const FormularioModClientes = () => {
                 {
                     editable ? (
                         <>
-                        <h1>Modificar Maquina</h1>
+                        <h1>Modificar Máquina</h1>
                         <div className='div-gerente' id="nombre_ek1_maquina_mod">
                             Nombre:
                             <input placeholder='Ejemplo: Space Invaders 2' type="text" class="nombre" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
@@ -180,7 +180,7 @@ const FormularioModClientes = () => {
                         </>                        
                     ) : (
                         <>
-                        <h1>Modificar Maquina</h1>
+                        <h1>Modificar Máquina</h1>
                         <div className='div-gerente' id="nombre_ek1_maquina_mod">
                             Nombre:
                             <input placeholder='Ejemplo: Space Invaders 2' type="text" class="nombre" maxLength={40} value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required  />
