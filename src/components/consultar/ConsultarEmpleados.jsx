@@ -143,6 +143,7 @@ const ConsultarClientes = () => {
                                 <th>Correo</th>
                                 <th>Teléfono</th>
                                 <th>Activo</th>
+                                <th>Usuario</th>
                             </tr>
                         </thead>
 
@@ -156,7 +157,8 @@ const ConsultarClientes = () => {
                                     <td>{`${new Date(empleado.fecha_entrada).getDate()}/${new Date(empleado.fecha_entrada).getMonth()+1}/${new Date(empleado.fecha_entrada).getFullYear()}`}</td>
                                     <td style={{'overflowWrap': 'break-word'}}>{empleado.email}</td>
                                     <td>{empleado.telefono}</td>
-                                    <td>{empleado.activo === 'S' ? "Sí" : "No"}</td>         
+                                    <td>{empleado.activo === 'S' ? "Sí" : "No"}</td>
+                                    <td>{empleado.usuario}</td>                        
                                 </tr>)
                             })}                            
                         </tbody>
