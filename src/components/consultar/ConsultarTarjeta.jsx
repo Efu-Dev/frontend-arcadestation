@@ -38,7 +38,8 @@ const ConsultarTarjeta = () => {
     };
 
     const onChangeNumero = (nuevo) => {
-        setCedula(nuevo);
+        nuevo = nuevo.replace(' ', '');
+        setCedula(nuevo.replace(/\s+/, ''));
         setDatosActuales([]);
     };
 
@@ -131,7 +132,7 @@ const ConsultarTarjeta = () => {
                 </header>
 
                 <form onSubmit={(e) => mostrarTarjeta(e)}>
-                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Para hacer la búsqueda, este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} type="text" placeholder="Ingrese Número" class="search" pattern='[0-9]+' onChange={(e) => onChangeNumero(e.target.value.replace(/\s+/, ""))} maxLength={13} required />
+                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Para hacer la búsqueda, este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} type="text" placeholder="Ingrese Número" class="search" pattern='[0-9]+' onChange={(e) => onChangeNumero(e.target.value.replace(/\s+/, ""))} value={cedula} maxLength={13} required />
                     <button class="boton" type='submit'>Buscar</button>
                 </form>
         
@@ -158,8 +159,7 @@ const ConsultarTarjeta = () => {
                                 <td>{tarjeta.persona.cedula}</td>
                                 <td>{tarjeta.numero}</td>
                                 <td>{tarjeta.saldo}</td>
-                                <td>{`${new Date(tarjeta.fecha_creacion).getDate()}/${new Date(tarjeta.fecha_creacion).getMonth()+1}/${new Date(tarjeta.fecha_creacion).getFullYear()} 
-                                ${new Date(tarjeta.fecha_creacion).getHours()}:${new Date(tarjeta.fecha_creacion).getMinutes()}`}</td>
+                                <td>{`${new Date(tarjeta.fecha_creacion).getDate()}/${new Date(tarjeta.fecha_creacion).getMonth()+1}/${new Date(tarjeta.fecha_creacion).getFullYear()}`}</td>
                                 <td>{tarjeta.anulada === 'N' ? "No" : "Sí"}</td>
                                 {tarjeta.anulada === 'S' ? (
                                     <td>{`${new Date(tarjeta.fecha_anulacion).getDate()+1}/${new Date(tarjeta.fecha_anulacion).getMonth()+1}/${new Date(tarjeta.fecha_anulacion).getFullYear()}`}</td>
@@ -173,8 +173,10 @@ const ConsultarTarjeta = () => {
                 </div>
                 </div>
 
-                <div class="div-gerente row" style={{marginTop: '35vh'}}>
-                <div class="div-gerente cuadrado-consulta">
+                {
+                    datosActuales[0] !== undefined ? (
+                        <div class="div-gerente row" style={{marginTop: '35vh', backgroundColor: 'rgba(251.82, 74.62, 148.26, 1)'}}>
+                <div class="div-gerente cuadrado-consulta" style={{backgroundColor: 'rgba(251.82, 74.62, 148.26, 1)'}}>
                 {
                         datosActuales[0] !== undefined ? 
                         (<>
@@ -185,7 +187,7 @@ const ConsultarTarjeta = () => {
                                 <div className='d-flex justify-content-end'>
                                     <button onClick={reporteTransacciones}>Reporte de Transacciones</button>
                                 </div>
-                                <table class="tabla" style={{width: '100%'}}>
+                                <table class="tabla" style={{width: '100%', backgroundColor: 'white'}}>
                                 <thead class="encabezado">
                                     <tr>
                                         <th>Fecha</th>
@@ -201,8 +203,7 @@ const ConsultarTarjeta = () => {
                                     {
                                         datosActuales[0].registros.map((reg) => (
                                             <tr>
-                                                <td>{`${new Date(reg.fecha).getDate()}/${new Date(reg.fecha).getMonth()+1}/${new Date(reg.fecha).getFullYear()} 
-                                                ${new Date(reg.fecha).getHours()}:${new Date(reg.fecha).getMinutes()}`}</td>
+                                                <td>{`${new Date(reg.fecha).getDate()}/${new Date(reg.fecha).getMonth()+1}/${new Date(reg.fecha).getFullYear()}`}</td>
                                                 <td>{reg.monto}</td>
                                                 <td>{reg.referencia ? reg.referencia : 'No Aplica'}</td>
                                                 <td>{reg.descripcion}</td>
@@ -233,6 +234,11 @@ const ConsultarTarjeta = () => {
                     }                    
                </div>
             </div>
+                    ) : 
+                    <></>
+                }
+
+                
        </div>
     </main>
     );
