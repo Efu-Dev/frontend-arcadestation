@@ -128,7 +128,7 @@ const ConsultarClientes = () => {
                 </header>
 
                 <form onSubmit={(e) => mostrarMaquina(e)}>
-                    <input type="text" placeholder="Ingrese Código" class="search" pattern='[0-9]+' onChange={(e) => onChangeCodigo(e.target.value.replace(/^\s+/, ""))} maxLength={8} required />
+                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Para hacer la búsqueda, este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} type="text" placeholder="Ingrese Código" class="search" pattern='[0-9]+' onChange={(e) => onChangeCodigo(e.target.value.replace(/\s+/, ""))} maxLength={9} required />
                     <button class="boton" type='submit'>Buscar</button>
                 </form>
         

@@ -48,7 +48,7 @@ const RecuperarContrasena = () => {
               <h2>¿OLVIDÓ CONTRASEÑA?</h2>
               <i className='text-center'>Por favor introduzca su cédula. Recibirá un correo con su nueva contraseña.</i>
               <div class={styles.inputBox}>
-                  <input type="text" required onChange={(e) => setCedula(e.target.value.replace(/^\s+/, ""))} name="cedula" placeholder='Ingrese su cédula' pattern='\d+' maxLength={9} />
+                  <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} type="text" required onChange={(e) => setCedula(e.target.value.replace(/^\s+/, ""))} name="cedula" placeholder='Ingrese su cédula' pattern='\d+' maxLength={9} />
                   <span>Cédula</span>
                   <i></i>
               </div>
@@ -59,14 +59,6 @@ const RecuperarContrasena = () => {
            </div>
     </div>
   );
-  
-  return (
-    <form onSubmit={(e) => enviarPeticion(e)}>
-      <h1>Cambiar Contraseña</h1>
-      <input onChange={(e) => setCedula(e.target.value.replace(/^\s+/, ""))} type="text" name="cedula" placeholder='Ingrese su cédula' pattern='\d+' maxLength={8} />
-      <button type="submit">Recuperar Contraseña</button>
-    </form>
-  )
 }
 
 export default RecuperarContrasena;

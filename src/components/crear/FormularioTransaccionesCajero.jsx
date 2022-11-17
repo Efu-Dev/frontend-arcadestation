@@ -172,7 +172,7 @@ const FormularioTransaccionesCajero = () => {
                                 </div>
                                 <div class="div-gerente" id="Referencia">
                                     Referencia:
-                                    <input placeholder='Ejemplo: 125540' type="text" class="monto" name="referencia" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required  />
+                                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} placeholder='Ejemplo: 125540' type="text" class="monto" name="referencia" value={referencia} onChange={(e) => setReferencia(e.target.value.replace(/^\s+/, ""))} pattern="\d+" required  />
                                 </div>
                                 <div class="div-gerente" id="Tipo">
                                     Tipo de Pago:
