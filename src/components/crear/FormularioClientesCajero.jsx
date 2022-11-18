@@ -11,7 +11,7 @@ const FormularioClientesCajero = () => {
     const [nombre, setNombre] = useState("");
     const [cedula, setCedula] = useState("");
     const [direccion, setDireccion] = useState("");
-    const [genero, setGenero] = useState('');
+    const [genero, setGenero] = useState('H');
     const [editable, setEditable] = useState(true);
     const [sendable, setSendable] = useState(true);
 
@@ -84,7 +84,7 @@ const FormularioClientesCajero = () => {
         if(res.nombre === undefined && e.target.value.replace(/^\s+/, "") !== ''){
             setNombre('');
             setDireccion('');
-            setGenero('');
+            setGenero('H');
             setEditable(false);
         }
         else{

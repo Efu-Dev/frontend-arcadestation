@@ -12,7 +12,7 @@ const FormularioModEmpleados = () => {
     const [nombre, setNombre] = useState("");
     const [cedula, setCedula] = useState("");
     const [direccion, setDireccion] = useState("");
-    const [genero, setGenero] = useState('');
+    const [genero, setGenero] = useState('H');
     const [cargo, setCargo] = useState('');
     const [email, setEmail] = useState('');
     const [telefono, setTelefono] = useState('');
@@ -87,7 +87,7 @@ const FormularioModEmpleados = () => {
         if(res.cedula === undefined || e.target.value.replace(/^\s+/, "").replace(/^0+/, "") === ''){
             setNombre('');
             setDireccion('');
-            setGenero('');
+            setGenero('H');
             setEmail('');
             setTelefono('');
             setCargo('');
@@ -259,7 +259,7 @@ const FormularioModEmpleados = () => {
                             <div class="div-gerente" id="genero">
                                 Género:
                             </div>
-                            <form method="get" id="sexo" onChange={(e) => setGenero(e.target.value)}>
+                            <form method="get" id="sexo" value={genero === 'M' ? 'M' : 'H'} onChange={(e) => setGenero(e.target.value)}>
                                 <input name="intereses" type="radio" value={'H'} defaultChecked={true} checked={genero === 'H' || genero !== 'M'} />H
                                 <input name="intereses" type="radio" value={'M'} checked={genero === 'M'} />M
                             </form>

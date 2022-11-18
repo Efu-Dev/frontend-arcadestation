@@ -12,7 +12,7 @@ const FormularioEmpleados = () => {
     const [nombre, setNombre] = useState("");
     const [cedula, setCedula] = useState("");
     const [direccion, setDireccion] = useState("");
-    const [genero, setGenero] = useState('');
+    const [genero, setGenero] = useState('H');
     const [cargo, setCargo] = useState('Cajero');
     const [email, setEmail] = useState('');
     const [telefono, setTelefono] = useState('');
@@ -89,7 +89,7 @@ const FormularioEmpleados = () => {
         if(res.nombre === undefined && e.target.value.replace(/\s+/, "").replace(/^0+/, "") !== ''){
             setNombre('');
             setDireccion('');
-            setGenero('');
+            setGenero('H');
             setEmail('');
             setTelefono('');
             setCargo('Cajero');

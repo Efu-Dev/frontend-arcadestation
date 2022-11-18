@@ -148,7 +148,7 @@ const ProbarMaquinaCajero = () => {
                 </div>
                 <div class="div-gerente" id="Referencia">
                     Tarjeta:
-                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => {e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')}} placeholder="Ejemplo: 1234567890123" type="text" pattern='\d+' maxLength={13} onChange={e => setTarjeta(e.target.value.trimStart())} required />
+                    <input value={tarjeta} onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => {e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')}} placeholder="Ejemplo: 1234567890123" type="text" pattern='\d+' maxLength={13} onChange={e => setTarjeta(e.target.value.trimStart())} required />
                 </div>
                 <div class="div-gerente" id="Tipo">
                     Puntaje:

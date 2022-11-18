@@ -108,12 +108,12 @@ const CambiarContraseña = () => {
                     <h1>Cambiar contraseña</h1>
                     <div className='div-gerente' id="nombre_maq">
                         Contraseña:
-                        <input type="password" placeholder='Al menos 5 y máximo 20.' maxLength={20} minLength={5} required onChange={(e) => setContrasena(e.target.value.replace(/^\s+/, ""))} />
+                        <input type="password" placeholder='Al menos 5 y máximo 20.' value={contrasena} maxLength={20} minLength={5} required onChange={(e) => setContrasena(e.target.value.replace(/^\s+/, ""))} />
                     </div>
 
                     <div className='div-gerente' id="Precio">
                         Repetir Contraseña:
-                        <input type="password" placeholder='Al menos 5 y máximo 20.' maxLength={20} minLength={5} required onChange={(e) => setContrasenaRepetir(e.target.value.replace(/^\s+/, ""))} />
+                        <input type="password" placeholder='Al menos 5 y máximo 20.' value={contrasenaRepetir} maxLength={20} minLength={5} required onChange={(e) => setContrasenaRepetir(e.target.value.replace(/^\s+/, ""))} />
                     </div>
 
                     <div class="div-gerente cambiar-contrasena-submit">

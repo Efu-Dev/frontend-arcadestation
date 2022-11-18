@@ -135,15 +135,15 @@ const ConsultarClientes = () => {
                     <table class="tabla">
                         <thead class="encabezado">
                             <tr>
-                                <th>Nombre</th>
-                                <th>Cédula</th>
-                                <th>Dirección</th>
-                                <th>Cargo</th>
-                                <th>F. Entrada</th>
-                                <th>Correo</th>
-                                <th>Teléfono</th>
-                                <th>Activo</th>
-                                <th>Usuario</th>
+                                <th style={{fontSize: '11pt'}}>Nombre</th>
+                                <th style={{fontSize: '11pt'}}>Cédula</th>
+                                <th style={{fontSize: '11pt'}}>Dirección</th>
+                                <th style={{fontSize: '11pt'}}>Cargo</th>
+                                <th style={{fontSize: '11pt'}}>F. Entrada</th>
+                                <th style={{fontSize: '11pt'}}>Correo</th>
+                                <th style={{fontSize: '11pt'}}>Teléfono</th>
+                                <th style={{fontSize: '11pt'}}>Activo</th>
+                                <th style={{fontSize: '11pt'}}>Usuario</th>
                             </tr>
                         </thead>
 
