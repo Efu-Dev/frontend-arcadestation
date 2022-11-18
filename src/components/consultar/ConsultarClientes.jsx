@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import '../css/consultar_cliente.css';
-import img4 from '../Img/logo_ek1.png';
+import img4 from '../Img/logo_ek1.png'; import manual from '../../pdf/Manual_Usuario_ArcadeStation.pdf';
 import {crearBackup, restaurarBackup, reporteClientes, reporteEmpleados, reporteMaquinas} from '../Home.jsx';
 
 const ConsultarClientes = () => {
@@ -56,9 +56,9 @@ const ConsultarClientes = () => {
                     </label>
                     <div class="div-gerente head">menú</div><br /> <br /> <br /> <br />
         
-                    <li><a href="#"><i class="fas fa-users"></i> Manual de usuario</a></li>
-                    <li><a href="#" onClick={crearBackup}><i class="fas fa-cloud"></i> Crear Respaldo de base de datos</a></li>
-                    <li><a href="#" onClick={restaurarBackup}><i class="fas fa-cloud"></i> Restaurar base de datos</a></li>
+                    <li><a href={manual} target='_blank' rel='noreferrer'><i class="fas fa-users"></i> Manual de Usuario</a></li>
+                    <li><Link to='/' onClick={crearBackup}><i class="fas fa-cloud"></i> Crear Respaldo de base de datos</Link></li>
+                    <li><Link to='/' onClick={restaurarBackup}><i class="fas fa-cloud"></i> Restaurar Base de Datos</Link></li>
                     <li><Link to="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
                     <li><Link to="/control/probar_maquina"><i class="fas fa-gamepad"></i> Probar máquina</Link></li>
                 </div>
@@ -123,7 +123,7 @@ const ConsultarClientes = () => {
                 </header>
 
                 <form onSubmit={(e) => mostrarCliente(e)}>
-                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Para hacer la búsqueda, este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} type="text" placeholder="Ingrese Cédula." class="search" pattern='[0-9]+' onChange={(e) => onChangeCedula(e.target.value.replace(/\s+/, ""))} value={cedula} maxLength={9} required />
+                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Para hacer la búsqueda, este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')} type="text" placeholder="Ingrese Cédula." class="search" pattern='[0-9]+' onChange={(e) => onChangeCedula(e.target.value.replace(/\s+/, "").replace(/\^0+/, '').replace(' ', ''))} value={cedula} maxLength={9} required />
                     <button class="boton" type='submit'>Buscar</button>
                 </form>
 

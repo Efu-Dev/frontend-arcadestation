@@ -3,6 +3,7 @@ import React,{useState} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 import img4 from '../Img/logo_ek1.png';
+import manual from '../../pdf/Manual_Usuario_ArcadeStation.pdf';
 import img1 from '../Img/image_1.png';
 import img2 from '../Img/image_3.png';
 
@@ -15,7 +16,7 @@ const FormularioModClientes = () => {
     const [nombre, setNombre] = useState("");
     const [cedula, setCedula] = useState("");
     const [direccion, setDireccion] = useState("");
-    const [genero, setGenero] = useState('');
+    const [genero, setGenero] = useState('H');
     const [tarjetaAnulada, setTarjetaAnulada] = useState(false);
     const [editable, setEditable] = useState(true);
     const [sendable, setSendable] = useState(true);
@@ -97,7 +98,7 @@ const FormularioModClientes = () => {
         if(res.cedula === undefined || e.target.value.replace(/^\s+/, "").replace(/^0+/, "") === ''){
             setNombre('');
             setDireccion('');
-            setGenero('');
+            setGenero('H');
             setEditable(true);
         }
         else{
@@ -129,9 +130,9 @@ const FormularioModClientes = () => {
                 </label>
                 <div class="div-gerente head">menú</div><br /> <br /> <br /> <br />
     
-                <li><a href="#"><i class="fas fa-users"></i> Manual de usuario</a></li>
-                <li><a href="#" onClick={crearBackup}><i class="fas fa-cloud"></i> Crear Respaldo de base de datos</a></li>
-                <li><a href="#" onClick={restaurarBackup}><i class="fas fa-cloud"></i> Restaurar base de datos</a></li>
+                <li><a href={manual} target='_blank' rel='noreferrer'><i class="fas fa-users"></i> Manual de Usuario</a></li>
+                <li><Link to='/' onClick={crearBackup}><i class="fas fa-cloud"></i> Crear Respaldo de Base de Datos</Link></li>
+                <li><Link to="/" onClick={restaurarBackup}><i class="fas fa-cloud"></i> Restaurar Base de Datos</Link></li>
                 <li><Link to="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
                 <li><Link to="/control/probar_maquina"><i class="fas fa-gamepad"></i> Probar máquina</Link></li>
             </div>
@@ -245,7 +246,7 @@ const FormularioModClientes = () => {
                                     <div class="div-gerente" id="genero">
                                         Género:
                                     </div>
-                                    <form method="get" id="sexo" onChange={(e) => setGenero(e.target.value)}>
+                                    <form method="get" id="sexo" value={genero === 'M' ? 'M' : 'H'} onChange={(e) => setGenero(e.target.value)}>
                                         <input name="intereses" type="radio" value={'H'} defaultChecked={true} checked={genero === 'H' || genero !== 'M'} />H
                                         <input name="intereses" type="radio" value={'M'} checked={genero === 'M'} />M
                                     </form>

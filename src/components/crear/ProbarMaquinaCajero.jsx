@@ -2,7 +2,7 @@ import axios from 'axios';
 import React,{useState, useEffect} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../css/form_maquina.css';
-import img4 from '../Img/logo_ek1.png';
+import img4 from '../Img/logo_ek1.png'; import manual from '../../pdf/Manual_Usuario_ArcadeStation.pdf';
 import {crearBackup, restaurarBackup, reporteClientes, reporteEmpleados, reporteMaquinas} from '../Home.jsx';
 
 const ProbarMaquinaCajero = () => {
@@ -99,7 +99,7 @@ const ProbarMaquinaCajero = () => {
             <span class="span-gerente far fa-circle-user" id="bars"></span>
           </label>
           <div class="div-gerente head">menú</div> <br /> <br /> <br /> <br />
-          <li><a href="#"><i class="fas fa-users"></i> Manual de Ayuda de Usuario</a></li>
+          <li><a href={manual} target='_blank' rel='noreferrer'><i class="fas fa-users"></i> Manual de Ayuda de Usuario</a></li>
           <li><Link to="/cajero/contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
           <li><Link to="/cajero/maquina"><i class="fas fa-info"></i> Probar Máquina</Link></li>
         </div>
@@ -148,7 +148,7 @@ const ProbarMaquinaCajero = () => {
                 </div>
                 <div class="div-gerente" id="Referencia">
                     Tarjeta:
-                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => {e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')}} placeholder="Ejemplo: 1234567890123" type="text" pattern='\d+' maxLength={13} onChange={e => setTarjeta(e.target.value.trimStart())} required />
+                    <input value={tarjeta} onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => {e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')}} placeholder="Ejemplo: 1234567890123" type="text" pattern='\d+' maxLength={13} onChange={e => setTarjeta(e.target.value.trimStart())} required />
                 </div>
                 <div class="div-gerente" id="Tipo">
                     Puntaje:

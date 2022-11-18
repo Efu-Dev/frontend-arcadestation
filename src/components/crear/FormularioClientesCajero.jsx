@@ -4,14 +4,14 @@ import { useNavigate, Link } from 'react-router-dom';
 import download from 'downloadjs';
 
 import '../css/form_clientes_gerente.css';
-import img4 from '../Img/logo_ek1.png';
+import img4 from '../Img/logo_ek1.png'; import manual from '../../pdf/Manual_Usuario_ArcadeStation.pdf';
 
 const FormularioClientesCajero = () => {
 
     const [nombre, setNombre] = useState("");
     const [cedula, setCedula] = useState("");
     const [direccion, setDireccion] = useState("");
-    const [genero, setGenero] = useState('');
+    const [genero, setGenero] = useState('H');
     const [editable, setEditable] = useState(true);
     const [sendable, setSendable] = useState(true);
 
@@ -84,7 +84,7 @@ const FormularioClientesCajero = () => {
         if(res.nombre === undefined && e.target.value.replace(/^\s+/, "") !== ''){
             setNombre('');
             setDireccion('');
-            setGenero('');
+            setGenero('H');
             setEditable(false);
         }
         else{
@@ -123,7 +123,7 @@ const FormularioClientesCajero = () => {
                     <span class="span-gerente far fa-circle-user" id="bars"></span>
                 </label>
                 <div class="div-gerente head">menú</div> <br /> <br /> <br /> <br />
-                <li><a href="#"><i class="fas fa-users"></i> Manual de Ayuda de Usuario</a></li>
+                <li><a href={manual} target='_blank' rel='noreferrer'><i class="fas fa-users"></i> Manual de Ayuda de Usuario</a></li>
                 <li><Link to="/cajero/contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
                 <li><Link to="/cajero/maquina"><i class="fas fa-info"></i> Probar Máquina</Link></li>
             </div>

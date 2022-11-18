@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import img4 from '../Img/logo_ek1.png';
+import img4 from '../Img/logo_ek1.png'; import manual from '../../pdf/Manual_Usuario_ArcadeStation.pdf';
 import {crearBackup, restaurarBackup, reporteClientes, reporteEmpleados, reporteMaquinas} from '../Home.jsx';
 
 
@@ -43,7 +43,7 @@ const CambiarContraseñaCajero = () => {
             <span class="span-gerente far fa-circle-user" id="bars"></span>
           </label>
           <div class="div-gerente head">menú</div> <br /> <br /> <br /> <br />
-          <li><a href="#"><i class="fas fa-users"></i> Manual de Ayuda de Usuario</a></li>
+          <li><a href={manual} target='_blank' rel='noreferrer'><i class="fas fa-users"></i> Manual de Ayuda de Usuario</a></li>
           <li><Link to="/cajero/contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
           <li><Link to="/cajero/maquina"><i class="fas fa-info"></i> Probar Máquina</Link></li>
         </div>
@@ -77,12 +77,12 @@ const CambiarContraseñaCajero = () => {
                     <h1>Cambiar contraseña</h1>
                     <div className='div-gerente' id="nombre_maq">
                         Contraseña:
-                        <input type="password" placeholder='Al menos 5 y máximo 20.' maxLength={20} minLength={5} required onChange={(e) => setContrasena(e.target.value.replace(/^\s+/, ""))} />
+                        <input value={contrasena} type="password" placeholder='Al menos 5 y máximo 20.' maxLength={20} minLength={5} required onChange={(e) => setContrasena(e.target.value.replace(/^\s+/, ""))} />
                     </div>
 
                     <div className='div-gerente' id="Precio">
                         Repetir Contraseña:
-                        <input type="password" placeholder='Al menos 5 y máximo 20.' maxLength={20} minLength={5} required onChange={(e) => setContrasenaRepetir(e.target.value.replace(/^\s+/, ""))} />
+                        <input value={contrasenaRepetir} type="password" placeholder='Al menos 5 y máximo 20.' maxLength={20} minLength={5} required onChange={(e) => setContrasenaRepetir(e.target.value.replace(/^\s+/, ""))} />
                     </div>
 
                     <div class="div-gerente cambiar-contrasena-submit">
