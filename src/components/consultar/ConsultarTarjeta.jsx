@@ -65,9 +65,9 @@ const ConsultarTarjeta = () => {
                     </label>
                     <div class="div-gerente head">menú</div><br /> <br /> <br /> <br />
         
-                    <li><a href="#"><i class="fas fa-users"></i> Manual de usuario</a></li>
-                    <li><a href="#" onClick={crearBackup}><i class="fas fa-cloud"></i> Crear Respaldo de base de datos</a></li>
-                    <li><a href="#" onClick={restaurarBackup}><i class="fas fa-cloud"></i> Restaurar base de datos</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Manual de Usuario</a></li>
+                    <li><Link to='/' onClick={crearBackup}><i class="fas fa-cloud"></i> Crear Respaldo de Base de Datos</Link></li>
+                    <li><Link to="/" onClick={restaurarBackup}><i class="fas fa-cloud"></i> Restaurar Base de Datos</Link></li>
                     <li><Link to="/control/cambiar_contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
                     <li><Link to="/control/probar_maquina"><i class="fas fa-gamepad"></i> Probar máquina</Link></li>
                 </div>
