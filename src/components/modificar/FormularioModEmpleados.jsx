@@ -191,7 +191,7 @@ const FormularioModEmpleados = () => {
                 <form class="div-gerente rectangulo" onSubmit={(e) => checkCreacion(e)}>
                 <div class="div-gerente" id="ingrese_cedula__ek1">
                     Ingrese Cédula:
-                    <input placeholder='Ej: 29714067' type="text" class="cedula" maxLength={9} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" required />
+                    <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => {e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')}} placeholder='Ej: 29714067' type="text" class="cedula" maxLength={9} value={cedula} onChange={(e) => onChangeCedula(e)} pattern="[0-9]+" required />
                 </div>
 
                 {

@@ -15,13 +15,14 @@ const FormularioClientes = () => {
     const [tarjeta, setTarjeta] = useState("");
     const [tipoPago, setTipoPago] = useState(1);
     const [editable, setEditable] = useState(true);
+    const [sendable, setSendable] = useState(true);
 
     const navigate = useNavigate();
 
     const checkCreacion = async (e) => {
         e.preventDefault();
         let res = undefined;
-
+        setSendable(false);
         await axios.create({
             baseURL: 'https://arcadestation.pythonanywhere.com/api/registro/transaccion/',
             'headers': {
@@ -219,9 +220,19 @@ const FormularioClientes = () => {
                             )
                         }
 
-                        <div class="div-gerente Crear2">
-                            <button type='submit' class="Crearb"> Crear </button>
-                        </div>
+                        {
+                            sendable ? (
+                                <div class="div-gerente Crear2">
+                                    <button type='submit' class="Crearb"> Crear </button>
+                                </div>
+                            ) : (
+                                <div class="div-gerente Crear2">
+                                    <button disabled type='submit' class="Crearb"> Crear </button>
+                                </div>
+                            )
+                        }
+
+                        
 		            </form>
      </main>
     );

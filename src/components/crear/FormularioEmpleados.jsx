@@ -35,7 +35,7 @@ const FormularioEmpleados = () => {
             alert("El nombre debe seguir el siguiente formato: Nombre Apellido");
             return;
         }
-
+        setSendable(false);
         let res = undefined;
         await axios.create({
             baseURL: 'https://arcadestation.pythonanywhere.com/api/empleados/',

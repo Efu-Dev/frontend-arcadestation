@@ -12,6 +12,7 @@ const ProbarMaquina = () => {
     const [maquina, setMaquina] = useState(false);
     const [tarjeta, setTarjeta] = useState('');
     const [puntaje, setPuntaje] = useState(0);
+    const [sendable, setSendable] = useState(true);
 
     const navigate = useNavigate();
 
@@ -34,6 +35,7 @@ const ProbarMaquina = () => {
     const probarMaquina = async (e) => {
         e.preventDefault();
         let continuar = false;
+        setSendable(false);
         await axios.create({
             baseURL: `https://arcadestation.pythonanywhere.com/api/tarjetas/${tarjeta}`,
             'headers': {
@@ -43,10 +45,11 @@ const ProbarMaquina = () => {
             console.log(res);
             if(res.data.message === 'Success' && res.data.datos.anulada === 'N')
                 continuar = true;
-            else
+            else{
+                setSendable(true);
                 alert('La tarjeta no se encuentra activa o no existe. Verifique en caja.');
-            
-            console.log("A");
+            }
+                
         }).catch((e) => {return;});
         
         if(!continuar)
@@ -186,12 +189,20 @@ const ProbarMaquina = () => {
                 </div>
                 <div class="div-gerente" id="Tipo">
                     Puntaje:
-                    <input step={1} onKeyDown={(e) => {e.key === '.' ? e.preventDefault() : console.log('');}} placeholder='Ejemplo: 5000' name='puntaje' type="number" maxLength={9} onChange={e => setPuntaje(e.target.value.trim())} value={puntaje} required />
+                    <input min={-99999999} step={1} onKeyDown={(e) => {e.key === '.' ? e.preventDefault() : console.log('');}} placeholder='Ejemplo: 5000' name='puntaje' type="number" maxLength={9} onChange={e => setPuntaje(e.target.value.trim())} value={puntaje} required />
                 </div>     
 
-                <div class="div-gerente cambiar-contrasena-submit">
-                    <button class="Crearb"> Probar </button>
-                </div>
+                    {
+                            sendable ? (
+                                <div class="div-gerente Crear2">
+                                    <button type='submit' class="Crearb"> Crear </button>
+                                </div>
+                            ) : (
+                                <div class="div-gerente Crear2">
+                                    <button disabled type='submit' class="Crearb"> Crear </button>
+                                </div>
+                            )
+                    }
                 </form>
             </div>
         </main>
