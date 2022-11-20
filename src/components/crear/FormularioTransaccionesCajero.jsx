@@ -39,8 +39,11 @@ const FormularioTransaccionesCajero = () => {
             res = r;
             if(res.data.message === 'Success')
                 alert("Transacción registrada exitosamente");
-            else
+            else{
+                setSendable(true);
                 alert(res.data.message);
+            }
+                
         }).catch((e) => {
             alert("Ocurrió un error.");
         });
@@ -76,6 +79,7 @@ const FormularioTransaccionesCajero = () => {
             setReferencia('');
             setTipoPago(1);
             alert("La tarjeta se encuentra anulada. Un gerente debe de reactivarla.")
+            setSendable(false);
         }
         else{
             setMonto('');
@@ -83,6 +87,7 @@ const FormularioTransaccionesCajero = () => {
             setReferencia('');
             setTipoPago(1);
             setEditable(true);
+            setSendable(true);
         }
     }
 

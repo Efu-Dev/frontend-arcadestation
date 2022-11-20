@@ -70,6 +70,7 @@ const ProbarMaquinaCajero = () => {
                 navigate('/home')
             }else{
                 alert(res.data.message);
+                setSendable(true);
             }          
         }).catch((e) => console.log(e));
     };
@@ -154,8 +155,8 @@ const ProbarMaquinaCajero = () => {
                     <input value={tarjeta} onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => {e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')}} placeholder="Ejemplo: 1234567890123" type="text" pattern='\d+' maxLength={13} onChange={e => setTarjeta(e.target.value.trimStart())} required />
                 </div>
                 <div class="div-gerente" id="Tipo">
-                    Puntaje:
-                    <input min={-99999999} step={1} onKeyDown={(e) => {e.key === '.' ? e.preventDefault() : console.log('');}} name='puntaje' type="number" maxLength={9} onChange={e => setPuntaje(e.target.value.trim())} value={puntaje} required />
+                    Puntaje: <br />
+                    <input min={-99999999} max={999999999} step={1} onKeyDown={(e) => {e.key === '.' ? e.preventDefault() : console.log('');}} name='puntaje' type="number" maxLength={9} onChange={e => setPuntaje(e.target.value.trim())} value={puntaje} required />
                 </div>     
 
                   {
@@ -173,33 +174,6 @@ const ProbarMaquinaCajero = () => {
             </div>
         </main>
     );
-
-
-        return (<div>
-            <h1>Probar Máquina</h1>
-            <form onSubmit={e => probarMaquina(e)}>
-                <label htmlFor="maquina">Máquina:</label>
-                <select name="maquina" id="maquina" onChange={e => changeMaquina(e.target.value)} value={maquina.codigo}>
-                    {
-                        maquinas.filter((i) => i.activa === 'S').map((i) => (
-                            <option value={i.codigo}>{i.nombre}</option>
-                        ))
-                    }
-                </select>
-
-                <label htmlFor="tarjeta">Precio:</label>
-                <input name='precio' type="number" value={maquina.precio} disabled />
-
-                <label htmlFor="tarjeta">Tarjeta:</label>
-                <input type="text" pattern='\d+' onChange={e => setTarjeta(e.target.value.trimStart())} required />
-
-                <label htmlFor="tarjeta">Puntaje:</label>
-                <input name='puntaje' type="number" onChange={e => setPuntaje(e.target.value.trim())} value={puntaje} required />
-
-                <button type="submit">Probar Máquina</button>
-            </form>
-            
-        </div>)
 }
 
 export default ProbarMaquinaCajero;

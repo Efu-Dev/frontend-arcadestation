@@ -61,7 +61,7 @@ const FormularioModEmpleados = () => {
             res = r;
         });
 
-        if(res.data.message === "Success"){
+        if(res.data.message === "Success"  || res.data.message.indexOf('dot') !== -1){
             alert("Empleado modificado exitosamente");
             navigate('/home');
         } else{

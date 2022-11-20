@@ -71,6 +71,7 @@ const ProbarMaquina = () => {
                 navigate('/home')
             }else{
                 alert(res.data.message);
+                setSendable(true);
             }          
         }).catch((e) => console.log(e));
     };
@@ -188,8 +189,8 @@ const ProbarMaquina = () => {
                     <input value={tarjeta} onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => {e.target.setCustomValidity('Este campo debe estar lleno y seguir un formato de únicamente dígitos numéricos. Ejemplo: 123456789.')}} placeholder='Ejemplo: 1234567890123' type="text" pattern='\d+' maxLength={13} onChange={e => setTarjeta(e.target.value.trimStart())} required />
                 </div>
                 <div class="div-gerente" id="Tipo">
-                    Puntaje:
-                    <input min={-99999999} step={1} onKeyDown={(e) => {e.key === '.' ? e.preventDefault() : console.log('');}} placeholder='Ejemplo: 5000' name='puntaje' type="number" maxLength={9} onChange={e => setPuntaje(e.target.value.trim())} value={puntaje} required />
+                    Puntaje: <br />
+                    <input min={-99999999} max={999999999} step={1} onKeyDown={(e) => {e.key === '.' ? e.preventDefault() : console.log('');}} placeholder='Ejemplo: 5000' name='puntaje' type="number" onChange={e => setPuntaje(e.target.value.trim())} value={puntaje} required />
                 </div>     
 
                     {
