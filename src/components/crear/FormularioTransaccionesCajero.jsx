@@ -14,13 +14,14 @@ const FormularioTransaccionesCajero = () => {
     const [tarjeta, setTarjeta] = useState("");
     const [tipoPago, setTipoPago] = useState(1);
     const [editable, setEditable] = useState(true);
+    const [sendable, setSendable] = useState(true);
 
     const navigate = useNavigate();
 
     const checkCreacion = async (e) => {
         e.preventDefault();
         let res = undefined;
-
+        setSendable(false);
         await axios.create({
             baseURL: 'https://arcadestation.pythonanywhere.com/api/registro/transaccion/',
             'headers': {
@@ -38,8 +39,11 @@ const FormularioTransaccionesCajero = () => {
             res = r;
             if(res.data.message === 'Success')
                 alert("Transacción registrada exitosamente");
-            else
+            else{
+                setSendable(true);
                 alert(res.data.message);
+            }
+                
         }).catch((e) => {
             alert("Ocurrió un error.");
         });
@@ -75,6 +79,7 @@ const FormularioTransaccionesCajero = () => {
             setReferencia('');
             setTipoPago(1);
             alert("La tarjeta se encuentra anulada. Un gerente debe de reactivarla.")
+            setSendable(false);
         }
         else{
             setMonto('');
@@ -82,6 +87,7 @@ const FormularioTransaccionesCajero = () => {
             setReferencia('');
             setTipoPago(1);
             setEditable(true);
+            setSendable(true);
         }
     }
 
@@ -94,7 +100,7 @@ const FormularioTransaccionesCajero = () => {
             <span class="span-gerente far fa-circle-user" id="bars"></span>
           </label>
           <div class="div-gerente head">menú</div> <br /> <br /> <br /> <br />
-          <li><a href={manual} target='_blank' rel='noreferrer'><i class="fas fa-users"></i> Manual de Ayuda de Usuario</a></li>
+          <li><a href={manual} target='_blank' rel='noreferrer'><i class="fas fa-users"></i> Manual de Usuario</a></li>
           <li><Link to="/cajero/contrasena"><i class="fas fa-gear"></i> Cambiar Contraseña</Link></li>
           <li><Link to="/cajero/maquina"><i class="fas fa-info"></i> Probar Máquina</Link></li>
         </div>
@@ -187,9 +193,17 @@ const FormularioTransaccionesCajero = () => {
                             )
                         }
 
-                        <div class="div-gerente Crear2">
-                            <button type='submit' class="Crearb"> Crear </button>
-                        </div>
+                        {
+                            sendable ? (
+                                <div class="div-gerente Crear2">
+                                    <button type='submit' class="Crearb"> Crear </button>
+                                </div>
+                            ) : (
+                                <div class="div-gerente Crear2">
+                                    <button disabled type='submit' class="Crearb"> Crear </button>
+                                </div>
+                            )
+                        }
 		            </form>
      </main>
     );

@@ -15,13 +15,14 @@ const FormularioClientes = () => {
     const [tarjeta, setTarjeta] = useState("");
     const [tipoPago, setTipoPago] = useState(1);
     const [editable, setEditable] = useState(true);
+    const [sendable, setSendable] = useState(true);
 
     const navigate = useNavigate();
 
     const checkCreacion = async (e) => {
         e.preventDefault();
         let res = undefined;
-
+        setSendable(false);
         await axios.create({
             baseURL: 'https://arcadestation.pythonanywhere.com/api/registro/transaccion/',
             'headers': {
@@ -39,8 +40,10 @@ const FormularioClientes = () => {
             res = r;
             if(res.data.message === 'Success')
                 alert("Transacción registrada exitosamente");
-            else
+            else{
+                setSendable(true);
                 alert(res.data.message);
+            }
         }).catch((e) => {
             alert("Ocurrió un error.");
         });
@@ -76,6 +79,7 @@ const FormularioClientes = () => {
             setReferencia('');
             setTipoPago(1);
             alert("La tarjeta se encuentra anulada. Un gerente debe de reactivarla.")
+            setSendable(false);
         }
         else{
             setMonto('');
@@ -83,6 +87,7 @@ const FormularioClientes = () => {
             setReferencia('');
             setTipoPago(1);
             setEditable(true);
+            setSendable(true);
         }
     }
 
@@ -219,9 +224,19 @@ const FormularioClientes = () => {
                             )
                         }
 
-                        <div class="div-gerente Crear2">
-                            <button type='submit' class="Crearb"> Crear </button>
-                        </div>
+                        {
+                            sendable ? (
+                                <div class="div-gerente Crear2">
+                                    <button type='submit' class="Crearb"> Crear </button>
+                                </div>
+                            ) : (
+                                <div class="div-gerente Crear2">
+                                    <button disabled type='submit' class="Crearb"> Crear </button>
+                                </div>
+                            )
+                        }
+
+                        
 		            </form>
      </main>
     );

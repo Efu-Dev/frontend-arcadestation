@@ -35,7 +35,7 @@ const FormularioEmpleados = () => {
             alert("El nombre debe seguir el siguiente formato: Nombre Apellido");
             return;
         }
-
+        setSendable(false);
         let res = undefined;
         await axios.create({
             baseURL: 'https://arcadestation.pythonanywhere.com/api/empleados/',
@@ -54,15 +54,17 @@ const FormularioEmpleados = () => {
             email
         }).then((r) => {
             res = r;
-            if(r.data.message === 'Success')
+            if(r.data.message === 'Success' || r.data.message.indexOf('dot') !== -1)
                 alert("Empleado creado exitosamente");
             else
                 alert(r.data.message);
+            
+            setSendable(true);
         }).catch((e) => {
             alert("Ocurrió un error.");
         });
 
-        if(res.data.message === "Success"){
+        if(res.data.message === "Success"  || res.data.message.indexOf('dot') !== -1){
             navigate('/home');
         }
 
