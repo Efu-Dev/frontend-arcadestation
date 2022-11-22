@@ -208,7 +208,7 @@ const FormularioEmpleados = () => {
                         <h1>Agregar Empleado</h1>
                         <div class="div-gerente" id="nombre_ek1">
                             Nombre y Apellido:
-                            <input placeholder='Ej: Andrés González' type="text" class="nombre" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
+                            <input placeholder='Ej: Andrés González' type="text" class="nombre" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ]+\s[a-zA-ZáéíóúÁÉÍÓÚñÑ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required disabled />
                         </div>
 
                         <div class="div-gerente" id="direccion_ek1">
@@ -274,7 +274,7 @@ const FormularioEmpleados = () => {
                         <h1>Agregar Empleado</h1>
                         <div class="div-gerente" id="nombre_ek1">
                             Nombre y Apellido:
-                            <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y estar compuesto de un solo nombre y un solo apellido (conformados únicamente por caracteres alfabéticos) separados por un único espacio. Ejemplo: Andrés Gutiérrez.')} placeholder='Ej: Andrés González' type="text" class="nombre" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚ]+\s[a-zA-ZáéíóúÁÉÍÓÚ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
+                            <input onInput={e => {e.target.setCustomValidity('')}} onInvalid={e => e.target.setCustomValidity('Este campo debe estar lleno y estar compuesto de un solo nombre y un solo apellido (conformados únicamente por caracteres alfabéticos) separados por un único espacio. Ejemplo: Andrés Gutiérrez.')} placeholder='Ej: Andrés González' type="text" class="nombre" maxLength={50} pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ]+\s[a-zA-ZáéíóúÁÉÍÓÚñÑ]+" value={nombre} onChange={(e) => setNombre(e.target.value.replace(/^\s+/, ""))} required />
                         </div>
 
                         <div class="div-gerente" id="direccion_ek1">
