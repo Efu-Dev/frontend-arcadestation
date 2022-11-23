@@ -72,11 +72,11 @@ const ConsultarTarjetaCajero = () => {
           <div class="div-gerente Crear">
             <button type="button" class="btn btn-white dropdown-toggle" id="Crear" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="true">
-              Crear
+              Agregar
             </button>
             <div class="div-gerente dropdown-menu">
-              <li><Link to="/cajero/clientes" class="dropdown-item">Crear Cliente</Link></li>
-              <li><Link to="/cajero/transaccion" class="dropdown-item">Crear Recarga</Link></li>
+              <li><Link to="/cajero/clientes" class="dropdown-item">Agregar Cliente</Link></li>
+              <li><Link to="/cajero/transaccion" class="dropdown-item">Agregar Recarga</Link></li>
             </div>
           </div>
 
